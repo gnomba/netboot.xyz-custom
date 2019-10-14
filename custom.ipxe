@@ -14,7 +14,7 @@ goto ${custom_choice}
 goto custom_exit
 
 :debianx
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk raw iso
+kernel https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk raw iso
 initrd http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-10.1.0-amd64-netinst.iso
 boot || goto custom_exit
 
