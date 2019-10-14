@@ -14,6 +14,7 @@ goto ${custom_choice}
 goto custom_exit
 
 :debiantest
+imgfree
 #kernel https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk bigraw iso
 kernel https://boot.netboot.xyz/memdisk raw iso
 initrd http://cdimage.debian.org/cdimage/daily-builds/daily/arch-latest/amd64/iso-cd/debian-testing-amd64-netinst.iso
