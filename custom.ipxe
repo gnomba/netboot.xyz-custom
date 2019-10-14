@@ -1,0 +1,33 @@
+#!ipxe
+###
+### netboot.xyz-custom menu example
+###
+
+:custom
+clear custom_choice
+menu gnomba's bootloader
+item --gap Debian
+item debianx ${space} Debian Buster
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
+goto custom_exit
+
+:debianx
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-10.0.0-amd64-netinst.iso
+boot || goto custom_exit
+
+:option_two
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://path.to/iso
+boot || goto custom_exit
+
+
+:option_three
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom1.ipxe || goto custom
+
+:custom_exit
+chain utils.ipxe
+exit
