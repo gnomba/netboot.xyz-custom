@@ -18,10 +18,9 @@ goto custom_exit
 
 :debiantest
 imgfree
-kernel https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk bigraw iso
-#kernel https://boot.netboot.xyz/memdisk bigraw iso
-initrd --name debian-testing-amd64-netinst.iso http://cdimage.debian.org/cdimage/daily-builds/daily/current/amd64/iso-cd/debian-testing-amd64-netinst.iso
-boot || goto custom_exit
+imgfetch http://cdimage.debian.org/cdimage/daily-builds/daily/current/amd64/iso-cd/debian-testing-amd64-netinst.iso
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk bigraw iso
+#boot || goto custom_exit
 
 :debianlive
 imgfree
