@@ -8,11 +8,6 @@ clear custom_choice
 menu gnomba's bootloader
 item --gap Debian
 item debiantest ${space} Debian Testing (daily build)
-choose custom_choice || goto custom_exit
-echo ${cls}
-goto ${custom_choice}
-goto custom_exit
-
 item --gap Dell
 item dell ${space} Dell Support Live Image 2.2
 choose custom_choice || goto custom_exit
