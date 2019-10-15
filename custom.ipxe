@@ -18,8 +18,9 @@ goto custom_exit
 
 :debiantest
 imgfree
-set keep-san 1
-sanboot --no-describe -k http://cdimage.debian.org/cdimage/daily-builds/daily/current/amd64/iso-cd/debian-testing-amd64-netinst.iso
+imgfetch http://cdimage.debian.org/cdimage/daily-builds/daily/current/amd64/iso-cd/debian-testing-amd64-netinst.iso
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk bigraw iso
+#boot || goto custom_exit
 
 :debianlive
 imgfree
