@@ -13,6 +13,13 @@ echo ${cls}
 goto ${custom_choice}
 goto custom_exit
 
+item --gap Dell
+item dell ${space} Dell Support Live Image 2.2
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
+goto custom_exit
+
 :debiantest
 imgfree
 kernel https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk raw iso
@@ -20,9 +27,10 @@ kernel https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/maste
 initrd --name debian-testing-amd64-netinst.iso http://cdimage.debian.org/cdimage/daily-builds/daily/arch-latest/amd64/iso-cd/debian-testing-amd64-netinst.iso
 boot || goto custom_exit
 
-:option_two
+:dell
+imgfree
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://path.to/iso
+initrd http://192.168.1.29/SLI22_A00.iso
 boot || goto custom_exit
 
 
