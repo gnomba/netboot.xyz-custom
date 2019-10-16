@@ -11,6 +11,8 @@ item debiantest ${space} Debian Testing (daily build)
 item debianlive ${space} Debian Live 10.1.0
 item --gap Dell
 item dell ${space} Dell Support Live Image 2.2
+item --gap Other boot
+item sals ${space} SAL's NETWORK BOOT
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
@@ -35,6 +37,8 @@ kernel https://boot.netboot.xyz/memdisk bigraw iso
 initrd --name SLI22_A00.iso http://192.168.1.29/SLI22_A00.iso
 boot || goto custom_exit
 
+:sals
+chain http://boot.salstar.sk
 
 :option_three
 echo Chains into another menu...
