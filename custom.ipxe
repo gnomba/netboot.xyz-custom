@@ -22,7 +22,7 @@ goto custom_exit
 imgfree
 imgtrust --allow
 kernel http://boot.salstar.sk/memdisk iso raw
-initrd http://cdimage.debian.org/cdimage/daily-builds/daily/current/amd64/iso-cd/debian-testing-amd64-netinst.iso
+initrd http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/daily-builds/sid_d-i/current/amd64/iso-cd/firmware-testing-amd64-netinst.iso
 boot || goto custom_exit
 
 :debianlive
