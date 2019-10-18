@@ -20,14 +20,16 @@ goto custom_exit
 
 :debiantest
 imgfree
-imgfetch http://cdimage.debian.org/cdimage/daily-builds/daily/current/amd64/iso-cd/debian-testing-amd64-netinst.iso
-chain http://boot.salstar.sk/memdisk bigraw iso
-#boot || goto custom_exit
+imgtrust --allow
+kernel http://boot.salstar.sk/memdisk iso raw
+initrd http://cdimage.debian.org/cdimage/daily-builds/daily/current/amd64/iso-cd/debian-testing-amd64-netinst.iso
+boot || goto custom_exit
 
 :debianlive
 imgfree
-kernel https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk bigraw iso
-#kernel https://boot.netboot.xyz/memdisk bigraw iso
+imgtrust --allow
+kernel https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk iso raw
+#kernel https://boot.netboot.xyz/memdisk iso raw
 initrd --name debian-live-10.1.0-amd64-standard.iso http://cdimage.debian.org/cdimage/release/current-live/amd64/iso-hybrid/debian-live-10.1.0-amd64-standard.iso
 boot || goto custom_exit
 
