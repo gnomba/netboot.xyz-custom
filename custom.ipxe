@@ -22,7 +22,7 @@ goto custom_exit
 :archlinux
 imgfree
 imgtrust --allow
-chain https://www.archlinux.org/releng/netboot/archlinux.ipxe
+chain http://www.archlinux.org/releng/netboot/archlinux.ipxe
 boot || goto custom_exit
 
 :debiantest
