@@ -13,10 +13,17 @@ item --gap Dell
 item dell ${space} Dell Support Live Image 2.2
 item --gap Other boot
 item sals ${space} SAL's NETWORK BOOT
+item archlinux ${space} ArchLinux
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
 goto custom_exit
+
+:archlinux
+imgfree
+imgtrust --allow
+chain https://www.archlinux.org/static/netboot/ipxe.a56af4e6a9a9.pxe
+boot || goto custom_exit
 
 :debiantest
 imgfree
