@@ -46,17 +46,17 @@ boot || goto custom_exit
 :debiantest
 imgfree
 imgtrust --allow
-kernel http://boot.salstar.sk/memdisk
-initrd http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/daily-builds/sid_d-i/current/amd64/iso-cd/firmware-testing-amd64-netinst.iso
-imgargs memdisk iso raw
+initrd --name firmware-testing-amd64-netinst.iso http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/daily-builds/sid_d-i/current/amd64/iso-cd/firmware-testing-amd64-netinst.iso
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk iso raw
+param sysuuid ${uuid}
 boot || goto custom_exit
 
 :debianlive
 imgfree
 imgtrust --allow
-kernel https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk iso raw
-#kernel https://boot.netboot.xyz/memdisk iso raw
 initrd --name debian-live-10.1.0-amd64-standard.iso http://cdimage.debian.org/cdimage/release/current-live/amd64/iso-hybrid/debian-live-10.1.0-amd64-standard.iso
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk iso raw
+param sysuuid ${uuid}
 boot || goto custom_exit
 
 :dell
