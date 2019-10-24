@@ -15,10 +15,19 @@ item --gap Other boot
 item sals ${space} SAL's NETWORK BOOT
 item archlinux ${space} ArchLinux
 item gentoolinux ${space} Gentoo minimal 2019-10-20
+item ubuntulive ${space} Ubuntu Server Live 19.10
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
 goto custom_exit
+
+:ubuntulive
+imgfree
+imgtrust --allow
+kernel http://boot.salstar.sk/memdisk
+initrd http://mirror.netcologne.de/ubuntu-isos/19.10/ubuntu-19.10-live-server-amd64.iso
+imgargs memdisk iso raw
+boot || goto custom_exit
 
 :archlinux
 imgfree
