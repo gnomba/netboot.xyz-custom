@@ -24,9 +24,9 @@ goto custom_exit
 :ubuntulive
 imgfree
 imgtrust --allow
-kernel http://boot.salstar.sk/memdisk
 initrd http://mirror.netcologne.de/ubuntu-isos/19.10/ubuntu-19.10-live-server-amd64.iso
-imgargs memdisk iso raw
+chain http://boot.salstar.sk/memdisk iso raw
+param sysuuid ${uuid}
 boot || goto custom_exit
 
 :archlinux
