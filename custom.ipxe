@@ -56,6 +56,7 @@ imgfree
 imgtrust --allow
 initrd --name debian-live-10.1.0-amd64-standard.iso http://cdimage.debian.org/cdimage/release/current-live/amd64/iso-hybrid/debian-live-10.1.0-amd64-standard.iso
 chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk iso raw
+imgargs findiso=debian-live-10.1.0-amd64-standard.iso
 param sysuuid ${uuid}
 boot || goto custom_exit
 
