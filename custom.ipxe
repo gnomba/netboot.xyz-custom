@@ -49,7 +49,7 @@ imgtrust --allow
 chain --name firmware-testing-amd64-netinst.iso http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/daily-builds/sid_d-i/current/amd64/iso-cd/firmware-testing-amd64-netinst.iso
 kernel http://ftp.nl.debian.org/debian/dists/buster/main/installer-amd64/current/images/cdrom/gtk/vmlinuz initrd=initrd
 initrd http://ftp.nl.debian.org/debian/dists/buster/main/installer-amd64/current/images/cdrom/gtk/initrd.gz
-imgargs findiso=debian-live-10.1.0-amd64-standard.iso
+imgargs findiso=firmware-testing-amd64-netinst.iso
 param sysuuid ${uuid}
 boot || goto custom_exit
 
