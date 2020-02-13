@@ -6,6 +6,13 @@
 :custom
 clear custom_choice
 menu gnomba's bootloader
+
+item --gap Ubuntu
+item ubuntu2004 ${space} 20.04 LTS (Focal Fossa) (not work)
+item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
+item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
+item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
+
 item --gap Debian
 item debiantest ${space} Debian Testing (daily build)
 item debianlive ${space} Debian Live 10.1.0
@@ -20,6 +27,42 @@ choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
 goto custom_exit
+
+:ubuntu2004
+set vRELEASE focal
+set vARCH amd64
+set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}/
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+set vOPTS 
+
+:ubuntu1804
+set vRELEASE bionic
+set vARCH amd64
+set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}/
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+
+:ubuntu1604
+set vRELEASE xenial
+set vARCH amd64
+set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}/
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+
+:ubuntu1404
+set vRELEASE trusty
+set vARCH amd64
+set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}/
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+
+:ubuntu
+imgfree
+imgtrust --allow
+kernel ${vKERNEL}
+initrd ${vINITRD}
+boot
 
 :ubuntulive
 imgfree
