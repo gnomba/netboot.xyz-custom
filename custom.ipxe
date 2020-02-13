@@ -162,9 +162,9 @@ goto os_install
 :os_install
 imgfree
 imgtrust --allow
-imgargs ${vOPTS}
 kernel ${vKERNEL}
 initrd ${vINITRD}
+imgargs ${vOPTS}
 boot
 
 
