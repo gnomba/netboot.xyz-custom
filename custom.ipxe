@@ -22,9 +22,9 @@ item debian11 ${space} (testing) 11 (Bullseye)
 item debiansid ${space} (unstable) Sid
 
 item --gap CentOS
-item centos8 ${space} (not work) 8 (8.1.1911)
-item centos7 ${space} (not work) 7 (7.7.1908)
-item centos6 ${space} (not work) 6 (6.10)
+item centos8 ${space} 8 (8.1.1911)
+item centos7 ${space} 7 (7.7.1908)
+item centos6 ${space} 6 (6.10)
 
 item --gap SystemRescueCD
 item systemrescuecd6 ${space} (not work) 6.0.7 (Arch-based)
@@ -49,7 +49,7 @@ set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/install
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto debbased_install
+goto os_install
 
 :ubuntu1804
 set vRELEASE bionic
@@ -58,7 +58,7 @@ set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/install
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto debbased_install
+goto os_install
 
 :ubuntu1604
 set vRELEASE xenial
@@ -67,7 +67,7 @@ set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/install
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto debbased_install
+goto os_install
 
 :ubuntu1404
 set vRELEASE trusty
@@ -76,7 +76,7 @@ set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/install
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto debbased_install
+goto os_install
 
 :debian10
 set vRELEASE buster
@@ -85,7 +85,7 @@ set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto debbased_install
+goto os_install
 
 :debian9
 set vRELEASE stretch
@@ -94,7 +94,7 @@ set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto debbased_install
+goto os_install
 
 :debian8
 set vRELEASE jessie
@@ -103,7 +103,7 @@ set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto debbased_install
+goto os_install
 
 :debian7
 set vRELEASE wheezy
@@ -112,7 +112,7 @@ set vURL http://archive.debian.org/debian/dists/${vRELEASE}/main/installer-${vAR
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto debbased_install
+goto os_install
 
 :debian11
 set vRELEASE bullseye
@@ -121,7 +121,7 @@ set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto debbased_install
+goto os_install
 
 :debiansid
 set vRELEASE sid
@@ -130,20 +130,41 @@ set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto debbased_install
+goto os_install
 
-:debbased_install
+:centos8
+set vRELEASE 8.1.1911
+set vARCH x86_64
+set vURL http://mirror.yandex.ru/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/initrd.img
+set vOPTS 
+goto os_install
+
+:centos7
+set vRELEASE 7.7.1908
+set vARCH x86_64
+set vURL /centos/${vRELEASE}/os/${vARCH}/images/pxeboot
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/initrd.img
+set vOPTS 
+goto os_install
+
+:centos6
+set vRELEASE 6.10
+set vARCH x86_64
+set vURL /centos/${vRELEASE}/os/${vARCH}/images/pxeboot
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/initrd.img
+set vOPTS 
+goto os_install
+
+:os_install
 imgfree
 imgtrust --allow
 kernel ${vKERNEL}
 initrd ${vINITRD}
 boot
-
-:centos8
-:centos7
-:centos6
-:centos
-
 
 
 :ubuntulive
