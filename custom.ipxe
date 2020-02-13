@@ -8,7 +8,7 @@ clear custom_choice
 menu gnomba's bootloader
 
 item --gap Ubuntu
-item ubuntu2004 ${space} 20.04 LTS (Focal Fossa) (not work)
+item ubuntu2004 ${space} (not work) 20.04 LTS (Focal Fossa)
 item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
 item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
 item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
@@ -18,8 +18,8 @@ item debian10 ${space} 10 (Buster)
 item debian9 ${space} 9 (Stretch)
 item debian8 ${space} 8 (Jessie)
 item debian7 ${space} 7 (Wheezy)
-item debian11 ${space} 11 (Bullseye) (testing)
-item debiansid ${space} Sid (unstable)
+item debian11 ${space} (testing) 11 (Bullseye)
+item debiansid ${space} (unstable) Sid
 
 item --gap CentOS
 item centos8 ${space} 8 (8.1.1911)
