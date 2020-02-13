@@ -31,7 +31,7 @@ goto custom_exit
 :ubuntu2004
 set vRELEASE focal
 set vARCH amd64
-set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}/
+set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
@@ -39,7 +39,7 @@ set vOPTS
 :ubuntu1804
 set vRELEASE bionic
 set vARCH amd64
-set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}/
+set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
@@ -47,7 +47,7 @@ set vOPTS
 :ubuntu1604
 set vRELEASE xenial
 set vARCH amd64
-set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}/
+set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
@@ -55,7 +55,7 @@ set vOPTS
 :ubuntu1404
 set vRELEASE trusty
 set vARCH amd64
-set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}/
+set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
