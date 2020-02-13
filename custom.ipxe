@@ -108,7 +108,7 @@ goto debbased_install
 :debian7
 set vRELEASE wheezy
 set vARCH amd64
-set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/debian-installer/${vARCH}
+set vURL http://archive.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/debian-installer/${vARCH}
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
