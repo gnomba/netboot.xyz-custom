@@ -17,12 +17,9 @@ item --gap Debian
 item debian10 ${space} 10 (Buster)
 item debian9 ${space} 9 (Stretch)
 item debian8 ${space} 8 (Jessie)
-item --gap    Old version ***
 item debian7 ${space} 7 (Wheezy)
-item --gap    Testing version ***
-item debian11 ${space} 11 (Bullseye)
-item --gap    Unstable version ***
-item debiansid ${space} Sid
+item debian11 ${space} 11 (Bullseye) (testing)
+item debiansid ${space} Sid (unstable)
 
 item --gap CentOS
 item centos8 ${space} 8 (8.1.1911)
