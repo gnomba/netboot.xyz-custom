@@ -52,7 +52,7 @@ set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/install
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto ubuntu
+goto debbased_install
 
 :ubuntu1804
 set vRELEASE bionic
@@ -61,7 +61,7 @@ set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/install
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto ubuntu
+goto debbased_install
 
 :ubuntu1604
 set vRELEASE xenial
@@ -70,7 +70,7 @@ set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/install
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto ubuntu
+goto debbased_install
 
 :ubuntu1404
 set vRELEASE trusty
@@ -79,23 +79,63 @@ set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/install
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto ubuntu
-
-:ubuntu
-imgfree
-imgtrust --allow
-kernel ${vKERNEL}
-initrd ${vINITRD}
-boot
+goto debbased_install
 
 :debian10
-:debian9
-:debian8
-:debian7
-:debian11
-:debiansid
+set vRELEASE buster
+set vARCH amd64
+set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/debian-installer/${vARCH}
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+set vOPTS 
+goto debbased_install
 
-:debian
+:debian9
+set vRELEASE stretch
+set vARCH amd64
+set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/debian-installer/${vARCH}
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+set vOPTS 
+goto debbased_install
+
+:debian8
+set vRELEASE jessie
+set vARCH amd64
+set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/debian-installer/${vARCH}
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+set vOPTS 
+goto debbased_install
+
+:debian7
+set vRELEASE wheezy
+set vARCH amd64
+set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/debian-installer/${vARCH}
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+set vOPTS 
+goto debbased_install
+
+:debian11
+set vRELEASE bullseye
+set vARCH amd64
+set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/debian-installer/${vARCH}
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+set vOPTS 
+goto debbased_install
+
+:debiansid
+set vRELEASE sid
+set vARCH amd64
+set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/debian-installer/${vARCH}
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+set vOPTS 
+goto debbased_install
+
+:debbased_install
 imgfree
 imgtrust --allow
 kernel ${vKERNEL}
