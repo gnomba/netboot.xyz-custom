@@ -138,7 +138,7 @@ set vARCH x86_64
 set vURL http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
-set vOPTS ramdisk_size=100000 ip=dhcp inst.repo=http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/
+set vOPTS vmlinuz ramdisk_size=100000 ip=dhcp inst.repo=http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/
 goto os_install
 
 :centos7
@@ -147,7 +147,7 @@ set vARCH x86_64
 set vURL http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
-set vOPTS ramdisk_size=100000 ip=dhcp inst.repo=http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/
+set vOPTS vmlinuz ramdisk_size=100000 ip=dhcp inst.repo=http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/
 goto os_install
 
 :centos6
@@ -156,7 +156,7 @@ set vARCH x86_64
 set vURL http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
-set vOPTS ramdisk_size=100000 method=http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/
+set vOPTS vmlinuz ramdisk_size=100000 method=http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/
 goto os_install
 
 :os_install
