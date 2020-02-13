@@ -1,6 +1,6 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu example
+### netboot.xyz-custom menu
 ###
 
 :custom
@@ -14,8 +14,25 @@ item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
 item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
 
 item --gap Debian
-item debiantest ${space} Debian Testing (daily build)
-item debianlive ${space} Debian Live 10.1.0
+item debian10 ${space} 10 (Buster)
+item debian9 ${space} 9 (Stretch)
+item debian8 ${space} 8 (Jessie)
+item debianold ${space} Old version
+item debian7 ${space} 7 (Wheezy)
+item debiantesting ${space} Testing version
+item debian11 ${space} 11 (Bullseye)
+item debianunstable ${space} Unstable version
+item debiansid ${space} Sid
+
+item --gap CentOS
+item centos8 ${space} 8 (8.1.1911)
+item centos7 ${space} 7 (7.7.1908)
+item centos6 ${space} 6 (6.10)
+
+item --gap SystemRescueCD
+item systemrescuecd6 ${space} 6.0.7 (Arch-based)
+item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
+
 item --gap Dell
 item dell ${space} Dell Support Live Image 2.2
 item --gap Other boot
@@ -71,6 +88,27 @@ kernel ${vKERNEL}
 initrd ${vINITRD}
 boot
 
+:debian10
+:debian9
+:debian8
+:debian7
+:debian11
+:debiansid
+
+:debian
+imgfree
+imgtrust --allow
+kernel ${vKERNEL}
+initrd ${vINITRD}
+boot
+
+:centos8
+:centos7
+:centos6
+:centos
+
+
+
 :ubuntulive
 imgfree
 imgtrust --allow
@@ -91,25 +129,6 @@ imgtrust --allow
 kernel http://boot.salstar.sk/memdisk
 initrd http://mirror.yandex.ru/gentoo-distfiles/releases/amd64/autobuilds/20191020T214501Z/install-amd64-minimal-20191020T214501Z.iso
 imgargs memdisk iso raw
-boot || goto custom_exit
-
-:debiantest
-imgfree
-imgtrust --allow
-chain --name firmware-testing-amd64-netinst.iso http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/daily-builds/sid_d-i/current/amd64/iso-cd/firmware-testing-amd64-netinst.iso
-kernel http://ftp.nl.debian.org/debian/dists/buster/main/installer-amd64/current/images/cdrom/gtk/vmlinuz initrd=initrd
-initrd http://ftp.nl.debian.org/debian/dists/buster/main/installer-amd64/current/images/cdrom/gtk/initrd.gz
-imgargs findiso=firmware-testing-amd64-netinst.iso
-param sysuuid ${uuid}
-boot || goto custom_exit
-
-:debianlive
-imgfree
-imgtrust --allow
-initrd --name debian-live-10.1.0-amd64-standard.iso http://cdimage.debian.org/cdimage/release/current-live/amd64/iso-hybrid/debian-live-10.1.0-amd64-standard.iso
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/memdisk iso raw
-imgargs findiso=debian-live-10.1.0-amd64-standard.iso
-param sysuuid ${uuid}
 boot || goto custom_exit
 
 :dell
