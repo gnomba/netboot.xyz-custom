@@ -138,7 +138,7 @@ set vARCH x86_64
 set vURL http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
-set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/ ip=dhcp initrd=initrd.img
+set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img
 goto os_install
 
 :centos7
