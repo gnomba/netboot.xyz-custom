@@ -166,7 +166,7 @@ echo Booting SystemRescueCD ${vRELEASE} ${vARCH}
 set vURL http://185.228.233.185/sysrcd5
 set vKERNEL ${vURL}/rescue64
 set vINITRD ${vURL}/initram.igz
-set vOPTS rescue64 setkmap=en dodhcp netboot=${vURL}/sysrcd.dat initrd=initram.igz
+set vOPTS rescue64 setkmap=us dodhcp netboot=${vURL}/sysrcd.dat initrd=initram.igz
 goto os_install
 
 :os_install
