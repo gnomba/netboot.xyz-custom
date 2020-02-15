@@ -165,7 +165,9 @@ set vARCH x86_64
 echo Booting SystemRescueCD ${vRELEASE} ${vARCH}
 set vURL http://185.228.233.185/sysrcd6
 set vKERNEL ${vURL}/vmlinuz
-set vINITRD ${vURL}/intel_ucode.img,${vURL}/amd_ucode.img,${vURL}/sysresccd.img
+set vINITRD ${vURL}/intel_ucode.img
+set vINITRD ${vURL}/amd_ucode.img
+set vINITRD ${vURL}/sysresccd.img
 set vOPTS vmlinuz setkmap=us dodhcp netboot=${vURL}/airootfs.sfs initrd=sysresccd.img
 goto os_install
 
