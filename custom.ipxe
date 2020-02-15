@@ -164,8 +164,8 @@ set vRELEASE 6.0.7
 set vARCH x86_64
 echo Booting SystemRescueCD ${vRELEASE} ${vARCH}
 set vURL http://185.228.233.185/sysrcd6
-set vKERNEL ${vURL}/sysresccd/vmlinuz
-set vINITRD ${vURL}/sysresccd/sysresccd.img
+set vKERNEL ${vURL}/sysresccd/boot/${vARCH}/vmlinuz
+set vINITRD ${vURL}/sysresccd/boot/${vARCH}/sysresccd.img
 set vOPTS vmlinuz setkmap=us dodhcp archisobasedir=sysresccd archiso_http_srv=${vURL}/
 goto os_install
 
