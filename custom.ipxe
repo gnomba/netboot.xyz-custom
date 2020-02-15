@@ -168,7 +168,7 @@ set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/intel_ucode.img
 set vINITRD ${vURL}/amd_ucode.img
 set vINITRD ${vURL}/sysresccd.img
-set vOPTS vmlinuz setkmap=us dodhcp netboot=${vURL}/airootfs.sfs initrd=sysresccd.img
+set vOPTS vmlinuz setkmap=us dodhcp archisobasedir=sysresccd archiso_http_srv=${vURL}/
 goto os_install
 
 :systemrescuecd5
