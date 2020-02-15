@@ -28,7 +28,7 @@ item centos6 ${space} 6 (6.10)
 
 item --gap SystemRescueCD
 item systemrescuecd6 ${space} (not work) 6.0.7 (Arch-based)
-item systemrescuecd5 ${space} (not work) 5.3.2 (Gentoo-based)
+item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
 
 item --gap Dell
 item dell ${space} Dell Support Live Image 2.2
@@ -157,6 +157,16 @@ set vURL http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
 set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
+goto os_install
+
+:systemrescuecd5
+set vRELEASE 5.3.2
+set vARCH amd64
+echo Booting SystemRescueCD ${vRELEASE} ${vARCH}
+set vURL ftp://185.228.233.185/sysrcd5
+set vKERNEL ${vURL}/rescue64
+set vINITRD ${vURL}/initram.igz
+set vOPTS rescue64 setkmap=en dodhcp netboot=${vURL}/sysrcd.dat
 goto os_install
 
 :os_install
