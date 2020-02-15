@@ -162,7 +162,7 @@ goto os_install
 :systemrescuecd5
 set vRELEASE 5.3.2
 set vARCH amd64
-echo -= Booting SystemRescueCD ${vRELEASE} ${vARCH} =-
+echo Booting SystemRescueCD ${vRELEASE} ${vARCH}
 set vURL ftp://185.228.233.185:21/sysrcd5
 set vKERNEL ${vURL}/rescue64
 set vINITRD ${vURL}/initram.igz
