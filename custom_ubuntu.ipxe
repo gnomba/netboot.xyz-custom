@@ -3,6 +3,7 @@
 ### netboot.xyz-custom menu Ubuntu
 ###
 
+:custom_menu_ubuntu
 menu Ubuntu netboot
 set vNAME Ubuntu
 
@@ -37,7 +38,13 @@ set vOPTS
 goto custom_os_install
 
 :custom_os_install
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom_os_install.ipxe
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom_os_install.ipxe || goto error
+goto custom_menu_ubuntu
+
+:error
+echo Error occured, press any key to return to menu ...
+prompt
+goto custom_menu_ubuntu
 
 :backtomenu
 chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom.ipxe
