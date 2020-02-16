@@ -3,15 +3,16 @@
 ### netboot.xyz-custom menu Ubuntu
 ###
 
-:custom_menu_ubuntu
+:custom
 clear custom_choice
 menu Ubuntu netboot
 set vNAME Ubuntu
 
-item ubuntu2004 (not work) Ubuntu 20.04 LTS (Focal Fossa)
-item ubuntu1804 Ubuntu 18.04 LTS (Bionic Beaver) 
-item ubuntu1604 Ubuntu 16.04 LTS (Xenial Xerus)
-item ubuntu1404 Ubuntu 14.04 LTS (Trusty Tahr)
+item --gap Ubuntu
+item ubuntu2004 (not work) 20.04 LTS (Focal Fossa)
+item ubuntu1804 18.04 LTS (Bionic Beaver) 
+item ubuntu1604 16.04 LTS (Xenial Xerus)
+item ubuntu1404 14.04 LTS (Trusty Tahr)
 item backtomenu <-- Back to menu
 
 :ubuntu2004
