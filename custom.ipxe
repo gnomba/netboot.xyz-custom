@@ -132,7 +132,7 @@ set vURL http://185.228.233.185/sysrcd6
 set vKERNEL ${vURL}/sysresccd/boot/${vARCH}/vmlinuz
 set vINITRD ${vURL}/sysresccd/boot/${vARCH}/sysresccd.img
 set vOPTS vmlinuz setkmap=us dodhcp archisobasedir=sysresccd archiso_http_srv=${vURL}/
-goto os_install
+goto systemrescuecd
 
 :systemrescuecd5
 set vRELEASE 5.3.2
@@ -141,6 +141,10 @@ set vURL http://185.228.233.185/sysrcd5
 set vKERNEL ${vURL}/rescue64
 set vINITRD ${vURL}/initram.igz
 set vOPTS rescue64 setkmap=us dodhcp netboot=${vURL}/sysrcd.dat initrd=initram.igz
+goto systemrescuecd
+
+:systemrescuecd
+set vNAME SystemRescueCD
 goto os_install
 
 :os_install
