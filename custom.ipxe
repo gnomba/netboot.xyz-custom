@@ -154,10 +154,11 @@ goto os_install
 set vNAME ArchLinux
 set vRELEASE latest
 set vARCH x86_64
-set vURL http://mirror.rackspace.com/archlinux/iso/${vRELEASE}/arch/boot/${vARCH}
-set vKERNEL ${vURL}/vmlinuz
-set vINITRD ${vURL}/archiso.img
-set vOPTS initrd=archiso.img archiso_http_srv=http://mirror.rackspace.com/archlinux/iso/${vRELEASE}/ archisobasedir=arch net.ifnames=0 ${console}
+set vMIRROR mirror.yandex.ru
+set vURL http://${vMIRROR}/archlinux/iso/${vRELEASE}
+set vKERNEL ${vURL}/arch/boot/${vARCH}/vmlinuz
+set vINITRD ${vURL}/arch/boot/${vARCH}/archiso.img
+set vOPTS vmlinuz initrd=archiso.img archiso_http_srv=${vURL}/ archisobasedir=arch verify=y ip=dhcp net.ifnames=0 ${console}
 goto os_install
 
 :os_install
