@@ -24,15 +24,15 @@ item debian7 ${space} 7 (Wheezy)
 item debian11 ${space} (testing) 11 (Bullseye)
 item debiansid ${space} (unstable) Sid
 
+item --gap SystemRescueCD
+item systemrescuecd6 ${space} 6.0.7 (Arch-based)
+item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
+
 item --gap Ubuntu
 item ubuntu2004 ${space} (not work) 20.04 LTS (Focal Fossa)
 item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
 item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
 item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
-
-item --gap SystemRescueCD
-item systemrescuecd6 ${space} 6.0.7 (Arch-based)
-item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
 
 item --gap Dell
 item dell ${space} Dell Support Live Image 2.2
