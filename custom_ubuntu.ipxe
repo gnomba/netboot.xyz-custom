@@ -1,0 +1,43 @@
+#!ipxe
+###
+### netboot.xyz-custom menu Ubuntu
+###
+
+menu Ubuntu netboot
+set vNAME Ubuntu
+
+item ubuntu2004 (not work) Ubuntu 20.04 LTS (Focal Fossa)
+item ubuntu1804 Ubuntu 18.04 LTS (Bionic Beaver) 
+item ubuntu1604 Ubuntu 16.04 LTS (Xenial Xerus)
+item ubuntu1404 Ubuntu 14.04 LTS (Trusty Tahr)
+item backtomenu <-- Back to menu
+
+:ubuntu2004
+set vRELEASE focal
+goto ubuntu
+
+:ubuntu1804
+set vRELEASE bionic
+goto ubuntu
+
+:ubuntu1604
+set vRELEASE xenial
+goto ubuntu
+
+:ubuntu1404
+set vRELEASE trusty
+goto ubuntu
+
+:ubuntu
+set vARCH amd64
+set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+set vOPTS 
+goto custom_os_install
+
+:custom_os_install
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom_os_install.ipxe
+
+:backtomenu
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom.ipxe
