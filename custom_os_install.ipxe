@@ -1,0 +1,11 @@
+#!ipxe
+###
+### netboot.xyz-custom menu os_install
+###
+
+echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+imgfree
+imgtrust --allow
+kernel ${vKERNEL} ${vOPTS}
+initrd ${vINITRD}
+boot
