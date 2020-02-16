@@ -6,7 +6,7 @@
 :custom
 clear custom_choice
 menu gnomba's bootloader
-
+set vMIRROR mirror.yandex.ru
 
 item --gap ArchLinux
 item archlinux ${space} latest
@@ -25,7 +25,7 @@ item debian11 ${space} (testing) 11 (Bullseye)
 item debiansid ${space} (unstable) Sid
 
 item --gap SystemRescueCD
-item systemrescuecd6 ${space} 6.0.7 (Arch-based)
+item systemrescuecd6 ${space} (not work) 6.0.7 (Arch-based)
 item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
 
 item --gap Ubuntu
@@ -50,7 +50,6 @@ goto custom_exit
 set vNAME ArchLinux
 set vRELEASE latest
 set vARCH x86_64
-set vMIRROR mirror.yandex.ru
 set vURL http://${vMIRROR}/archlinux/iso/${vRELEASE}
 set vKERNEL ${vURL}/arch/boot/${vARCH}/vmlinuz
 set vINITRD ${vURL}/arch/boot/${vARCH}/archiso.img
@@ -59,20 +58,20 @@ goto os_install
 
 :centos8
 set vRELEASE 8.1.1911
-set vURL http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
-set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img
+set vURL http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
+set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img
 goto centos
 
 :centos7
 set vRELEASE 7.7.1908
-set vURL http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
+set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
+set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
 goto centos
 
 :centos6
 set vRELEASE 6.10
-set vURL http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
+set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
+set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
 goto centos
 
 :centos
@@ -109,7 +108,7 @@ goto debian
 :debian
 set vNAME Debian
 set vARCH amd64
-set vURL http://deb.debian.org/debian/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/debian-installer/${vARCH}
+set vURL http://${vMIRROR}/debian/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/debian-installer/${vARCH}
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
@@ -118,16 +117,18 @@ goto os_install
 :systemrescuecd6
 set vRELEASE 6.0.7
 set vARCH x86_64
-set vURL http://185.228.233.185/sysrcd6
+set vMIRROR 185.228.233.185
+set vURL http://${vMIRROR}/sysrcd6
 set vKERNEL ${vURL}/sysresccd/boot/${vARCH}/vmlinuz
 set vINITRD ${vURL}/sysresccd/boot/${vARCH}/sysresccd.img
-set vOPTS vmlinuz setkmap=us dodhcp archisobasedir=sysresccd archiso_http_srv=${vURL}/ initrd=sysresccd.img
+set vOPTS vmlinuz initrd=sysresccd.img archiso_http_srv=${vURL}/ archisobasedir=sysresccd verify=y ip=dhcp net.ifnames=0 ${console}
 goto systemrescuecd
 
 :systemrescuecd5
 set vRELEASE 5.3.2
 set vARCH amd64
-set vURL http://185.228.233.185/sysrcd5
+set vMIRROR 185.228.233.185
+set vURL http://${vMIRROR}/sysrcd5
 set vKERNEL ${vURL}/rescue64
 set vINITRD ${vURL}/initram.igz
 set vOPTS rescue64 setkmap=us dodhcp netboot=${vURL}/sysrcd.dat initrd=initram.igz
@@ -156,7 +157,7 @@ goto ubuntu
 :ubuntu
 set vNAME Ubuntu
 set vARCH amd64
-set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
+set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
