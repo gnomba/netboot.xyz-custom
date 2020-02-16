@@ -7,11 +7,14 @@
 clear custom_choice
 menu gnomba's bootloader
 
-item --gap Ubuntu
-item ubuntu2004 ${space} (not work) 20.04 LTS (Focal Fossa)
-item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
-item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
-item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
+
+item --gap ArchLinux
+item archlinux ${space} latest
+
+item --gap CentOS
+item centos8 ${space} 8 (8.1.1911)
+item centos7 ${space} 7 (7.7.1908)
+item centos6 ${space} 6 (6.10)
 
 item --gap Debian
 item debian10 ${space} 10 (Buster)
@@ -21,17 +24,15 @@ item debian7 ${space} 7 (Wheezy)
 item debian11 ${space} (testing) 11 (Bullseye)
 item debiansid ${space} (unstable) Sid
 
-item --gap CentOS
-item centos8 ${space} 8 (8.1.1911)
-item centos7 ${space} 7 (7.7.1908)
-item centos6 ${space} 6 (6.10)
+item --gap Ubuntu
+item ubuntu2004 ${space} (not work) 20.04 LTS (Focal Fossa)
+item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
+item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
+item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
 
 item --gap SystemRescueCD
 item systemrescuecd6 ${space} 6.0.7 (Arch-based)
 item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
-
-item --gap ArchLinux
-item archlinux ${space} latest
 
 item --gap Dell
 item dell ${space} Dell Support Live Image 2.2
@@ -45,29 +46,40 @@ echo ${cls}
 goto ${custom_choice}
 goto custom_exit
 
-:ubuntu2004
-set vRELEASE focal
-goto ubuntu
+:archlinux
+set vNAME ArchLinux
+set vRELEASE latest
+set vARCH x86_64
+set vMIRROR mirror.yandex.ru
+set vURL http://${vMIRROR}/archlinux/iso/${vRELEASE}
+set vKERNEL ${vURL}/arch/boot/${vARCH}/vmlinuz
+set vINITRD ${vURL}/arch/boot/${vARCH}/archiso.img
+set vOPTS vmlinuz initrd=archiso.img archiso_http_srv=${vURL}/ archisobasedir=arch verify=y ip=dhcp net.ifnames=0 ${console}
+goto os_install
 
-:ubuntu1804
-set vRELEASE bionic
-goto ubuntu
+:centos8
+set vRELEASE 8.1.1911
+set vURL http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
+set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img
+goto centos
 
-:ubuntu1604
-set vRELEASE xenial
-goto ubuntu
+:centos7
+set vRELEASE 7.7.1908
+set vURL http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
+set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
+goto centos
 
-:ubuntu1404
-set vRELEASE trusty
-goto ubuntu
+:centos6
+set vRELEASE 6.10
+set vURL http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
+set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
+goto centos
 
-:ubuntu
-set vNAME Ubuntu
-set vARCH amd64
-set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
-set vKERNEL ${vURL}/linux
-set vINITRD ${vURL}/initrd.gz
-set vOPTS 
+:centos
+set vNAME CentOS
+set vARCH x86_64
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/initrd.img
 goto os_install
 
 :debian10
@@ -103,31 +115,6 @@ set vINITRD ${vURL}/initrd.gz
 set vOPTS 
 goto os_install
 
-:centos8
-set vRELEASE 8.1.1911
-set vURL http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
-set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img
-goto centos
-
-:centos7
-set vRELEASE 7.7.1908
-set vURL http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
-goto centos
-
-:centos6
-set vRELEASE 6.10
-set vURL http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vOPTS ramdisk_size=100000 repo=http://mirror.centos.org/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
-goto centos
-
-:centos
-set vNAME CentOS
-set vARCH x86_64
-set vKERNEL ${vURL}/vmlinuz
-set vINITRD ${vURL}/initrd.img
-goto os_install
-
 :systemrescuecd6
 set vRELEASE 6.0.7
 set vARCH x86_64
@@ -150,15 +137,29 @@ goto systemrescuecd
 set vNAME SystemRescueCD
 goto os_install
 
-:archlinux
-set vNAME ArchLinux
-set vRELEASE latest
-set vARCH x86_64
-set vMIRROR mirror.yandex.ru
-set vURL http://${vMIRROR}/archlinux/iso/${vRELEASE}
-set vKERNEL ${vURL}/arch/boot/${vARCH}/vmlinuz
-set vINITRD ${vURL}/arch/boot/${vARCH}/archiso.img
-set vOPTS vmlinuz initrd=archiso.img archiso_http_srv=${vURL}/ archisobasedir=arch verify=y ip=dhcp net.ifnames=0 ${console}
+:ubuntu2004
+set vRELEASE focal
+goto ubuntu
+
+:ubuntu1804
+set vRELEASE bionic
+goto ubuntu
+
+:ubuntu1604
+set vRELEASE xenial
+goto ubuntu
+
+:ubuntu1404
+set vRELEASE trusty
+goto ubuntu
+
+:ubuntu
+set vNAME Ubuntu
+set vARCH amd64
+set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+set vOPTS 
 goto os_install
 
 :os_install
