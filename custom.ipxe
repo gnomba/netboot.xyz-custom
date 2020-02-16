@@ -25,7 +25,7 @@ item debian11 ${space} (testing) 11 (Bullseye)
 item debiansid ${space} (unstable) Sid
 
 item --gap SystemRescueCD
-item systemrescuecd6 ${space} (not work) 6.0.7 (Arch-based)
+item systemrescuecd6 ${space} 6.0.7 (Arch-based)
 item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
 
 item --gap Ubuntu
