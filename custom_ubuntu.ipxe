@@ -4,6 +4,7 @@
 ###
 
 :custom_menu_ubuntu
+clear custom_choice
 menu Ubuntu netboot
 set vNAME Ubuntu
 
