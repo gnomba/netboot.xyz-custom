@@ -30,6 +30,9 @@ item --gap SystemRescueCD
 item systemrescuecd6 ${space} 6.0.7 (Arch-based)
 item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
 
+item --gap ArchLinux
+item archlinux ${space} latest
+
 item --gap Dell
 item dell ${space} Dell Support Live Image 2.2
 item --gap Other boot
@@ -131,7 +134,7 @@ set vARCH x86_64
 set vURL http://185.228.233.185/sysrcd6
 set vKERNEL ${vURL}/sysresccd/boot/${vARCH}/vmlinuz
 set vINITRD ${vURL}/sysresccd/boot/${vARCH}/sysresccd.img
-set vOPTS vmlinuz setkmap=us dodhcp archisobasedir=sysresccd archiso_http_srv=${vURL}/
+set vOPTS vmlinuz setkmap=us dodhcp archisobasedir=sysresccd archiso_http_srv=${vURL}/ initrd=sysresccd.img
 goto systemrescuecd
 
 :systemrescuecd5
@@ -145,6 +148,16 @@ goto systemrescuecd
 
 :systemrescuecd
 set vNAME SystemRescueCD
+goto os_install
+
+:archlinux
+set vNAME ArchLinux
+set vRELEASE latest
+set vARCH x86_64
+set vURL http://mirror.rackspace.com/archlinux/iso/${vRELEASE}/arch/boot/${vARCH}
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/archiso.img
+set vOPTS initrd=archiso.img archiso_http_srv=http://mirror.rackspace.com/archlinux/iso/${vRELEASE}/ archisobasedir=arch net.ifnames=0 ${console}
 goto os_install
 
 :os_install
