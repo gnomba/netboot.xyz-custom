@@ -3,6 +3,9 @@
 ### netboot.xyz-custom menu os_install
 ###
 
+:custom_menu_os_install
+clear custom_choice
+
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 imgfree
 imgtrust --allow
