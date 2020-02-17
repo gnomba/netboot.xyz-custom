@@ -29,6 +29,10 @@ item fedora31 ${space} 31
 item redora30 ${space} 30
 item redora29 ${space} 29
 
+item --gap OpenSUSE
+item opensusetumbleweed ${space} Tumbleweed
+item opensuse152 ${space} 15.2
+
 item --gap SystemRescueCD
 item systemrescuecd6 ${space} 6.0.7 (Arch-based)
 item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
@@ -135,8 +139,28 @@ set vNAME Fedora
 set vARCH x86_64
 set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
-set vINITRD ${vURL}/initrd.img 
+set vINITRD ${vURL}/initrd.img
 set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
+goto os_install
+
+:opensusetumbleweed
+set vRELEASE tumbleweed
+set vARCH x86_64
+set vURL http://${vMIRROR}/opensuse/${vRELEASE}/repo/oss/boot/${vARCH}/loader
+set vOPTS linux initrd=initrd splash=silent install=http://${vMIRROR}/opensuse/${vRELEASE}/repo/oss/
+goto opensuse
+
+:opensuse152
+set vRELEASE 15.2
+set vARCH x86_64
+set vURL http://${vMIRROR}/opensuse/distribution/leap/${vRELEASE}/repo/oss/boot/${vARCH}/loader
+set vOPTS linux initrd=initrd splash=silent install=http://${vMIRROR}/opensuse/distribution/leap/${vRELEASE}/repo/oss/
+goto opensuse
+
+:opensuse
+set vNAME OpenSUSE
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd
 goto os_install
 
 :systemrescuecd6
