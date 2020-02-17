@@ -63,19 +63,19 @@ goto os_install
 :centos8
 set vRELEASE 8.1.1911
 set vURL http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
-set vOPTS vmlinuz ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img
+set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img
 goto centos
 
 :centos7
 set vRELEASE 7.7.1908
 set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vOPTS vmlinuz ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
+set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
 goto centos
 
 :centos6
 set vRELEASE 6.10
 set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vOPTS vmlinuz ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
+set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
 goto centos
 
 :centos
@@ -136,7 +136,7 @@ set vARCH x86_64
 set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img 
-set vOPTS vmlinuz repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
+set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
 goto os_install
 
 :systemrescuecd6
