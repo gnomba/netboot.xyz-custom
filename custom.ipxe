@@ -39,13 +39,12 @@ item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver)
 item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
 item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
 
-item --gap Dell
-item dell ${space} Dell Support Live Image 2.2
+#item --gap Dell
+#item dell ${space} Dell Support Live Image 2.2
 item --gap Other boot
 item sals ${space} SAL's NETWORK BOOT
-item archlinux ${space} ArchLinux
 item gentoolinux ${space} Gentoo minimal 2019-10-20
-item ubuntulive ${space} Ubuntu Server Live 19.10
+item ubuntulive ${space} (test ISO) Ubuntu Server Live 19.10
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
@@ -204,12 +203,6 @@ imgtrust --allow
 initrd http://mirror.netcologne.de/ubuntu-isos/19.10/ubuntu-19.10-live-server-amd64.iso
 chain http://boot.salstar.sk/memdisk iso raw
 param sysuuid ${uuid}
-boot || goto custom_exit
-
-:archlinux
-imgfree
-imgtrust --allow
-chain https://raw.githubusercontent.com/antonym/netboot.xyz/master/src/archlinux.ipxe
 boot || goto custom_exit
 
 :gentoolinux
