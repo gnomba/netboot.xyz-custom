@@ -121,7 +121,7 @@ set vMIRROR 185.228.233.185
 set vURL http://${vMIRROR}/sysrcd6
 set vKERNEL ${vURL}/sysresccd/boot/${vARCH}/vmlinuz
 set vINITRD ${vURL}/sysresccd/boot/${vARCH}/sysresccd.img
-set vOPTS vmlinuz initrd=sysresccd.img archiso_http_srv=${vURL}/ archisobasedir=sysresccd verify=y ip=dhcp net.ifnames=0 ${console}
+set vOPTS vmlinuz initrd=sysresccd.img archiso_http_srv=${vURL}/ archisobasedir=sysresccd verify=n ip=dhcp net.ifnames=0 ${console}
 goto systemrescuecd
 
 :systemrescuecd5
