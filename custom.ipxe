@@ -29,6 +29,14 @@ item fedora31 ${space} 31
 item redora30 ${space} 30
 item redora29 ${space} 29
 
+item --gap GParted Live 1.1.0-1
+item gparted_default ${space} Default settings
+item gparted_kmslarge ${space} Default settings, KMS with large font
+item gparted_kms ${space} Default settings, KMS (for ATI, Intel and NVIDIA VGA cards.)
+item gparted_toram ${space} To RAM. Boot media can be removed later
+item gparted_safegraphic ${space} Safe graphic settings without framebuffer, vga=normal
+item gparted_failsafe ${space} Failsafe mode
+
 item --gap OpenSUSE
 item opensusetumbleweed ${space} Tumbleweed
 item opensuse152 ${space} 15.2
@@ -143,6 +151,39 @@ set vINITRD ${vURL}/initrd.img
 set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
 goto os_install
 
+:gparted_default
+set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap  ip= net.ifnames=0  nosplash
+goto gparted
+
+:gparted_kmslarge
+set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap vga=791 ip= net.ifnames=0  nosplash live_console_font_size=16x32
+goto gparted
+
+:gparted_kms
+set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap vga=791 ip= net.ifnames=0  nosplash
+goto gparted
+
+:gparted_toram
+set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap  toram=filesystem.squashfs ip= net.ifnames=0  nosplash
+goto gparted
+
+:gparted_safegraphic
+set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap ip= net.ifnames=0 nomodeset vga=normal nosplash
+goto gparted
+
+:gparted_failsafe
+set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap acpi=off irqpoll noapic noapm nodma nomce nolapic nosmp ip= net.ifnames=0 nomodeset vga=normal nosplash
+goto gparted
+
+:gparted
+set vNAME gparted
+set vARCH amd64
+set vMIRROR 185.228.233.185
+set vURL http://${vMIRROR}/${vNAME}
+set vKERNEL ${vURL}/live/vmlinuz
+set vINITRD ${vURL}/live/initrd.img
+goto os_install
+
 :opensusetumbleweed
 set vRELEASE tumbleweed
 set vARCH x86_64
@@ -220,6 +261,13 @@ kernel ${vKERNEL} ${vOPTS}
 initrd ${vINITRD}
 boot
 
+:iso_boot
+echo Booting ISO-image ${vNAME} ${vRELEASE} ${vARCH}
+imgfree
+imgtrust --allow
+kernel ${vKERNEL} ${vOPTS}
+initrd ${vINITRD}
+boot
 
 :ubuntulive
 imgfree
