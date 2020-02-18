@@ -30,6 +30,7 @@ item redora30 ${space} 30
 item redora29 ${space} 29
 
 item --gap GParted Live 1.1.0-1
+
 item gparted_default ${space} Default settings
 item gparted_kmslarge ${space} Default settings, KMS with large font
 item gparted_kms ${space} Default settings, KMS (for ATI, Intel and NVIDIA VGA cards.)
@@ -151,6 +152,13 @@ set vINITRD ${vURL}/initrd.img
 set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
 goto os_install
 
+:gparted_iso
+set vRELEASE 1.1.0-1
+set vNAME gparted
+set vARCH amd64
+set vISOFILE https://netcologne.dl.sourceforge.net/project/${vNAME}/${vNAME}-live-stable/${vRELEASE}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
+goto iso_boot
+
 :gparted_default
 set vOPTS1 initrd=initrd.img boot=live union=overlay username=user config components quiet noswap  ip= net.ifnames=0  nosplash
 goto gparted
@@ -266,8 +274,8 @@ boot
 echo Booting ISO-image ${vNAME} ${vRELEASE} ${vARCH}
 imgfree
 imgtrust --allow
-kernel ${vKERNEL} ${vOPTS}
-initrd ${vINITRD}
+initrd ${vISOFILE}
+chain memdisk iso raw
 boot
 
 :ubuntulive
