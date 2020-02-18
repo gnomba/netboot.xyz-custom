@@ -31,12 +31,12 @@ item redora29 ${space} 29
 
 item --gap GParted Live 1.1.0-1
 item gparted_iso ${space} (test ISO file)
-item gparted_default ${space} Default settings
-item gparted_kmslarge ${space} Default settings, KMS with large font
-item gparted_kms ${space} Default settings, KMS (for ATI, Intel and NVIDIA VGA cards.)
-item gparted_toram ${space} To RAM. Boot media can be removed later
-item gparted_safegraphic ${space} Safe graphic settings without framebuffer, vga=normal
-item gparted_failsafe ${space} Failsafe mode
+#item gparted_default ${space} Default settings
+#item gparted_kmslarge ${space} Default settings, KMS with large font
+#item gparted_kms ${space} Default settings, KMS (for ATI, Intel and NVIDIA VGA cards.)
+#item gparted_toram ${space} To RAM. Boot media can be removed later
+#item gparted_safegraphic ${space} Safe graphic settings without framebuffer, vga=normal
+#item gparted_failsafe ${space} Failsafe mode
 
 item --gap OpenSUSE
 item opensusetumbleweed ${space} Tumbleweed
