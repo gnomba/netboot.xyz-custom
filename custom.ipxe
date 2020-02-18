@@ -176,6 +176,7 @@ set vOPTS initrd=initrd.img boot=live union=overlay username=user config compone
 goto gparted
 
 :gparted
+set vRELEASE 1.1.0-1
 set vNAME gparted
 set vARCH amd64
 set vMIRROR 185.228.233.185
