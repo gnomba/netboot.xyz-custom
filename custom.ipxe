@@ -152,27 +152,27 @@ set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/fedora/linux/releases/${vRE
 goto os_install
 
 :gparted_default
-set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap  ip= net.ifnames=0  nosplash
+set vOPTS1 initrd=initrd.img boot=live union=overlay username=user config components quiet noswap  ip= net.ifnames=0  nosplash
 goto gparted
 
 :gparted_kmslarge
-set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap vga=791 ip= net.ifnames=0  nosplash live_console_font_size=16x32
+set vOPTS1 initrd=initrd.img boot=live union=overlay username=user config components quiet noswap vga=791 ip= net.ifnames=0  nosplash live_console_font_size=16x32
 goto gparted
 
 :gparted_kms
-set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap vga=791 ip= net.ifnames=0  nosplash
+set vOPTS1 initrd=initrd.img boot=live union=overlay username=user config components quiet noswap vga=791 ip= net.ifnames=0  nosplash
 goto gparted
 
 :gparted_toram
-set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap  toram=filesystem.squashfs ip= net.ifnames=0  nosplash
+set vOPTS1 initrd=initrd.img boot=live union=overlay username=user config components quiet noswap  toram=filesystem.squashfs ip= net.ifnames=0  nosplash
 goto gparted
 
 :gparted_safegraphic
-set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap ip= net.ifnames=0 nomodeset vga=normal nosplash
+set vOPTS1 initrd=initrd.img boot=live union=overlay username=user config components quiet noswap ip= net.ifnames=0 nomodeset vga=normal nosplash
 goto gparted
 
 :gparted_failsafe
-set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap acpi=off irqpoll noapic noapm nodma nomce nolapic nosmp ip= net.ifnames=0 nomodeset vga=normal nosplash
+set vOPTS1 initrd=initrd.img boot=live union=overlay username=user config components quiet noswap acpi=off irqpoll noapic noapm nodma nomce nolapic nosmp ip= net.ifnames=0 nomodeset vga=normal nosplash
 goto gparted
 
 :gparted
@@ -183,6 +183,7 @@ set vMIRROR 185.228.233.185
 set vURL http://${vMIRROR}/${vNAME}
 set vKERNEL ${vURL}/live/vmlinuz
 set vINITRD ${vURL}/live/initrd.img
+set vOPTS ${vOPTS1} netboot=http http://${vMIRROR}/${vNAME}/live/ toram=filesystem.squashfs
 goto os_install
 
 :opensusetumbleweed
