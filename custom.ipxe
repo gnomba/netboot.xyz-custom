@@ -175,7 +175,7 @@ set vMIRROR 185.228.233.185
 set vURL http://${vMIRROR}/${vNAME}
 set vKERNEL ${vURL}/${vNAME}
 set vINITRD ${vURL}/${vNAME}.igz
-set vOPTS initrd=${vNAME}.igz root=/dev/ram0 init=/linuxrc netboot=${vURL}/image.squashfs loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ vga=791
+set vOPTS ${vNAME} initrd=${vNAME}.igz root=/dev/ram0 init=/linuxrc netboot=${vURL}/image.squashfs loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ vga=791
 goto os_install
 
 #:gparted_iso
