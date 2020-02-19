@@ -292,6 +292,7 @@ goto os_install
 
 :os_install
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
 imgfree
 imgtrust --allow
 kernel ${vKERNEL} ${vOPTS}
@@ -301,6 +302,7 @@ boot
 
 :iso_boot
 echo Booting ISO-image ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
 imgfree
 imgtrust --allow
 initrd ${vISOFILE}
