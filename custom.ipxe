@@ -38,8 +38,8 @@ item fedora31 ${space} 31
 item fedora30 ${space} 30
 item fedora29 ${space} 29
 
-item --gap Gentoo minimal 2020-02-16
-item gentoo_minimal ${space} Default settings
+item --gap Gentoo
+item gentoo_minimal ${space} 2020-02-16 minimal
 
 item --gap GParted Live 1.1.0-1
 #item gparted_iso ${space} (test ISO file)
@@ -176,7 +176,7 @@ set vMIRROR 185.228.233.185
 set vURL http://${vMIRROR}/${vNAME}
 set vKERNEL ${vURL}/${vNAME}
 set vINITRD ${vURL}/${vNAME}.igz
-set vOPTS initrd=${vNAME}.igz root=/dev/ram0 init=/linuxrc loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ dokeymap vga=791
+set vOPTS initrd=${vNAME}.igz root=/dev/ram0 init=/linuxrc loop=${vURL}/image.squashfs looptype=squashfs cdroot=1 real_root=/ vga=791
 goto os_install
 
 #:gparted_iso
