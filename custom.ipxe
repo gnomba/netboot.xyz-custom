@@ -30,13 +30,13 @@ item redora30 ${space} 30
 item redora29 ${space} 29
 
 item --gap GParted Live 1.1.0-1
-item gparted_iso ${space} (test ISO file)
-#item gparted_default ${space} Default settings
-#item gparted_kmslarge ${space} Default settings, KMS with large font
-#item gparted_kms ${space} Default settings, KMS (for ATI, Intel and NVIDIA VGA cards.)
-#item gparted_toram ${space} To RAM. Boot media can be removed later
-#item gparted_safegraphic ${space} Safe graphic settings without framebuffer, vga=normal
-#item gparted_failsafe ${space} Failsafe mode
+#item gparted_iso ${space} (test ISO file)
+item gparted_default ${space} Default settings
+item gparted_kmslarge ${space} Default settings, KMS with large font
+item gparted_kms ${space} Default settings, KMS (for ATI, Intel and NVIDIA VGA cards.)
+item gparted_toram ${space} To RAM. Boot media can be removed later
+item gparted_safegraphic ${space} Safe graphic settings without framebuffer, vga=normal
+item gparted_failsafe ${space} Failsafe mode
 
 item --gap OpenSUSE
 item opensusetumbleweed ${space} Tumbleweed
@@ -152,35 +152,35 @@ set vINITRD ${vURL}/initrd.img
 set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
 goto os_install
 
-:gparted_iso
-set vRELEASE 1.1.0-1
-set vNAME gparted
-set vARCH amd64
-set vISOFILE https://netcologne.dl.sourceforge.net/project/${vNAME}/${vNAME}-live-stable/${vRELEASE}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
-goto iso_boot
+#:gparted_iso
+#set vRELEASE 1.1.0-1
+#set vNAME gparted
+#set vARCH amd64
+#set vISOFILE https://netcologne.dl.sourceforge.net/project/${vNAME}/${vNAME}-live-stable/${vRELEASE}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
+#goto iso_boot
 
 :gparted_default
-set vOPTS1 initrd=initrd.img boot=live union=overlay username=user config components quiet noswap  ip= net.ifnames=0  nosplash
+set vTMPOPTS 
 goto gparted
 
 :gparted_kmslarge
-set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap vga=791 ip= net.ifnames=0  nosplash live_console_font_size=16x32
+set vTMPOPTS vga=791 live_console_font_size=16x32
 goto gparted
 
 :gparted_kms
-set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap vga=791 ip= net.ifnames=0  nosplash
+set vTMPOPTS vga=791
 goto gparted
 
 :gparted_toram
-set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap  toram=filesystem.squashfs ip= net.ifnames=0  nosplash
+set vTMPOPTS toram=filesystem.squashfs
 goto gparted
 
 :gparted_safegraphic
-set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap ip= net.ifnames=0 nomodeset vga=normal nosplash
+set vTMPOPTS nomodeset vga=normal
 goto gparted
 
 :gparted_failsafe
-set vOPTS initrd=initrd.img boot=live union=overlay username=user config components quiet noswap acpi=off irqpoll noapic noapm nodma nomce nolapic nosmp ip= net.ifnames=0 nomodeset vga=normal nosplash
+set vTMPOPTS acpi=off irqpoll noapic noapm nodma nomce nolapic nosmp nomodeset vga=normal 
 goto gparted
 
 :gparted
@@ -188,9 +188,10 @@ set vRELEASE 1.1.0-1
 set vNAME gparted
 set vARCH amd64
 set vMIRROR 185.228.233.185
-set vURL http://${vMIRROR}/${vNAME}
-set vKERNEL ${vURL}/live/vmlinuz
-set vINITRD ${vURL}/live/initrd.img
+set vURL http://${vMIRROR}/${vNAME}/live
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/initrd.img
+set vOPTS ${vTMPOPTS} initrd=initrd.img nosplash ip= net.ifnames=0 boot=live union=overlay username=user config components quiet noswap fetch=${vURL}/filesystem.squashfs
 goto os_install
 
 :opensusetumbleweed
