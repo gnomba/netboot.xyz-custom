@@ -38,7 +38,7 @@ item fedora30 ${space} 30
 item fedora29 ${space} 29
 
 item --gap Gentoo
-item gentoo_minimal ${space} 2020-02-16 minimal
+item gentoo_minimal ${space} (sysrescd) 2020-02-16 minimal
 
 item --gap GParted Live 1.1.0-1
 #item gparted_iso ${space} (test ISO file)
@@ -172,10 +172,14 @@ set vRELEASE 2020-02-16
 set vNAME gentoo
 set vARCH amd64
 set vMIRROR 185.228.233.185
-set vURL http://${vMIRROR}/${vNAME}
-set vKERNEL ${vURL}/${vNAME}
-set vINITRD ${vURL}/${vNAME}.igz
-set vOPTS ${vNAME} initrd=${vNAME}.igz root=/dev/ram0 init=/linuxrc netboot=${vURL}/image.squashfs loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ vga=791
+#set vURL http://${vMIRROR}/${vNAME}
+#set vKERNEL ${vURL}/${vNAME}
+#set vINITRD ${vURL}/${vNAME}.igz
+#set vOPTS ${vNAME} initrd=${vNAME}.igz root=/dev/ram0 init=/linuxrc netboot=${vURL}/image.squashfs loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ vga=791
+set vURL http://${vMIRROR}/sysrcd5
+set vKERNEL ${vURL}/rescue64
+set vINITRD ${vURL}/initram.igz
+set vOPTS rescue64 setkmap=us dodhcp netboot=${vURL}/image.squashfs initrd=initram.igz vga=791
 goto os_install
 
 #:gparted_iso
