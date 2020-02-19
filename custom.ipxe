@@ -3,10 +3,18 @@
 ### netboot.xyz-custom menu
 ###
 
+# background
+set vURLIMG http://boot.ipxe.org/ipxe.png
+console --x 1024 --y 768
+console --picture ${vURLIMG}
+
+# mirror variables
+set vMIRROR mirror.yandex.ru
+
 :custom
 clear custom_choice
 menu gnomba's bootloader
-set vMIRROR mirror.yandex.ru
+
 
 item --gap ArchLinux
 item archlinux ${space} latest
