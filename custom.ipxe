@@ -33,9 +33,10 @@ item debian11 ${space} (testing) 11 (Bullseye)
 item debiansid ${space} (unstable) Sid
 
 item --gap Fedora
+#item fedora32 ${space} 32
 item fedora31 ${space} 31
-item redora30 ${space} 30
-item redora29 ${space} 29
+item fedora30 ${space} 30
+item fedora29 ${space} 29
 
 item --gap GParted Live 1.1.0-1
 #item gparted_iso ${space} (test ISO file)
@@ -138,6 +139,10 @@ set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
 goto os_install
+
+:fedora32
+set vRELEASE 32
+goto fedora
 
 :fedora31
 set vRELEASE 31
