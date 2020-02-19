@@ -5,7 +5,7 @@
 
 # background
 set vURLIMG http://boot.ipxe.org/ipxe.png
-console --x 1024 --y 768
+console --x 1280 --y 1024
 console --picture ${vURLIMG}
 
 # mirror variables
