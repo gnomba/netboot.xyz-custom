@@ -4,9 +4,9 @@
 ###
 
 # background
-set vURLIMG http://boot.ipxe.org/ipxe.png
+set vPICTURE http://boot.ipxe.org/ipxe.png
 console --x 1280 --y 1024
-console --picture ${vURLIMG}
+console --picture ${vPICTURE}
 
 # mirror variables
 set vMIRROR mirror.yandex.ru
