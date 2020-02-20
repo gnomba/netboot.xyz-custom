@@ -10,6 +10,7 @@ console --picture ${vPICTURE}
 
 # mirror variables
 set vMIRROR mirror.yandex.ru
+set vCUSTOM_MIRROR 185.228.233.185
 
 :custom
 clear custom_choice
@@ -179,8 +180,7 @@ set vRELEASE 2020-02-16
 set vGENTOO true
 set vNAME gentoo
 set vARCH amd64
-set vMIRROR 185.228.233.185
-set vURL http://${vMIRROR}/${vNAME}
+set vURL http://${vCUSTOM_MIRROR}/${vNAME}
 set vKERNEL ${vURL}/${vNAME}
 set vINITRD ${vURL}/${vNAME}.igz
 set vOPTS ${vNAME} initrd=${vNAME}.igz root=/dev/ram0 init=/linuxrc loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ vga=791
@@ -221,8 +221,7 @@ goto gparted
 set vRELEASE 1.1.0-1
 set vNAME gparted
 set vARCH amd64
-set vMIRROR 185.228.233.185
-set vURL http://${vMIRROR}/${vNAME}/live
+set vURL http://${vCUSTOM_MIRROR}/${vNAME}/live
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
 set vOPTS ${vTMPOPTS} initrd=initrd.img nosplash ip= net.ifnames=0 boot=live union=overlay username=user config components quiet noswap fetch=${vURL}/filesystem.squashfs
@@ -230,26 +229,23 @@ goto os_install
 
 :memtest83
 set vRELEASE 8.3
-set vNAME MemTest86
 goto memtest
 
 :memtest437
 set vRELEASE 4.3.7
-set vNAME MemTest86
 goto memtest
 
 :memtest501
 set vRELEASE 5.01
-set vNAME Memtest86+
 goto memtest
 
 :memtest420
 set vRELEASE 4.20
-set vNAME Memtest86+
 goto memtest
 
 :memtest
-set vIMGFILE http://${vMIRROR}/${vNAME}/${custom_choice}.img
+set vNAME memtest
+set vIMGFILE http://${vCUSTOM_MIRROR}/${vNAME}/${custom_choice}.img
 goto img_boot
 
 :opensusetumbleweed
@@ -282,8 +278,7 @@ goto os_install
 :systemrescuecd6
 set vRELEASE 6.0.7
 set vARCH x86_64
-set vMIRROR 185.228.233.185
-set vURL http://${vMIRROR}/sysrcd6
+set vURL http://${vCUSTOM_MIRROR}/sysrcd6
 set vKERNEL ${vURL}/sysresccd/boot/${vARCH}/vmlinuz
 set vINITRD ${vURL}/sysresccd/boot/${vARCH}/sysresccd.img
 set vOPTS vmlinuz initrd=sysresccd.img archiso_http_srv=${vURL}/ archisobasedir=sysresccd checksum=y ip=dhcp net.ifnames=0 ${console}
@@ -292,8 +287,7 @@ goto systemrescuecd
 :systemrescuecd5
 set vRELEASE 5.3.2
 set vARCH amd64
-set vMIRROR 185.228.233.185
-set vURL http://${vMIRROR}/sysrcd5
+set vURL http://${vCUSTOM_MIRROR}/sysrcd5
 set vKERNEL ${vURL}/rescue64
 set vINITRD ${vURL}/initram.igz
 set vOPTS rescue64 setkmap=us dodhcp netboot=${vURL}/sysrcd.dat initrd=initram.igz
