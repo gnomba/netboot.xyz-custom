@@ -24,6 +24,10 @@ item centos8 ${space} 8 (8.1.1911)
 item centos7 ${space} 7 (7.7.1908)
 item centos6 ${space} 6 (6.10)
 
+item --gap Clonezilla
+item clonezilla_ubuntu ${space} 20191024-eoan (Ubuntu-based)
+item clonezilla_debian ${space} 2.6.4-10 (Debian-based)
+
 item --gap Debian
 item debian10 ${space} 10 (Buster)
 item debian9 ${space} 9 (Stretch)
@@ -117,6 +121,21 @@ set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
 goto os_install
 
+:clonezilla_ubuntu
+set vRELEASE 20191024-eoan
+goto clonezilla
+
+:clonezilla_debian
+set vRELEASE 2.6.4-10
+goto clonezilla
+
+:clonezilla
+set vNAME clonezilla
+set vARCH amd64
+set vTYPE iso
+set vIMGFILE http://${vCUSTOM_MIRROR}/${custom_choice}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
+goto ${vTYPE}_boot
+
 :debian10
 set vRELEASE buster
 goto debian
@@ -190,7 +209,7 @@ goto os_install
 #set vRELEASE 1.1.0-1
 #set vNAME gparted
 #set vARCH amd64
-#set vISOFILE https://netcologne.dl.sourceforge.net/project/${vNAME}/${vNAME}-live-stable/${vRELEASE}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
+#set vIMGFILE https://netcologne.dl.sourceforge.net/project/${vNAME}/${vNAME}-live-stable/${vRELEASE}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
 #goto iso_boot
 
 :gparted_default
@@ -341,7 +360,7 @@ echo Booting iso-file ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
 imgtrust --allow
-initrd ${vISOFILE}
+initrd ${vIMGFILE}
 chain memdisk vmalloc=512M iso raw
 boot
 
