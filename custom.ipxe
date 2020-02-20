@@ -38,7 +38,7 @@ item fedora30 ${space} 30
 item fedora29 ${space} 29
 
 item --gap Gentoo
-item gentoo_minimal ${space} 2020-02-16 minimal
+item gentoo_minimal ${space} (not work) 2020-02-16 minimal
 
 item --gap GParted Live 1.1.0-1
 #item gparted_iso ${space} (test ISO file)
