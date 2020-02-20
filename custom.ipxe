@@ -342,7 +342,7 @@ echo =================
 imgfree
 imgtrust --allow
 initrd ${vISOFILE}
-chain memdisk iso raw
+chain memdisk vmalloc=512M iso raw
 boot
 
 :img_boot
@@ -351,7 +351,7 @@ echo =================
 imgfree
 imgtrust --allow
 initrd ${vIMGFILE}
-chain memdisk raw
+chain memdisk vmalloc=16M raw
 boot
 
 :ubuntulive
