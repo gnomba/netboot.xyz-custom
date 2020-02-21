@@ -3,11 +3,12 @@
 ### netboot.xyz-custom menu os_install
 ###
 
-:custom
-
+:custom_os_install
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
 imgfree
 imgtrust --allow
 kernel ${vKERNEL} ${vOPTS}
+isset ${vGENTOO} && initrd ${vURL}/image.squashfs
 initrd ${vINITRD}
 boot
