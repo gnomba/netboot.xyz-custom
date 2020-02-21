@@ -18,7 +18,7 @@ item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
 item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
 choose custom_choice_ubuntu
 echo ${cls}
-goto ${custom_choice_ubuntu} || goto debug
+goto ${custom_choice_ubuntu} || goto debug_${vNAME}
 
 :ubuntu2004
 set vRELEASE focal
@@ -42,9 +42,9 @@ set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}-updates/main/installer-${vAR
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto os_install
+goto os_install || goto debug_${vNAME}
 
-:debug
+:debug_ubuntu
 echo +-------+
 echo | DEBUG |
 echo +-------+
@@ -60,15 +60,15 @@ echo vKERNEL = ${vKERNEL}
 echo vINITRD = ${vINITRD}
 echo vOPTS = ${vOPTS}
 echo =========
-goto error
+goto error_${vNAME}
 
-:error
+:error_ubuntu
 echo +-------+
 echo | ERROR |
 echo +-------+
 echo Error occured, press any key to return to menu ...
 prompt
-chain custom_ubuntu.ipxe
+chain custom_${vNAME}.ipxe
 
 os_install
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
