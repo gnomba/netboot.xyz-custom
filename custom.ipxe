@@ -65,16 +65,8 @@ item opensusetumbleweed ${space} Tumbleweed
 item opensuse152 ${space} 15.2
 item opensuse151 ${space} 15.1
 
-item --gap SystemRescueCD
-item systemrescuecd6 ${space} 6.0.7 (Arch-based)
-item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
-
+item custom_systemrescuecd SystemRescueCD
 item custom_ubuntu Ubuntu
-#item --gap Ubuntu
-#item ubuntu2004 ${space} (not work) 20.04 LTS (Focal Fossa)
-#item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
-#item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
-#item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
 
 #item --gap Dell
 #item dell ${space} Dell Support Live Image 2.2
@@ -299,55 +291,11 @@ set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd
 goto os_install
 
-:systemrescuecd6
-set vRELEASE 6.0.7
-set vARCH x86_64
-set vURL http://${vCUSTOM_MIRROR}/sysrcd6
-set vKERNEL ${vURL}/sysresccd/boot/${vARCH}/vmlinuz
-set vINITRD ${vURL}/sysresccd/boot/${vARCH}/sysresccd.img
-set vOPTS vmlinuz initrd=sysresccd.img archiso_http_srv=${vURL}/ archisobasedir=sysresccd checksum=y ip=dhcp net.ifnames=0 ${console}
-goto systemrescuecd
+:${custom_choice}
+chain ${custom_choice}.ipxe || goto debug
 
-:systemrescuecd5
-set vRELEASE 5.3.2
-set vARCH amd64
-set vURL http://${vCUSTOM_MIRROR}/sysrcd5
-set vKERNEL ${vURL}/rescue64
-set vINITRD ${vURL}/initram.igz
-set vOPTS rescue64 setkmap=us dodhcp netboot=${vURL}/sysrcd.dat initrd=initram.igz
-goto systemrescuecd
-
-:systemrescuecd
-set vNAME SystemRescueCD
-goto os_install
-
-:custom_ubuntu
-chain custom_ubuntu.ipxe || goto debug
-
-:ubuntu2004
-set vRELEASE focal
-goto ubuntu
-
-:ubuntu1804
-set vRELEASE bionic
-goto ubuntu
-
-:ubuntu1604
-set vRELEASE xenial
-goto ubuntu
-
-:ubuntu1404
-set vRELEASE trusty
-goto ubuntu
-
-:ubuntu
-set vNAME Ubuntu
-set vARCH amd64
-set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
-set vKERNEL ${vURL}/linux
-set vINITRD ${vURL}/initrd.gz
-set vOPTS 
-goto os_install
+#:custom_ubuntu
+#chain custom_ubuntu.ipxe || goto debug
 
 :os_install
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
@@ -413,14 +361,6 @@ echo +-------+
 echo custom_choice = ${custom_choice}
 echo vMIRROR = ${vMIRROR}
 echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
-#echo vNAME = ${vNAME}
-#echo vUBUNTU = ${vUBUNTU}
-#echo vRELEASE = ${vRELEASE} 
-#echo vARCH = ${vARCH}
-#echo vURL = ${vURL}
-#echo vKERNEL = ${vKERNEL}
-#echo vINITRD = ${vINITRD}
-#echo vOPTS = ${vOPTS}
 echo =========
 goto error
 
