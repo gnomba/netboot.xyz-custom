@@ -322,7 +322,7 @@ set vNAME SystemRescueCD
 goto os_install
 
 :custom_ubuntu
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom_ubuntu.ipxe || goto custom
+chain custom_ubuntu.ipxe || goto debug
 
 :ubuntu2004
 set vRELEASE focal
@@ -405,6 +405,32 @@ chain http://boot.salstar.sk
 :option_three
 echo Chains into another menu...
 chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+:debug
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice = ${custom_choice}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+#echo vNAME = ${vNAME}
+#echo vUBUNTU = ${vUBUNTU}
+#echo vRELEASE = ${vRELEASE} 
+#echo vARCH = ${vARCH}
+#echo vURL = ${vURL}
+#echo vKERNEL = ${vKERNEL}
+#echo vINITRD = ${vINITRD}
+#echo vOPTS = ${vOPTS}
+echo =========
+goto error
+
+:error
+echo +-------+
+echo | ERROR |
+echo +-------+
+echo Error occured, press any key to return to menu ...
+prompt
+chain custom.ipxe
 
 :custom_exit
 chain utils.ipxe
