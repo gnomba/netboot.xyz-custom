@@ -1,6 +1,6 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu os_install
+### netboot.xyz-custom os_install
 ###
 
 :custom_os_install
