@@ -1,0 +1,69 @@
+#!ipxe
+###
+### netboot.xyz-custom menu Gentoo
+###
+
+clear custom_choice_gentoo
+set vNAME gentoo
+set vGENTOO true
+
+goto ${menu} ||
+
+:custom_menu_${vNAME}
+menu Gentoo netboot
+item --gap Gentoo
+item gentoo_minimal ${space} 2020-02-16
+item backtomenu <- Back to menu
+choose custom_choice_${vNAME}
+echo ${cls}
+goto ${custom_choice_gentoo} || goto debug_${vNAME}
+
+:gentoo_minimal
+set vRELEASE 2020-02-16
+goto ${vNAME}
+
+:gentoo
+set vARCH amd64
+set vURL http://${vCUSTOM_MIRROR}/${vNAME}
+set vKERNEL ${vURL}/${vNAME}
+set vINITRD ${vURL}/${vNAME}.gz
+set vOPTS ip=dhcp root=/dev/ram0 init=/linuxrc loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ netboot=http fetch=${vURL}/image.squashfs initrd=${vNAME}.gz
+goto os_install || goto debug_${vNAME}
+
+:debug_gentoo
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice_${vNAME} = ${custom_choice_ubuntu}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vNAME = ${vNAME}
+echo vGENTOO = ${vGENTOO}
+echo vRELEASE = ${vRELEASE} 
+echo vARCH = ${vARCH}
+echo vURL = ${vURL}
+echo vKERNEL = ${vKERNEL}
+echo vINITRD = ${vINITRD}
+echo vOPTS = ${vOPTS}
+echo =========
+goto error_${vNAME}
+
+:error_gentoo
+echo +-------+
+echo | ERROR |
+echo +-------+
+echo Error occured, press any key to return to menu ...
+prompt
+chain custom_${vNAME}.ipxe
+
+:backtomenu
+chain custom.ipxe || goto error_${vNAME}
+
+:os_install
+echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
+initrd ${vINITRD} || goto debug_${vNAME}
+boot || goto debug_${vNAME}
