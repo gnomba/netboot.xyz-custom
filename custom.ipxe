@@ -42,9 +42,6 @@ item fedora31 ${space} 31
 item fedora30 ${space} 30
 item fedora29 ${space} 29
 
-item --gap Gentoo
-item gentoo_minimal ${space} (not work) 2020-02-16 minimal
-
 item --gap GParted Live 1.1.0-1
 #item gparted_iso ${space} (test ISO file)
 item gparted_default ${space} Default settings
@@ -65,6 +62,7 @@ item opensusetumbleweed ${space} Tumbleweed
 item opensuse152 ${space} 15.2
 item opensuse151 ${space} 15.1
 
+item custom_gentoo Gentoo
 item custom_systemrescuecd SystemRescueCD
 item custom_ubuntu Ubuntu
 
@@ -185,17 +183,6 @@ set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
 set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
-goto os_install
-
-:gentoo_minimal
-set vRELEASE 2020-02-16
-set vGENTOO true
-set vNAME gentoo
-set vARCH amd64
-set vURL http://${vCUSTOM_MIRROR}/${vNAME}
-set vKERNEL ${vURL}/${vNAME}
-set vINITRD ${vURL}/${vNAME}.igz
-set vOPTS ${vNAME} initrd=${vNAME}.igz root=/dev/ram0 init=/linuxrc loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ vga=791
 goto os_install
 
 #:gparted_iso
