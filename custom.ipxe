@@ -76,7 +76,7 @@ item gentoolinux ${space} Gentoo minimal 2019-10-20
 item ubuntulive ${space} (test ISO) Ubuntu Server Live 19.10
 choose custom_choice || goto custom_exit
 echo ${cls}
-goto ${custom_choice}
+goto custom_menu
 goto custom_exit
 
 :archlinux
@@ -291,7 +291,7 @@ set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd
 goto os_install
 
-:${custom_choice}
+:custom_menu
 chain ${custom_choice}.ipxe || goto debug
 
 #:custom_ubuntu
