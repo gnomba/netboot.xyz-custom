@@ -70,7 +70,7 @@ echo Error occured, press any key to return to menu ...
 prompt
 chain custom_${vNAME}.ipxe
 
-os_install
+:os_install
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
