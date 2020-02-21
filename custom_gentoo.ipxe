@@ -24,10 +24,14 @@ goto ${vNAME}
 
 :gentoo
 set vARCH amd64
-set vURL http://${vCUSTOM_MIRROR}/${vNAME}
-set vKERNEL ${vURL}/${vNAME}
-set vINITRD ${vURL}/${vNAME}.igz
-set vOPTS ip=dhcp root=/dev/ram0 init=/linuxrc loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ netboot=http fetch=${vURL}/image.squashfs initrd=${vNAME}.igz
+#set vURL http://${vCUSTOM_MIRROR}/${vNAME}
+#set vKERNEL ${vURL}/${vNAME}
+#set vINITRD ${vURL}/${vNAME}.igz
+set vURL https://github.com/netbootxyz/asset-mirror/releases/download/20200212T214502Z-3b6f19b1
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/initrd.gz
+#set vOPTS ip=dhcp root=/dev/ram0 init=/linuxrc loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ fetch=${vURL}/image.squashfs initrd=${vNAME}.igz
+set vOPTS ip=dhcp root=/dev/ram0 init=/linuxrc loop=/image.squashfs looptype=squashfs cdroot=1 real_root=/ fetch=http://${vCUSTOM_MIRROR}/${vNAME}/image.squashfs initrd=initrd.gz
 goto os_install || goto debug_${vNAME}
 
 :debug_gentoo
