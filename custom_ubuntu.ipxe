@@ -5,19 +5,20 @@
 
 clear custom_choice_ubuntu
 set vNAME ubuntu
+set vUBUNTU true
 
 goto ${menu} ||
 
 :custom_menu_ubuntu
 menu Ubuntu netboot
 item --gap Ubuntu
-item ubuntu2004 (not work) 20.04 LTS (Focal Fossa)
-item ubuntu1804 18.04 LTS (Bionic Beaver) 
-item ubuntu1604 16.04 LTS (Xenial Xerus)
-item ubuntu1404 14.04 LTS (Trusty Tahr)
-#item backtomenu <-- Back to menu
+item ubuntu2004 ${space} (not work) 20.04 LTS (Focal Fossa)
+item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
+item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
+item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
+choose custom_choice_ubuntu
 echo ${cls}
-goto ${custom_choice_ubuntu} || goto error
+goto ${custom_choice_ubuntu} || goto debug
 
 :ubuntu2004
 set vRELEASE focal
@@ -37,20 +38,44 @@ goto ubuntu
 
 :ubuntu
 set vARCH amd64
-set vURL http://archive.ubuntu.com/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
+set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto custom_os_install
+goto os_install
 
-:custom_os_install
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom_os_install.ipxe || goto error
-goto custom_menu_ubuntu
+:debug
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice_ubuntu = ${custom_choice_ubuntu}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vNAME = ${vNAME}
+echo vUBUNTU = ${vUBUNTU}
+echo vRELEASE = ${vRELEASE} 
+echo vARCH = ${vARCH}
+echo vURL = ${vURL}
+echo vKERNEL = ${vKERNEL}
+echo vINITRD = ${vINITRD}
+echo vOPTS = ${vOPTS}
+echo =========
+goto error
 
 :error
+echo +-------+
+echo | ERROR |
+echo +-------+
 echo Error occured, press any key to return to menu ...
 prompt
-goto custom_menu_ubuntu
+chain custom_ubuntu.ipxe
 
-:backtomenu
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom.ipxe
+os_install
+echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+kernel ${vKERNEL} ${vOPTS}
+isset ${vGENTOO} && initrd ${vURL}/image.squashfs
+initrd ${vINITRD}
+boot
