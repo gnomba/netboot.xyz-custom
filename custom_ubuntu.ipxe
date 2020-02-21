@@ -79,7 +79,6 @@ echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
 imgtrust --allow
-kernel ${vKERNEL} ${vOPTS}
-isset ${vGENTOO} && initrd ${vURL}/image.squashfs
-initrd ${vINITRD}
-boot
+kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
+initrd ${vINITRD} || goto debug_${vNAME}
+boot || goto debug_${vNAME}
