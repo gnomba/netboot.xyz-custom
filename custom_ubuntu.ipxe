@@ -3,17 +3,19 @@
 ### netboot.xyz-custom menu Ubuntu
 ###
 
-:custom_menu_ubuntu
 clear custom_choice_ubuntu
-menu Ubuntu netboot
-set vNAME Ubuntu
+set vNAME ubuntu
 
+goto ${menu} ||
+
+:custom_menu_ubuntu
+menu Ubuntu netboot
 item --gap Ubuntu
 item ubuntu2004 (not work) 20.04 LTS (Focal Fossa)
 item ubuntu1804 18.04 LTS (Bionic Beaver) 
 item ubuntu1604 16.04 LTS (Xenial Xerus)
 item ubuntu1404 14.04 LTS (Trusty Tahr)
-item backtomenu <-- Back to menu
+#item backtomenu <-- Back to menu
 echo ${cls}
 goto ${custom_choice_ubuntu} || goto error
 
