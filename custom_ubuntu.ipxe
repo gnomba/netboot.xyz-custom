@@ -9,32 +9,32 @@ set vUBUNTU true
 
 goto ${menu} ||
 
-:custom_menu_ubuntu
+:custom_menu_${vNAME}
 menu Ubuntu netboot
 item --gap Ubuntu
 item ubuntu2004 ${space} (not work) 20.04 LTS (Focal Fossa)
 item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
 item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
 item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
-choose custom_choice_ubuntu
+choose custom_choice_${vNAME}
 echo ${cls}
 goto ${custom_choice_ubuntu} || goto debug_${vNAME}
 
 :ubuntu2004
 set vRELEASE focal
-goto ubuntu
+goto ${vNAME}
 
 :ubuntu1804
 set vRELEASE bionic
-goto ubuntu
+goto ${vNAME}
 
 :ubuntu1604
 set vRELEASE xenial
-goto ubuntu
+goto ${vNAME}
 
 :ubuntu1404
 set vRELEASE trusty
-goto ubuntu
+goto ${vNAME}
 
 :ubuntu
 set vARCH amd64
@@ -48,7 +48,7 @@ goto os_install || goto debug_${vNAME}
 echo +-------+
 echo | DEBUG |
 echo +-------+
-echo custom_choice_ubuntu = ${custom_choice_ubuntu}
+echo custom_choice_${vNAME} = ${custom_choice_ubuntu}
 echo vMIRROR = ${vMIRROR}
 echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
 echo vNAME = ${vNAME}
