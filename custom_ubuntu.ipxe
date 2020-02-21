@@ -15,8 +15,7 @@ item ubuntu1604 16.04 LTS (Xenial Xerus)
 item ubuntu1404 14.04 LTS (Trusty Tahr)
 item backtomenu <-- Back to menu
 echo ${cls}
-goto ${custom_choice} || goto error
-
+goto ${custom_choice_ubuntu} || goto error
 
 :ubuntu2004
 set vRELEASE focal
