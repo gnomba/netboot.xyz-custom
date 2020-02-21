@@ -82,17 +82,15 @@ echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
 imgtrust --allow
-kernel ${vKERNEL} ${vOPTS}
-isset ${vGENTOO} && initrd ${vURL}/image.squashfs
-initrd ${vINITRD}
-boot || chain custom_${vNAME}.ipxe
+kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
+initrd ${vINITRD}  || goto debug_${vNAME}
+boot || goto debug_${vNAME}goto debug_${vNAME}
 
 :iso_boot
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
 imgtrust --allow
-kernel ${vKERNEL} ${vOPTS}
-isset ${vGENTOO} && initrd ${vURL}/image.squashfs
-initrd ${vINITRD}
-boot || chain custom_${vNAME}.ipxe
+kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
+initrd ${vINITRD} || goto debug_${vNAME}
+boot || goto debug_${vNAME}
