@@ -7,7 +7,6 @@ clear custom_choice_systemrescuecd
 set vNAME systemrescuecd
 set vSYSTEMRESCUECD true
 
-
 goto ${menu} ||
 
 :custom_menu_${vNAME}
