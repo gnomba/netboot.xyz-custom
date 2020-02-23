@@ -1,0 +1,90 @@
+#!ipxe
+###
+### netboot.xyz-custom menu Memtest
+###
+
+clear custom_choice_memtest
+set vNAME memtest
+set vMEMTEST true
+
+goto ${menu} ||
+
+:custom_menu_${vNAME}
+menu Memtest netboot
+item --gap Memtest
+item memtest83 ${space} MemTest86 8.3 (only UEFI boot) (IMG)
+item memtest437 ${space} MemTest86 4.3.7 (IMG)
+item memtest501 ${space} Memtest86+ 5.01 (ISO)
+item memtest420 ${space} Memtest86+ 4.20 (ISO)
+item backtomenu <- Back to menu
+choose custom_choice_${vNAME}
+echo ${cls}
+goto ${custom_choice_memtest} || goto debug_${vNAME}
+
+:memtest83
+set vRELEASE 8.3
+set vTYPE img
+goto ${vNAME}
+
+:memtest437
+set vRELEASE 4.3.7
+set vTYPE img
+goto ${vNAME}
+
+:memtest501
+set vRELEASE 5.01
+set vTYPE iso
+goto ${vNAME}
+
+:memtest420
+set vRELEASE 4.20
+set vTYPE iso
+goto ${vNAME}
+
+:memtest
+set vIMGFILE http://${vCUSTOM_MIRROR}/${vNAME}/${custom_choice_memtest}.${vTYPE}
+goto ${vTYPE}_boot || goto debug_${vNAME}
+
+:debug_memtest
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice_${vNAME} = ${custom_choice_memtest}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vNAME = ${vNAME}
+echo vTYPE = ${vTYPE}
+echo vIMGFILE = ${vIMGFILE}
+echo vMEMTEST = ${vMEMTEST}
+echo vRELEASE = ${vRELEASE} 
+echo =========
+goto error_${vNAME}
+
+:error_memtest
+echo +-------+
+echo | ERROR |
+echo +-------+
+echo Error occured, press any key to return to menu ...
+prompt
+chain custom_${vNAME}.ipxe
+
+:backtomenu
+chain custom.ipxe || goto error_${vNAME}
+
+:iso_boot
+echo Booting iso-file ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+initrd ${vIMGFILE} || goto debug_${vNAME}
+chain memdisk vmalloc=512M iso raw || goto debug_${vNAME}
+boot || goto debug_${vNAME}
+
+:img_boot
+echo Booting img-file ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+initrd ${vIMGFILE} || goto debug_${vNAME}
+chain memdisk vmalloc=16M raw || goto debug_${vNAME}
+boot || goto debug_${vNAME}
