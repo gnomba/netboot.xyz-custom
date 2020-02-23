@@ -20,12 +20,6 @@ item --gap Clonezilla
 item clonezilla_ubuntu ${space} 20191024-eoan (Ubuntu-based)
 item clonezilla_debian ${space} 2.6.4-10 (Debian-based)
 
-item --gap Fedora
-#item fedora32 ${space} 32
-item fedora31 ${space} 31
-item fedora30 ${space} 30
-item fedora29 ${space} 29
-
 item --gap GParted Live 1.1.0-1
 #item gparted_iso ${space} (test ISO file)
 item gparted_default ${space} Default settings
@@ -44,6 +38,7 @@ item memtest420 ${space} Memtest86+ 4.20 (ISO)
 item custom_archlinux ArchLinux
 item custom_centos CentOS
 item custom_debian Debian
+item custom_fedora Fedora
 item custom_gentoo Gentoo
 item custom_opensuse OpenSUSE
 item custom_systemrescuecd SystemRescueCD
@@ -74,31 +69,6 @@ set vARCH amd64
 set vTYPE iso
 set vIMGFILE http://${vCUSTOM_MIRROR}/${custom_choice}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
 goto ${vTYPE}_boot
-
-:fedora32
-set vRELEASE 32
-goto fedora
-
-:fedora31
-set vRELEASE 31
-goto fedora
-
-:fedora30
-set vRELEASE 30
-goto fedora
-
-:fedora29
-set vRELEASE 29
-goto fedora
-
-:fedora
-set vNAME Fedora
-set vARCH x86_64
-set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/images/pxeboot
-set vKERNEL ${vURL}/vmlinuz
-set vINITRD ${vURL}/initrd.img
-set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
-goto os_install || goto debug
 
 #:gparted_iso
 #set vRELEASE 1.1.0-1
