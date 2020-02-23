@@ -1,0 +1,84 @@
+#!ipxe
+###
+### netboot.xyz-custom menu Fedora
+###
+
+clear custom_choice_fedora
+set vNAME fedora
+set vFEDORA true
+
+goto ${menu} ||
+
+:custom_menu_${vNAME}
+menu Fedora netboot
+item --gap Fedora
+#item fedora32 ${space} 32
+item fedora31 ${space} 31
+item fedora30 ${space} 30
+item fedora29 ${space} 29
+item backtomenu <- Back to menu
+choose custom_choice_${vNAME}
+echo ${cls}
+goto ${custom_choice_fedora} || goto debug_${vNAME}
+
+:fedora32
+set vRELEASE 32
+goto ${vNAME}
+
+:fedora31
+set vRELEASE 31
+goto ${vNAME}
+
+:fedora30
+set vRELEASE 30
+goto ${vNAME}
+
+:fedora29
+set vRELEASE 29
+goto ${vNAME}
+
+:fedora
+set vARCH x86_64
+set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/images/pxeboot
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/initrd.img
+set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
+goto os_install || goto debug_${vNAME}
+
+:debug_fedora
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice_${vNAME} = ${custom_choice_fedora}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vNAME = ${vNAME}
+echo vFEDORA = ${vFEDORA}
+echo vRELEASE = ${vRELEASE} 
+echo vARCH = ${vARCH}
+echo vURL = ${vURL}
+echo vKERNEL = ${vKERNEL}
+echo vINITRD = ${vINITRD}
+echo vOPTS = ${vOPTS}
+echo =========
+goto error_${vNAME}
+
+:error_fedora
+echo +-------+
+echo | ERROR |
+echo +-------+
+echo Error occured, press any key to return to menu ...
+prompt
+chain custom_${vNAME}.ipxe
+
+:backtomenu
+chain custom.ipxe || goto error_${vNAME}
+
+:os_install
+echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
+initrd ${vINITRD} || goto debug_${vNAME}
+boot || goto debug_${vNAME}
