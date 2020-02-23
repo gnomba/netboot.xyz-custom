@@ -20,15 +20,6 @@ item --gap Clonezilla
 item clonezilla_ubuntu ${space} 20191024-eoan (Ubuntu-based)
 item clonezilla_debian ${space} 2.6.4-10 (Debian-based)
 
-item --gap GParted Live 1.1.0-1
-#item gparted_iso ${space} (test ISO file)
-item gparted_default ${space} Default settings
-item gparted_kmslarge ${space} Default settings, KMS with large font
-item gparted_kms ${space} Default settings, KMS (for ATI, Intel and NVIDIA VGA cards.)
-item gparted_toram ${space} To RAM. Boot media can be removed later
-item gparted_safegraphic ${space} Safe graphic settings without framebuffer, vga=normal
-item gparted_failsafe ${space} Failsafe mode
-
 item --gap Memtest
 item memtest83 ${space} MemTest86 8.3 (only UEFI boot) (IMG)
 item memtest437 ${space} MemTest86 4.3.7 (IMG)
@@ -40,6 +31,7 @@ item custom_centos CentOS
 item custom_debian Debian
 item custom_fedora Fedora
 item custom_gentoo Gentoo
+item custom_gparted GParted Live
 item custom_opensuse OpenSUSE
 item custom_systemrescuecd SystemRescueCD
 item custom_ubuntu Ubuntu
@@ -69,47 +61,6 @@ set vARCH amd64
 set vTYPE iso
 set vIMGFILE http://${vCUSTOM_MIRROR}/${custom_choice}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
 goto ${vTYPE}_boot
-
-#:gparted_iso
-#set vRELEASE 1.1.0-1
-#set vNAME gparted
-#set vARCH amd64
-#set vIMGFILE https://netcologne.dl.sourceforge.net/project/${vNAME}/${vNAME}-live-stable/${vRELEASE}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
-#goto iso_boot
-
-:gparted_default
-set vTMPOPTS 
-goto gparted
-
-:gparted_kmslarge
-set vTMPOPTS vga=791 live_console_font_size=16x32
-goto gparted
-
-:gparted_kms
-set vTMPOPTS vga=791
-goto gparted
-
-:gparted_toram
-set vTMPOPTS toram=filesystem.squashfs
-goto gparted
-
-:gparted_safegraphic
-set vTMPOPTS nomodeset vga=normal
-goto gparted
-
-:gparted_failsafe
-set vTMPOPTS acpi=off irqpoll noapic noapm nodma nomce nolapic nosmp nomodeset vga=normal 
-goto gparted
-
-:gparted
-set vRELEASE 1.1.0-1
-set vNAME gparted
-set vARCH amd64
-set vURL http://${vCUSTOM_MIRROR}/${vNAME}/live
-set vKERNEL ${vURL}/vmlinuz
-set vINITRD ${vURL}/initrd.img
-set vOPTS ${vTMPOPTS} initrd=initrd.img nosplash ip= net.ifnames=0 boot=live union=overlay username=user config components quiet noswap fetch=${vURL}/filesystem.squashfs
-goto os_install
 
 :memtest83
 set vRELEASE 8.3
