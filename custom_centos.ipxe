@@ -1,0 +1,79 @@
+#!ipxe
+###
+### netboot.xyz-custom menu CentOS
+###
+
+clear custom_choice_centos
+set vNAME centos
+set vCENTOS true
+
+goto ${menu} ||
+
+:custom_menu_${vNAME}
+menu CentOS netboot
+item --gap CentOS
+item centos8 ${space} 8 (8.1.1911)
+item centos7 ${space} 7 (7.7.1908)
+item centos6 ${space} 6 (6.10)
+item backtomenu <- Back to menu
+choose custom_choice_${vNAME}
+echo ${cls}
+goto ${custom_choice_centos} || goto debug_${vNAME}
+
+:centos8
+set vRELEASE 8.1.1911
+goto centos
+
+:centos7
+set vRELEASE 7.7.1908
+goto centos
+
+:centos6
+set vRELEASE 6.10
+goto centos
+
+:centos
+set vARCH x86_64
+iseq ${vRELEASE} 8.1.1911 && set vURL http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot || set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
+iseq ${vRELEASE} 8.1.1911 && set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img || set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/initrd.img
+goto os_install || goto debug_${vNAME}
+
+:debug_centos
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice_${vNAME} = ${custom_choice_centos}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vNAME = ${vNAME}
+echo vCENTOS = ${vCENTOS}
+echo vRELEASE = ${vRELEASE} 
+echo vARCH = ${vARCH}
+echo vURL = ${vURL}
+echo vKERNEL = ${vKERNEL}
+echo vINITRD = ${vINITRD}
+echo vOPTS = ${vOPTS}
+echo =========
+goto error_${vNAME}
+
+:error_centos
+echo +-------+
+echo | ERROR |
+echo +-------+
+echo Error occured, press any key to return to menu ...
+prompt
+chain custom_${vNAME}.ipxe
+
+:backtomenu
+chain custom.ipxe || goto error_${vNAME}
+
+:os_install
+echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
+initrd ${vINITRD} || goto debug_${vNAME}
+boot || goto debug_${vNAME}
