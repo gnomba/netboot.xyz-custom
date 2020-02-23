@@ -1,0 +1,84 @@
+#!ipxe
+###
+### netboot.xyz-custom menu ArchLinux
+###
+
+clear custom_choice_archlinux
+set vNAME archlinux
+set vARCHLINUX true
+
+goto ${menu} ||
+
+:custom_menu_${vNAME}
+menu ArchLinux netboot
+item --gap ArchLinux
+item archlinux_latest ${space} latest
+item archlinux20200101 ${space} 2020.02.01
+item archlinux20200101 ${space} 2020.01.01
+item archlinux20191201 ${space} 2019.12.01
+item backtomenu <- Back to menu
+choose custom_choice_${vNAME}
+echo ${cls}
+goto ${custom_choice_archlinux} || goto debug_${vNAME}
+
+:archlinux_latest
+set vRELEASE latest
+goto ${vNAME}
+
+archlinux20200201
+set vRELEASE 2020.02.01
+goto ${vNAME}
+
+archlinux20200101
+set vRELEASE 2020.01.01
+goto ${vNAME}
+
+archlinux20191201
+set vRELEASE 2019.12.01
+goto ${vNAME}
+
+:archlinux
+set vARCH x86_64
+set vURL http://${vMIRROR}/archlinux/iso/${vRELEASE}
+set vKERNEL ${vURL}/arch/boot/${vARCH}/vmlinuz
+set vINITRD ${vURL}/arch/boot/${vARCH}/archiso.img
+set vOPTS vmlinuz initrd=archiso.img archiso_http_srv=${vURL}/ archisobasedir=arch verify=y ip=dhcp net.ifnames=0 ${console}
+goto os_install || goto debug_${vNAME}
+
+:debug_archlinux
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice_${vNAME} = ${custom_choice_archlinux}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vNAME = ${vNAME}
+echo vARCHLINUX = ${vARCHLINUX}
+echo vRELEASE = ${vRELEASE} 
+echo vARCH = ${vARCH}
+echo vURL = ${vURL}
+echo vKERNEL = ${vKERNEL}
+echo vINITRD = ${vINITRD}
+echo vOPTS = ${vOPTS}
+echo =========
+goto error_${vNAME}
+
+:error_archlinux
+echo +-------+
+echo | ERROR |
+echo +-------+
+echo Error occured, press any key to return to menu ...
+prompt
+chain custom_${vNAME}.ipxe
+
+:backtomenu
+chain custom.ipxe || goto error_${vNAME}
+
+:os_install
+echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
+initrd ${vINITRD} || goto debug_${vNAME}
+boot || goto debug_${vNAME}
