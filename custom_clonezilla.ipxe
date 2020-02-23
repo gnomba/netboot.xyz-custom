@@ -44,9 +44,9 @@ set vIMGFILE http://${vCUSTOM_MIRROR}/${custom_choice_clonezilla}/${vNAME}-live-
 goto ${vTYPE}_boot
 
 :clonezilla
-set vURL http://${vCUSTOM_MIRROR}/${vNAME}
-set vKERNEL ${vURL}/${custom_choice_clonezilla}/vmlinuz
-set vINITRD ${vURL}/${custom_choice_clonezilla}/initrd.img
+set vURL http://${vCUSTOM_MIRROR}/${custom_choice_clonezilla}
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/initrd.img
 set vOPTS initrd=initrd.img boot=live union=overlay username=user hostname=clonezilla config quiet components noswap edd=on nomodeset enforcing=0 locales= keyboard-layouts= ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ip= net.ifnames=0  splash i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=1
 goto os_install || goto debug_${vNAME}
 
