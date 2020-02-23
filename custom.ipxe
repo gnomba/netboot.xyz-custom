@@ -81,7 +81,7 @@ set vURL http://${vMIRROR}/archlinux/iso/${vRELEASE}
 set vKERNEL ${vURL}/arch/boot/${vARCH}/vmlinuz
 set vINITRD ${vURL}/arch/boot/${vARCH}/archiso.img
 set vOPTS vmlinuz initrd=archiso.img archiso_http_srv=${vURL}/ archisobasedir=arch verify=y ip=dhcp net.ifnames=0 ${console}
-goto os_install
+goto os_install || goto debug
 
 :centos8
 set vRELEASE 8.1.1911
@@ -106,7 +106,7 @@ set vNAME CentOS
 set vARCH x86_64
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
-goto os_install
+goto os_install || goto debug
 
 :clonezilla_ubuntu
 set vRELEASE 20191024-eoan
@@ -154,7 +154,7 @@ set vURL http://${vMIRROR}/debian/dists/${vRELEASE}/main/installer-${vARCH}/curr
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
-goto os_install
+goto os_install || goto debug
 
 :fedora32
 set vRELEASE 32
@@ -179,7 +179,7 @@ set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
 set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
-goto os_install
+goto os_install || goto debug
 
 #:gparted_iso
 #set vRELEASE 1.1.0-1
@@ -258,7 +258,7 @@ imgtrust --allow
 kernel ${vKERNEL} ${vOPTS}
 isset ${vGENTOO} && initrd ${vURL}/image.squashfs
 initrd ${vINITRD}
-boot
+boot || goto debug
 
 :iso_boot
 echo Booting iso-file ${vNAME} ${vRELEASE} ${vARCH}
@@ -267,7 +267,7 @@ imgfree
 imgtrust --allow
 initrd ${vIMGFILE}
 chain memdisk vmalloc=512M iso raw
-boot
+boot || goto debug
 
 :img_boot
 echo Booting img-file ${vNAME} ${vRELEASE} ${vARCH}
@@ -276,7 +276,7 @@ imgfree
 imgtrust --allow
 initrd ${vIMGFILE}
 chain memdisk vmalloc=16M raw
-boot
+boot || goto debug
 
 :netbootxyz
 set conn_type https chain --autofree https://boot.netboot.xyz/menu.ipxe || echo HTTPS failed... attempting HTTP...
