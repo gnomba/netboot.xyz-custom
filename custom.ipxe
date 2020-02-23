@@ -16,9 +16,6 @@ set vCUSTOM_MIRROR 185.228.233.185
 clear custom_choice
 menu gnomba's bootloader
 
-item --gap ArchLinux
-item archlinux ${space} latest
-
 item --gap CentOS
 item centos8 ${space} 8 (8.1.1911)
 item centos7 ${space} 7 (7.7.1908)
@@ -57,6 +54,7 @@ item memtest437 ${space} MemTest86 4.3.7 (IMG)
 item memtest501 ${space} Memtest86+ 5.01 (ISO)
 item memtest420 ${space} Memtest86+ 4.20 (ISO)
 
+item custom_archlinux ArchLinux
 item custom_gentoo Gentoo
 item custom_opensuse OpenSUSE
 item custom_systemrescuecd SystemRescueCD
@@ -72,16 +70,6 @@ echo ${cls}
 #iseq ${custom_choice} sals && goto sals
 goto custom_menu
 goto custom_exit
-
-:archlinux
-set vNAME ArchLinux
-set vRELEASE latest
-set vARCH x86_64
-set vURL http://${vMIRROR}/archlinux/iso/${vRELEASE}
-set vKERNEL ${vURL}/arch/boot/${vARCH}/vmlinuz
-set vINITRD ${vURL}/arch/boot/${vARCH}/archiso.img
-set vOPTS vmlinuz initrd=archiso.img archiso_http_srv=${vURL}/ archisobasedir=arch verify=y ip=dhcp net.ifnames=0 ${console}
-goto os_install || goto debug
 
 :centos8
 set vRELEASE 8.1.1911
