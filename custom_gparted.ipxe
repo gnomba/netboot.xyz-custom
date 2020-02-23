@@ -1,0 +1,103 @@
+#!ipxe
+###
+### netboot.xyz-custom menu GParted
+###
+
+clear custom_choice_gparted
+set vNAME gparted
+set vGPARTED true
+
+goto ${menu} ||
+
+:custom_menu_${vNAME}
+menu GParted Live netboot
+item --gap GParted Live 1.1.0-1
+#item gparted_iso ${space} (test ISO file)
+item gparted_default ${space} Default settings
+item gparted_kmslarge ${space} Default settings, KMS with large font
+item gparted_kms ${space} Default settings, KMS (for ATI, Intel and NVIDIA VGA cards.)
+item gparted_toram ${space} To RAM. Boot media can be removed later
+item gparted_safegraphic ${space} Safe graphic settings without framebuffer, vga=normal
+item gparted_failsafe ${space} Failsafe mode
+item backtomenu <- Back to menu
+choose custom_choice_${vNAME}
+echo ${cls}
+goto ${custom_choice_gparted} || goto debug_${vNAME}
+
+#:gparted_iso
+#set vRELEASE 1.1.0-1
+#set vNAME gparted
+#set vARCH amd64
+#set vIMGFILE https://netcologne.dl.sourceforge.net/project/${vNAME}/${vNAME}-live-stable/${vRELEASE}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
+#goto iso_boot
+
+:gparted_default
+set vTMPOPTS 
+goto ${vNAME}
+
+:gparted_kmslarge
+set vTMPOPTS vga=791 live_console_font_size=16x32
+goto ${vNAME}
+
+:gparted_kms
+set vTMPOPTS vga=791
+goto ${vNAME}
+
+:gparted_toram
+set vTMPOPTS toram=filesystem.squashfs
+goto ${vNAME}
+
+:gparted_safegraphic
+set vTMPOPTS nomodeset vga=normal
+goto ${vNAME}
+
+:gparted_failsafe
+set vTMPOPTS acpi=off irqpoll noapic noapm nodma nomce nolapic nosmp nomodeset vga=normal 
+goto ${vNAME}
+
+:gparted
+set vRELEASE 1.1.0-1
+set vARCH amd64
+set vURL http://${vCUSTOM_MIRROR}/${vNAME}/live
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/initrd.img
+set vOPTS ${vTMPOPTS} initrd=initrd.img nosplash ip= net.ifnames=0 boot=live union=overlay username=user config components quiet noswap fetch=${vURL}/filesystem.squashfs
+goto os_install || goto debug_${vNAME}
+
+:debug_gparted
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice_${vNAME} = ${custom_choice_gparted}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vNAME = ${vNAME}
+echo vGPARTED = ${vGPARTED}
+echo vRELEASE = ${vRELEASE} 
+echo vARCH = ${vARCH}
+echo vURL = ${vURL}
+echo vKERNEL = ${vKERNEL}
+echo vINITRD = ${vINITRD}
+echo vOPTS = ${vOPTS}
+echo =========
+goto error_${vNAME}
+
+:error_gparted
+echo +-------+
+echo | ERROR |
+echo +-------+
+echo Error occured, press any key to return to menu ...
+prompt
+chain custom_${vNAME}.ipxe
+
+:backtomenu
+chain custom.ipxe || goto error_${vNAME}
+
+:os_install
+echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
+initrd ${vINITRD} || goto debug_${vNAME}
+boot || goto debug_${vNAME}
