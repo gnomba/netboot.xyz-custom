@@ -63,6 +63,7 @@ item custom_systemrescuecd SystemRescueCD
 item custom_ubuntu Ubuntu
 
 item --gap Other boot
+item netbootxyz ${space} netboot.xyz NETWORK BOOT
 item sals ${space} SAL's NETWORK BOOT
 
 choose custom_choice || goto custom_exit
@@ -278,12 +279,13 @@ initrd ${vIMGFILE}
 chain memdisk vmalloc=16M raw
 boot
 
-:sals
-chain http://boot.salstar.sk
+:netbootxyz
+set conn_type https chain --autofree https://boot.netboot.xyz/menu.ipxe || echo HTTPS failed... attempting HTTP...
+set conn_type http chain --autofree http://boot.netboot.xyz/menu.ipxe || echo HTTP failed, localbooting... exit 
+goto custom
 
-:option_three
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom.ipxe || goto custom
+:sals
+chain http://boot.salstar.sk || goto custom
 
 :debug
 echo +-------+
@@ -304,5 +306,5 @@ prompt
 chain custom.ipxe
 
 :custom_exit
-chain utils.ipxe
+goto netbootxyz
 exit
