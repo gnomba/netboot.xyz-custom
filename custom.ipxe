@@ -68,8 +68,8 @@ item sals ${space} SAL's NETWORK BOOT
 
 choose custom_choice || goto custom_exit
 echo ${cls}
-iseq ${custom_choice} netbootxyz && goto netbootxyz
-iseq ${custom_choice} sals && goto sals
+#iseq ${custom_choice} netbootxyz && goto netbootxyz
+#iseq ${custom_choice} sals && goto sals
 goto custom_menu
 goto custom_exit
 
