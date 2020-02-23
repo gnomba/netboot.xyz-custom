@@ -12,7 +12,7 @@ goto ${menu} ||
 :custom_menu_${vNAME}
 menu Ubuntu netboot
 item --gap Ubuntu
-item ubuntu2004 ${space} (not work) 20.04 LTS (Focal Fossa)
+item ubuntu2004 ${space} 20.04 LTS (Focal Fossa)
 item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
 item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
 item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
@@ -39,6 +39,7 @@ goto ${vNAME}
 
 :ubuntu
 set vARCH amd64
+iseq ${vRELEASE} focal && set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH} || 
 set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
