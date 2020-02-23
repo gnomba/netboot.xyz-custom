@@ -16,22 +16,9 @@ set vCUSTOM_MIRROR 185.228.233.185
 clear custom_choice
 menu gnomba's bootloader
 
-item --gap CentOS
-item centos8 ${space} 8 (8.1.1911)
-item centos7 ${space} 7 (7.7.1908)
-item centos6 ${space} 6 (6.10)
-
 item --gap Clonezilla
 item clonezilla_ubuntu ${space} 20191024-eoan (Ubuntu-based)
 item clonezilla_debian ${space} 2.6.4-10 (Debian-based)
-
-item --gap Debian
-item debian10 ${space} 10 (Buster)
-item debian9 ${space} 9 (Stretch)
-item debian8 ${space} 8 (Jessie)
-item debian7 ${space} 7 (Wheezy)
-item debian11 ${space} (testing) 11 (Bullseye)
-item debiansid ${space} (unstable) Sid
 
 item --gap Fedora
 #item fedora32 ${space} 32
@@ -55,6 +42,8 @@ item memtest501 ${space} Memtest86+ 5.01 (ISO)
 item memtest420 ${space} Memtest86+ 4.20 (ISO)
 
 item custom_archlinux ArchLinux
+item custom_centos CentOS
+item custom_debian Debian
 item custom_gentoo Gentoo
 item custom_opensuse OpenSUSE
 item custom_systemrescuecd SystemRescueCD
@@ -71,31 +60,6 @@ echo ${cls}
 goto custom_menu
 goto custom_exit
 
-:centos8
-set vRELEASE 8.1.1911
-set vURL http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
-set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img
-goto centos
-
-:centos7
-set vRELEASE 7.7.1908
-set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
-goto centos
-
-:centos6
-set vRELEASE 6.10
-set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
-goto centos
-
-:centos
-set vNAME CentOS
-set vARCH x86_64
-set vKERNEL ${vURL}/vmlinuz
-set vINITRD ${vURL}/initrd.img
-goto os_install || goto debug
-
 :clonezilla_ubuntu
 set vRELEASE 20191024-eoan
 goto clonezilla
@@ -110,39 +74,6 @@ set vARCH amd64
 set vTYPE iso
 set vIMGFILE http://${vCUSTOM_MIRROR}/${custom_choice}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
 goto ${vTYPE}_boot
-
-:debian10
-set vRELEASE buster
-goto debian
-
-:debian9
-set vRELEASE stretch
-goto debian
-
-:debian8
-set vRELEASE jessie
-goto debian
-
-:debian7
-set vRELEASE wheezy
-goto debian
-
-:debian11
-set vRELEASE bullseye
-goto debian
-
-:debiansid
-set vRELEASE sid
-goto debian
-
-:debian
-set vNAME Debian
-set vARCH amd64
-set vURL http://${vMIRROR}/debian/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/debian-installer/${vARCH}
-set vKERNEL ${vURL}/linux
-set vINITRD ${vURL}/initrd.gz
-set vOPTS 
-goto os_install || goto debug
 
 :fedora32
 set vRELEASE 32
