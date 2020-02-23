@@ -1,0 +1,94 @@
+#!ipxe
+###
+### netboot.xyz-custom menu Debian
+###
+
+clear custom_choice_debian
+set vNAME debian
+set vDEBIAN true
+
+goto ${menu} ||
+
+:custom_menu_${vNAME}
+menu Debian netboot
+item --gap Debian
+item debian10 ${space} 10 (Buster)
+item debian9 ${space} 9 (Stretch)
+item debian8 ${space} 8 (Jessie)
+item debian7 ${space} 7 (Wheezy)
+item debian11 ${space} (testing) 11 (Bullseye)
+item debiansid ${space} (unstable) Sid
+item backtomenu <- Back to menu
+choose custom_choice_${vNAME}
+echo ${cls}
+goto ${custom_choice_debian} || goto debug_${vNAME}
+
+:debian10
+set vRELEASE buster
+goto debian
+
+:debian9
+set vRELEASE stretch
+goto debian
+
+:debian8
+set vRELEASE jessie
+goto debian
+
+:debian7
+set vRELEASE wheezy
+goto debian
+
+:debian11
+set vRELEASE bullseye
+goto debian
+
+:debiansid
+set vRELEASE sid
+goto debian
+
+:debian
+set vARCH amd64
+set vURL http://${vMIRROR}/${vNAME}/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/${vNAME}-installer/${vARCH}
+set vKERNEL ${vURL}/linux
+set vINITRD ${vURL}/initrd.gz
+set vOPTS 
+goto os_install || goto debug_${vNAME}
+
+:debug_debian
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice_${vNAME} = ${custom_choice_debian}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vNAME = ${vNAME}
+echo vDEBIAN = ${vDEBIAN}
+echo vRELEASE = ${vRELEASE} 
+echo vARCH = ${vARCH}
+echo vURL = ${vURL}
+echo vKERNEL = ${vKERNEL}
+echo vINITRD = ${vINITRD}
+echo vOPTS = ${vOPTS}
+echo =========
+goto error_${vNAME}
+
+:error_debian
+echo +-------+
+echo | ERROR |
+echo +-------+
+echo Error occured, press any key to return to menu ...
+prompt
+chain custom_${vNAME}.ipxe
+
+:backtomenu
+chain custom.ipxe || goto error_${vNAME}
+
+:os_install
+echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
+initrd ${vINITRD} || goto debug_${vNAME}
+boot || goto debug_${vNAME}
