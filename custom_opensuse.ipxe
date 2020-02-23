@@ -15,6 +15,7 @@ item --gap OpenSUSE
 item opensusetumbleweed ${space} Tumbleweed
 item opensuse152 ${space} 15.2
 item opensuse151 ${space} 15.1
+item opensuse151 ${space} 15.0
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
@@ -22,26 +23,24 @@ goto ${custom_choice_opensuse} || goto debug_${vNAME}
 
 :opensusetumbleweed
 set vRELEASE tumbleweed
-set vARCH x86_64
-set vURL http://${vMIRROR}/opensuse/${vRELEASE}/repo/oss/boot/${vARCH}/loader
-set vOPTS linux initrd=initrd splash=silent install=http://${vMIRROR}/opensuse/${vRELEASE}/repo/oss/
 goto ${vNAME}
 
 :opensuse152
 set vRELEASE 15.2
-set vARCH x86_64
-set vURL http://${vMIRROR}/opensuse/distribution/leap/${vRELEASE}/repo/oss/boot/${vARCH}/loader
-set vOPTS linux initrd=initrd splash=silent install=http://${vMIRROR}/opensuse/distribution/leap/${vRELEASE}/repo/oss/
 goto ${vNAME}
 
 :opensuse151
 set vRELEASE 15.1
-set vARCH x86_64
-set vURL http://${vMIRROR}/opensuse/distribution/leap/${vRELEASE}/repo/oss/boot/${vARCH}/loader
-set vOPTS linux initrd=initrd splash=silent install=http://${vMIRROR}/opensuse/distribution/leap/${vRELEASE}/repo/oss/
+goto ${vNAME}
+
+:opensuse150
+set vRELEASE 15.0
 goto ${vNAME}
 
 :opensuse
+set vARCH x86_64
+iseq ${vRELEASE} tumbleweed && set vURL http://${vMIRROR}/opensuse/${vRELEASE}/repo/oss/boot/${vARCH}/loader || set vURL http://${vMIRROR}/opensuse/distribution/leap/${vRELEASE}/repo/oss/boot/${vARCH}/loader
+iseq ${vRELEASE} tumbleweed && set vOPTS linux initrd=initrd splash=silent install=http://${vMIRROR}/opensuse/${vRELEASE}/repo/oss/ || set vOPTS linux initrd=initrd splash=silent install=http://${vMIRROR}/opensuse/distribution/leap/${vRELEASE}/repo/oss/
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd
 goto os_install || goto debug_${vNAME}
