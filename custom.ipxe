@@ -68,6 +68,8 @@ item sals ${space} SAL's NETWORK BOOT
 
 choose custom_choice || goto custom_exit
 echo ${cls}
+iseq ${custom_choice} netbootxyz && goto netbootxyz
+iseq ${custom_choice} sals && goto sals
 goto custom_menu
 goto custom_exit
 
@@ -247,9 +249,6 @@ goto ${vTYPE}_boot
 
 :custom_menu
 chain ${custom_choice}.ipxe || goto debug
-
-#:custom_ubuntu
-#chain custom_ubuntu.ipxe || goto debug
 
 :os_install
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
