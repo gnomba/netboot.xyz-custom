@@ -1,0 +1,70 @@
+#!ipxe
+###
+### netboot.xyz-custom menu Clonezilla
+###
+
+clear custom_choice_clonezilla
+set vNAME clonezilla
+set vCLONEZILLA true
+
+goto ${menu} ||
+
+:custom_menu_${vNAME}
+menu Clonezilla netboot
+item --gap Clonezilla
+item clonezilla_ubuntu ${space} 20191024-eoan (Ubuntu-based)
+item clonezilla_debian ${space} 2.6.4-10 (Debian-based)
+item backtomenu <- Back to menu
+choose custom_choice_${vNAME}
+echo ${cls}
+goto ${custom_choice_clonezilla} || goto debug_${vNAME}
+
+:clonezilla_ubuntu
+set vRELEASE 20191024-eoan
+goto ${vNAME}
+
+:clonezilla_debian
+set vRELEASE 2.6.4-10
+goto ${vNAME}
+
+:clonezilla
+set vARCH amd64
+set vTYPE iso
+set vIMGFILE http://${vCUSTOM_MIRROR}/${custom_choice_clonezilla}/${vNAME}-live-${vRELEASE}-${vARCH}.iso
+goto ${vTYPE}_boot
+
+:debug_clonezilla
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice_${vNAME} = ${custom_choice_clonezilla}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vNAME = ${vNAME}
+echo vCLONEZILLA = ${vCLONEZILLA}
+echo vRELEASE = ${vRELEASE} 
+echo vARCH = ${vARCH}
+echo vTYPE = ${vTYPE}
+echo vIMGFILE = ${vIMGFILE}
+echo =========
+goto error_${vNAME}
+
+:error_clonezilla
+echo +-------+
+echo | ERROR |
+echo +-------+
+echo Error occured, press any key to return to menu ...
+prompt
+chain custom_${vNAME}.ipxe
+
+:backtomenu
+chain custom.ipxe || goto error_${vNAME}
+
+:iso_boot
+echo Booting iso-file ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+initrd ${vIMGFILE} || goto debug_${vNAME}
+chain memdisk vmalloc=512M iso raw || goto debug_${vNAME}
+boot || goto debug_${vNAME}
