@@ -25,6 +25,7 @@ item custom_gentoo Gentoo
 item custom_gparted GParted Live
 item custom_memtest Memtest
 item custom_opensuse OpenSUSE
+item custom_scientific Scientific
 item custom_systemrescuecd SystemRescueCD
 item custom_ubuntu Ubuntu
 
