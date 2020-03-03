@@ -13,9 +13,9 @@ goto ${menu} ||
 menu ArchLinux netboot
 item --gap ArchLinux
 item archlinux_latest ${space} latest
-item archlinux20200101 ${space} 2020.03.01
-item archlinux20200101 ${space} 2020.02.01
-item archlinux20191201 ${space} 2020.01.01
+item archlinux20200301 ${space} 2020.03.01
+item archlinux20200201 ${space} 2020.02.01
+item archlinux20200101 ${space} 2020.01.01
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
@@ -25,16 +25,16 @@ goto ${custom_choice_archlinux} || goto debug_${vNAME}
 set vRELEASE latest
 goto ${vNAME}
 
+archlinux20200301
+set vRELEASE 2020.03.01
+goto ${vNAME}
+
 archlinux20200201
 set vRELEASE 2020.02.01
 goto ${vNAME}
 
 archlinux20200101
 set vRELEASE 2020.01.01
-goto ${vNAME}
-
-archlinux20191201
-set vRELEASE 2019.12.01
 goto ${vNAME}
 
 :archlinux
