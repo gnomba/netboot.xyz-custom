@@ -40,7 +40,7 @@ goto centos
 :centos
 set vARCH x86_64
 iseq ${vRELEASE} 8.1.1911 || iseq ${vRELEASE} 8-stream && set vURL http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot || set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-iseq ${vRELEASE} 8.1.1911 || iseq ${vRELEASE} 8-stream && set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img || set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img
+iseq ${vRELEASE} 8.1.1911 || iseq ${vRELEASE} 8-stream && set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img || set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp initrd=initrd.img inst.vnc inst.vncpassword=Test1322
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
 goto os_install || goto debug_${vNAME}
