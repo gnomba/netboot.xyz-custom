@@ -39,7 +39,7 @@ goto ${vNAME}
 
 :ubuntu
 set vARCH amd64
-iseq ${vRELEASE} focal && set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH} || set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
+iseq ${vRELEASE} focal && set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}/main/installer-${vARCH}/current/legacy-images/netboot/ubuntu-installer/${vARCH} || set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
