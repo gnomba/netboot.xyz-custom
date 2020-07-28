@@ -12,10 +12,9 @@ goto ${menu} ||
 :custom_menu_${vNAME}
 menu Fedora netboot
 item --gap Fedora
-#item fedora32 ${space} 32
+item fedora32 ${space} 32
 item fedora31 ${space} 31
 item fedora30 ${space} 30
-item fedora29 ${space} 29
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
@@ -31,10 +30,6 @@ goto ${vNAME}
 
 :fedora30
 set vRELEASE 30
-goto ${vNAME}
-
-:fedora29
-set vRELEASE 29
 goto ${vNAME}
 
 :fedora
