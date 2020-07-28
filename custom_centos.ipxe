@@ -13,8 +13,8 @@ goto ${menu} ||
 menu CentOS netboot
 item --gap CentOS
 item centos8stream ${space} 8 (Stream)
-item centos8 ${space} 8 (8.1.1911)
-item centos7 ${space} 7 (7.7.1908)
+item centos8 ${space} 8 (8.2.2004)
+item centos7 ${space} 7 (7.8.2003)
 item centos6 ${space} 6 (6.10)
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
@@ -26,11 +26,11 @@ set vRELEASE 8-stream
 goto centos
 
 :centos8
-set vRELEASE 8.1.1911
+set vRELEASE 8.2.2004
 goto centos
 
 :centos7
-set vRELEASE 7.7.1908
+set vRELEASE 7.8.2003
 goto centos
 
 :centos6
@@ -39,8 +39,8 @@ goto centos
 
 :centos
 set vARCH x86_64
-iseq ${vRELEASE} 8.1.1911 || iseq ${vRELEASE} 8-stream && set vURL http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot || set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-iseq ${vRELEASE} 8.1.1911 || iseq ${vRELEASE} 8-stream && set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img || set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp nameserver=8.8.4.4 initrd=initrd.img inst.vnc inst.vncpassword=Test1322 inst.vncconnect=185.228.235.92:5901
+iseq ${vRELEASE} 8.2.2004 || iseq ${vRELEASE} 8-stream && set vURL http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot || set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
+iseq ${vRELEASE} 8.2.2004 || iseq ${vRELEASE} 8-stream && set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img || set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp nameserver=8.8.4.4 initrd=initrd.img inst.vnc inst.vncpassword=Test1322 inst.vncconnect=185.228.235.92:5901
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
 goto os_install || goto debug_${vNAME}
