@@ -1,0 +1,71 @@
+#!ipxe
+###
+### netboot.xyz-custom menu Windows
+###
+
+clear custom_choice_windows
+set vNAME windows
+set vWINDOWS true
+set vRELEASE server
+
+goto ${menu} ||
+
+:custom_menu_${vNAME}
+menu Windows netboot
+item --gap Windows
+item windows ${space} Install Server
+item backtomenu <- Back to menu
+choose custom_choice_${vNAME}
+echo ${cls}
+goto ${custom_choice_windows} || goto debug_${vNAME}
+
+:windows
+set vCUSTOM_MIRROR 193.187.174.22
+set vARCH 64bit
+set vURL http://${vCUSTOM_MIRROR}/windows
+set vKERNEL ${vURL}/wimboot
+set vINITRD_BCD ${vURL}/BCD
+set vINITRD_BOOT_SDI ${vURL}/boot.sdi
+set vINITRD_BOOT_WIM ${vURL}/winpeamd64.wim
+goto os_install || goto debug_${vNAME}
+
+:debug_windows
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice_${vNAME} = ${custom_choice_windows}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vNAME = ${vNAME}
+echo vWINDOWS = ${vWINDOWS}
+echo vRELEASE = ${vRELEASE} 
+echo vARCH = ${vARCH}
+echo vURL = ${vURL}
+echo vKERNEL = ${vKERNEL}
+echo vINITRD_BCD = ${vINITRD_BCD}
+echo vINITRD_BOOT_SDI = ${vINITRD_BOOT_SDI}
+echo vINITRD_BOOT_WIM = ${vINITRD_BOOT_WIM}
+echo =========
+goto error_${vNAME}
+
+:error_windows
+echo +-------+
+echo | ERROR |
+echo +-------+
+echo Error occured, press any key to return to menu ...
+prompt
+chain custom_${vNAME}.ipxe
+
+:backtomenu
+chain custom.ipxe || goto error_${vNAME}
+
+:os_install
+echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+kernel ${vKERNEL} || goto debug_${vNAME}
+initrd ${vINITRD_BCD} BCD || goto debug_${vNAME}
+initrd ${vINITRD_BOOT_SDI} boot.sdi || goto debug_${vNAME}
+initrd ${vINITRD_BOOT_WIM} boot.wim || goto debug_${vNAME}
+boot || goto debug_${vNAME}goto debug_${vNAME}
