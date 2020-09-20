@@ -28,6 +28,7 @@ item custom_opensuse OpenSUSE
 item custom_scientific Scientific
 item custom_systemrescuecd SystemRescueCD
 item custom_ubuntu Ubuntu
+item custom_windows Windows
 
 item --gap Other boot
 item netbootxyz ${space} netboot.xyz NETWORK BOOT
