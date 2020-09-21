@@ -25,8 +25,8 @@ set vARCH 64bit
 set vURL http://${vCUSTOM_MIRROR}/windows
 set vKERNEL ${vURL}/wimboot
 #set vINITRD ${vURL}/bootmgr.exe
-set vINITRD_BCD ${vURL}/Boot/BCD
-set vINITRD_BOOT_SDI ${vURL}/Boot/boot.sdi
+set vINITRD_BCD ${vURL}/boot/BCD
+set vINITRD_BOOT_SDI ${vURL}/boot/boot.sdi
 set vINITRD_BOOT_WIM ${vURL}/winpeamd64.wim
 goto os_install || goto debug_${vNAME}
 
