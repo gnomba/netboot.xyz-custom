@@ -1,0 +1,4 @@
+#!ipxe
+
+set vCUSTOM_MIRROR 193.187.174.22
+chain http://${vCUSTOM_MIRROR}/boot.ipxe
