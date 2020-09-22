@@ -40,7 +40,8 @@ goto centos
 :centos
 set vARCH x86_64
 iseq ${vRELEASE} 8.2.2004 || iseq ${vRELEASE} 8-stream && set vURL http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot || set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-iseq ${vRELEASE} 8.2.2004 || iseq ${vRELEASE} 8-stream && set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img || set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp nameserver=8.8.4.4 initrd=initrd.img inst.vnc inst.vncpassword=Test1322 inst.vncconnect=185.228.235.92:5901
+iseq ${vRELEASE} 8.2.2004 || iseq ${vRELEASE} 8-stream && set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os ip=dhcp initrd=initrd.img || set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ ip=dhcp nameserver=8.8.4.4 initrd=initrd.img
+#inst.vnc inst.vncpassword=<pass> inst.vncconnect=<ip>:5901
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
 goto os_install || goto debug_${vNAME}
