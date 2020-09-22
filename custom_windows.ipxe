@@ -67,7 +67,7 @@ echo =================
 #imgfree
 #imgtrust --allow
 kernel ${vKERNEL} || goto debug_${vNAME}
-initrd ${vINITRD} bootmgr.exe|| goto debug_${vNAME}
+initrd ${vINITRD} bootmgr.exe || goto debug_${vNAME}
 initrd ${vINITRD_BCD} BCD || goto debug_${vNAME}
 initrd ${vINITRD_BOOT_SDI} boot.sdi || goto debug_${vNAME}
 initrd -n boot.wim ${vINITRD_BOOT_WIM} boot.wim || goto debug_${vNAME}
