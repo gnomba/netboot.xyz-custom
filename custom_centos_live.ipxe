@@ -6,7 +6,8 @@
 set vURL http://45.156.24.195
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
-set vOPTS initrd=initrd.img root=live:${vURL}/squashfs.img plymouth.enable=0 rd.live.image rd.luks=0 rd.md=0 rd.dm=0 rd.live.ram=1
+set vNET biosdevname=0 net.ifnames=0 ip=194.147.78.160::194.147.78.1:255.255.255.0:CentOS-7-Live:interface:none nameserver=8.8.4.4
+set vOPTS initrd=initrd.img root=live:${vURL}/squashfs.img plymouth.enable=0 rd.live.image rd.luks=0 rd.md=0 rd.dm=0 rd.live.ram=1 ${vNET}
 
 imgfree
 imgtrust --allow
