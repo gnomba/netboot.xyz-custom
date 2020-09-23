@@ -16,23 +16,28 @@ set vCUSTOM_MIRROR 185.228.233.185
 clear custom_choice
 menu gnomba's bootloader
 
-item custom_archlinux ArchLinux
-item custom_centos CentOS
-item custom_centos_live CentOS Live
-item custom_clonezilla Clonezilla
-item custom_debian Debian
-item custom_fedora Fedora
-item custom_gentoo Gentoo
-item custom_gparted GParted Live
-item custom_memtest Memtest
-item custom_opensuse OpenSUSE
-item custom_scientific Scientific
-item custom_systemrescuecd SystemRescueCD
-item custom_ubuntu Ubuntu
-#item custom_windows Windows
-item custom_windows_v2 Windows_v2
+item --gap ### Install ###
+item custom_archlinux ArchLinux (yandex mirror)
+item custom_centos CentOS (yandex mirror)
+item custom_debian Debian (yandex mirror)
+item custom_fedora Fedora (yandex mirror)
+item custom_gentoo Gentoo (custom mirror)
+item custom_opensuse OpenSUSE (yandex mirror)
+item custom_scientific Scientific (yandex mirror)
+item custom_ubuntu Ubuntu (yandex mirror)
+#item custom_windows Windows (custom mirror)
+#item custom_windows_v2 Windows_v2 (custom mirror)
 
-item --gap Other boot
+item --gap ### Live ###
+item custom_live_centos CentOS (custom mirror)
+item custom_live_clonezilla Clonezilla (custom mirror)
+item custom_live_gparted GParted Live (custom mirror)
+item custom_live_systemrescuecd SystemRescueCD (custom mirror)
+
+item --gap ### Tools ###
+item custom_tools_memtest Memtest
+
+item --gap ### Other netboot ###
 item netbootxyz ${space} netboot.xyz NETWORK BOOT
 item sals ${space} SAL's NETWORK BOOT
 
@@ -46,20 +51,10 @@ goto custom_exit
 :custom_menu
 chain ${custom_choice}.ipxe || goto debug
 
-:os_install
-echo Booting ${vNAME} ${vRELEASE} ${vARCH}
-echo =================
-imgfree
-imgtrust --allow
-kernel ${vKERNEL} ${vOPTS}
-isset ${vGENTOO} && initrd ${vURL}/image.squashfs
-initrd ${vINITRD}
-boot || goto debug
-
 :netbootxyz
 set conn_type https chain --autofree https://boot.netboot.xyz/menu.ipxe || echo HTTPS failed... attempting HTTP...
 set conn_type http chain --autofree http://boot.netboot.xyz/menu.ipxe || echo HTTP failed, localbooting... exit 
-goto custom
+goto custom.ipxe
 
 :sals
 chain http://boot.salstar.sk || goto custom
