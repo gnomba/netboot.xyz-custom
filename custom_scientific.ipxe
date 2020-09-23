@@ -10,7 +10,7 @@ set vSCIENTIFIC true
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu Scientific netboot
+menu Scientific netinstall
 item --gap Scientific
 item scientific7 ${space} 7 (7.7)
 item scientific6 ${space} 6 (6.9)
