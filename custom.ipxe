@@ -18,6 +18,7 @@ menu gnomba's bootloader
 
 item custom_archlinux ArchLinux
 item custom_centos CentOS
+item custom_centos_live CentOS Live
 item custom_clonezilla Clonezilla
 item custom_debian Debian
 item custom_fedora Fedora
