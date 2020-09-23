@@ -1,6 +1,6 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu Clonezilla
+### netboot.xyz-custom menu Clonezilla Live
 ###
 
 clear custom_choice_clonezilla
@@ -12,7 +12,7 @@ set vTYPE iso
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu Clonezilla netboot
+menu Clonezilla live
 item --gap Clonezilla
 #item clonezilla_ubuntu_${vTYPE} ${space} 20191024-eoan (Ubuntu-based) (ISO)
 #item clonezilla_debian_${vTYPE} ${space} 2.6.4-10 (Debian-based) (ISO)
