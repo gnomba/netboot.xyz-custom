@@ -16,30 +16,30 @@ set vCUSTOM_MIRROR 185.228.233.185
 clear custom_choice
 menu gnomba's bootloader
 
-item --gap === Install ===
-item custom_archlinux ${space}${space} ArchLinux
-item custom_centos ${space}${space} CentOS
-item custom_debian ${space}${space} Debian
-item custom_fedora ${space}${space} Fedora
-item custom_gentoo ${space}${space} Gentoo
-item custom_opensuse ${space}${space} OpenSUSE
-item custom_scientific ${space}${space} Scientific
-item custom_ubuntu ${space}${space} Ubuntu
-#item custom_windows ${space}${space} Windows
-#item custom_windows_v2 ${space}${space} Windows_v2
+item --gap Install:
+item custom_archlinux ${space} ArchLinux
+item custom_centos ${space} CentOS
+item custom_debian ${space} Debian
+item custom_fedora ${space} Fedora
+item custom_gentoo ${space} Gentoo
+item custom_opensuse ${space} OpenSUSE
+item custom_scientific ${space} Scientific
+item custom_ubuntu ${space} Ubuntu
+#item custom_windows ${space} Windows
+#item custom_windows_v2 ${space} Windows_v2
 
-item --gap === Live ===
-item custom_live_centos ${space}${space} CentOS
-item custom_live_clonezilla ${space}${space} Clonezilla
-item custom_live_gparted ${space}${space} GParted Live
-item custom_live_systemrescuecd ${space}${space} SystemRescueCD
+item --gap Live:
+item custom_live_centos ${space} CentOS
+item custom_live_clonezilla ${space} Clonezilla
+item custom_live_gparted ${space} GParted Live
+item custom_live_systemrescuecd ${space} SystemRescueCD
 
-item --gap === Tools ===
-item custom_tools_memtest ${space}${space} Memtest
+item --gap Tools:
+item custom_tools_memtest ${space} Memtest
 
-item --gap === Other netboot ===
-item netbootxyz ${space}${space}netboot.xyz NETWORK BOOT
-item sals ${space}${space}SAL's NETWORK BOOT
+item --gap Other netboot:
+item netbootxyz ${space} netboot.xyz NETWORK BOOT
+item sals ${space} SAL's NETWORK BOOT
 
 choose custom_choice || goto custom_exit
 echo ${cls}
