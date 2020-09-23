@@ -10,7 +10,7 @@ set vGENTOO true
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu Gentoo netboot
+menu Gentoo netinstall
 item --gap Gentoo
 item gentoo_minimal ${space} 2020-02-16
 item backtomenu <- Back to menu
