@@ -16,7 +16,7 @@ set vCUSTOM_MIRROR 185.228.233.185
 clear custom_choice
 menu gnomba's bootloader
 
-item --gap ### Install ###
+item --gap === Install ===
 item custom_archlinux ArchLinux (yandex mirror)
 item custom_centos CentOS (yandex mirror)
 item custom_debian Debian (yandex mirror)
@@ -28,16 +28,16 @@ item custom_ubuntu Ubuntu (yandex mirror)
 #item custom_windows Windows (custom mirror)
 #item custom_windows_v2 Windows_v2 (custom mirror)
 
-item --gap ### Live ###
+item --gap === Live ===
 item custom_live_centos CentOS (custom mirror)
 item custom_live_clonezilla Clonezilla (custom mirror)
 item custom_live_gparted GParted Live (custom mirror)
 item custom_live_systemrescuecd SystemRescueCD (custom mirror)
 
-item --gap ### Tools ###
+item --gap === Tools ===
 item custom_tools_memtest Memtest
 
-item --gap ### Other netboot ###
+item --gap === Other netboot ===
 item netbootxyz ${space} netboot.xyz NETWORK BOOT
 item sals ${space} SAL's NETWORK BOOT
 
