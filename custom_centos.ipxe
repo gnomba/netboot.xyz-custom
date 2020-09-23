@@ -10,7 +10,7 @@ set vCENTOS true
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu CentOS netboot
+menu CentOS netinstall
 item --gap CentOS
 item centos8stream ${space} 8 (Stream)
 item centos8 ${space} 8 (8.2.2004)
