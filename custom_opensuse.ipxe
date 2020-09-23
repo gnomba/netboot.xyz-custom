@@ -10,7 +10,7 @@ set vOPENSUSE true
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu OpenSUSE netboot
+menu OpenSUSE netinstall
 item --gap OpenSUSE
 item opensusetumbleweed ${space} Tumbleweed
 item opensuse152 ${space} 15.2
