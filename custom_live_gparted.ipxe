@@ -1,6 +1,6 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu GParted
+### netboot.xyz-custom menu GParted Live
 ###
 
 clear custom_choice_gparted
@@ -10,7 +10,7 @@ set vGPARTED true
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu GParted Live netboot
+menu GParted live
 item --gap GParted Live 1.1.0-1
 #item gparted_iso ${space} (test ISO file)
 item gparted_default ${space} Default settings
