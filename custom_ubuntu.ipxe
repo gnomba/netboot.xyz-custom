@@ -10,7 +10,7 @@ set vUBUNTU true
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu Ubuntu netboot
+menu Ubuntu netinstall
 item --gap Ubuntu
 item ubuntu2004 ${space} 20.04 LTS (Focal Fossa)
 item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
