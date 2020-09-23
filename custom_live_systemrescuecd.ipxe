@@ -1,6 +1,6 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu SystemRescueCD
+### netboot.xyz-custom menu SystemRescueCD Live
 ###
 
 clear custom_choice_systemrescuecd
@@ -10,7 +10,7 @@ set vSYSTEMRESCUECD true
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu SystemRescueCD netboot
+menu SystemRescueCD live
 item --gap SystemRescueCD
 item systemrescuecd6 ${space} 6.0.7 (Arch-based)
 item systemrescuecd6_iso ${space} 6.0.7 (ISO)
