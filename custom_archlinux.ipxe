@@ -10,7 +10,7 @@ set vARCHLINUX true
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu ArchLinux netboot
+menu ArchLinux netinstall
 item --gap ArchLinux
 item archlinux_latest ${space} latest
 item archlinux20200901 ${space} 2020.09.01
