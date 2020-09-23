@@ -10,7 +10,7 @@ set vFEDORA true
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu Fedora netboot
+menu Fedora netinstall
 item --gap Fedora
 item fedora32 ${space} 32
 item fedora31 ${space} 31
