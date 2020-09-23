@@ -1,0 +1,15 @@
+#!ipxe
+###
+### netboot.xyz-custom menu CentOS Live
+###
+
+set vURL http://45.156.24.195
+set vKERNEL ${vURL}/vmlinuz
+set vINITRD ${vURL}/initrd.img
+set vOPTS initrd=initrd.img root=live:${vURL}/squashfs.img plymouth.enable=0 rd.live.image rd.luks=0 rd.md=0 rd.dm=0 rd.live.ram=1
+
+imgfree
+imgtrust --allow
+kernel ${vKERNEL} ${vOPTS}
+initrd ${vINITRD}
+boot
