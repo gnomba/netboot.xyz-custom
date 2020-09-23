@@ -10,7 +10,7 @@ set vDEBIAN true
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu Debian netboot
+menu Debian netinstall
 item --gap Debian
 item debian10 ${space} 10 (Buster)
 item debian9 ${space} 9 (Stretch)
