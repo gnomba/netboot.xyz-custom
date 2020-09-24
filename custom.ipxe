@@ -29,9 +29,9 @@ item custom_ubuntu ${space} Ubuntu
 #item custom_windows_v2 ${space} Windows_v2
 
 item --gap Live:
-item custom_live_centos ${space} CentOS
+#item custom_live_centos ${space} CentOS
 item custom_live_clonezilla ${space} Clonezilla
-item custom_live_gparted ${space} GParted Live
+item custom_live_gparted ${space} GParted
 item custom_live_systemrescuecd ${space} SystemRescueCD
 
 item --gap Tools:
