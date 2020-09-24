@@ -26,7 +26,7 @@ item custom_opensuse ${space} OpenSUSE
 item custom_scientific ${space} Scientific
 item custom_ubuntu ${space} Ubuntu
 #item custom_windows ${space} Windows
-#item custom_windows_v2 ${space} Windows_v2
+item custom_windows_v2 ${space} Windows_v2
 
 item --gap Live:
 #item custom_live_centos ${space} CentOS
