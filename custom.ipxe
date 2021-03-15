@@ -1,81 +1,11 @@
 #!ipxe
-###
-### netboot.xyz-custom menu
-###
+set STREAM stable
+set VERSION 33.20210217.3.0
+set CONFIGURL tftp://192.168.89.1/example.ign
 
-# background
-set vPICTURE http://boot.ipxe.org/ipxe.png
-console --x 1280 --y 1024
-console --picture ${vPICTURE}
+set BASEURL https://builds.coreos.fedoraproject.org/prod/streams/${STREAM}/builds/${VERSION}/x86_64
 
-# mirror variables
-set vMIRROR mirror.yandex.ru
-set vCUSTOM_MIRROR 185.228.233.185
+kernel ${BASEURL}/fedora-coreos-${VERSION}-live-kernel-x86_64 coreos.live.rootfs_url=${BASEURL}/fedora-coreos-${VERSION}-live-rootfs.x86_64.img ignition.firstboot ignition.platform.id=metal ignition.config.url=${CONFIGURL} systemd.unified_cgroup_hierarchy=0
+initrd ${BASEURL}/fedora-coreos-${VERSION}-live-initramfs.x86_64.img
 
-:custom
-clear custom_choice
-menu gnomba's bootloader
-
-item --gap Install:
-item custom_archlinux ${space} ArchLinux
-item custom_centos ${space} CentOS
-item custom_debian ${space} Debian
-item custom_fedora ${space} Fedora
-item custom_gentoo ${space} Gentoo
-item custom_opensuse ${space} OpenSUSE
-item custom_scientific ${space} Scientific
-item custom_ubuntu ${space} Ubuntu
-#item custom_windows ${space} Windows
-item custom_windows_v2 ${space} Windows_v2
-
-item --gap Live:
-#item custom_live_centos ${space} CentOS
-item custom_live_clonezilla ${space} Clonezilla
-item custom_live_gparted ${space} GParted
-item custom_live_systemrescuecd ${space} SystemRescueCD
-
-item --gap Tools:
-item custom_tools_memtest ${space} Memtest
-
-item --gap Other netboot:
-item netbootxyz ${space} netboot.xyz NETWORK BOOT
-item sals ${space} SAL's NETWORK BOOT
-
-choose custom_choice || goto custom_exit
-echo ${cls}
-#iseq ${custom_choice} netbootxyz && goto netbootxyz
-#iseq ${custom_choice} sals && goto sals
-goto custom_menu || goto custom_exit
-
-:custom_menu
-chain ${custom_choice}.ipxe || goto debug
-
-:netbootxyz
-set conn_type https chain --autofree https://boot.netboot.xyz/menu.ipxe || echo HTTPS failed... attempting HTTP...
-set conn_type http chain --autofree http://boot.netboot.xyz/menu.ipxe || echo HTTP failed, localbooting... exit 
-goto custom.ipxe
-
-:sals
-chain http://boot.salstar.sk || goto custom
-
-:debug
-echo +-------+
-echo | DEBUG |
-echo +-------+
-echo custom_choice = ${custom_choice}
-echo vMIRROR = ${vMIRROR}
-echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
-echo =========
-goto error
-
-:error
-echo +-------+
-echo | ERROR |
-echo +-------+
-echo Error occured, press any key to return to menu ...
-prompt
-chain custom.ipxe
-
-:custom_exit
-goto netbootxyz
-exit
+boot
