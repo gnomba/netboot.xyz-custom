@@ -6,6 +6,6 @@ set CONFIGURL tftp://192.168.89.1/example.ign
 set BASEURL https://builds.coreos.fedoraproject.org/prod/streams/${STREAM}/builds/${VERSION}/x86_64
 
 kernel ${BASEURL}/fedora-coreos-${VERSION}-live-kernel-x86_64 ip=dhcp rd.neednet=1 coreos.inst.install_dev=/dev/sda coreos.inst.ignition_url=${CONFIGURL} coreos.live.rootfs_url=${BASEURL}/fedora-coreos-${VERSION}-live-rootfs.x86_64.img initrd=fedora-coreos-${VERSION}-live-initramfs.x86_64.img
-initrd ${BASEURL}/x86_64/fedora-coreos-${VERSION}-live-initramfs.x86_64.img
+initrd ${BASEURL}/fedora-coreos-${VERSION}-live-initramfs.x86_64.img
 
 boot
