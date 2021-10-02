@@ -13,9 +13,9 @@ goto ${menu} ||
 menu ArchLinux netinstall
 item --gap ArchLinux
 item archlinux_latest ${space} latest
-item archlinux20210101 ${space} 2021.03.01
-item archlinux20201201 ${space} 2021.02.01
-item archlinux20201101 ${space} 2021.01.01
+item archlinux20211001 ${space} 2021.10.01
+item archlinux20210901 ${space} 2021.09.01
+item archlinux20210801 ${space} 2021.08.01
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
@@ -25,16 +25,16 @@ goto ${custom_choice_archlinux} || goto debug_${vNAME}
 set vRELEASE latest
 goto ${vNAME}
 
-archlinux20210301
-set vRELEASE 2021.03.01
+archlinux20211001
+set vRELEASE 2021.10.01
 goto ${vNAME}
 
-archlinux20210201
-set vRELEASE 2021.02.01
+archlinux20210901
+set vRELEASE 2021.09.01
 goto ${vNAME}
 
-archlinux20210101
-set vRELEASE 2021.01.01
+archlinux20210801
+set vRELEASE 2021.08.01
 goto ${vNAME}
 
 :archlinux
