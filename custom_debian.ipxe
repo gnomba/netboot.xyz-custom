@@ -12,16 +12,30 @@ goto ${menu} ||
 :custom_menu_${vNAME}
 menu Debian netinstall
 item --gap Debian
+###item debian13 ${space} (testing) 13 (Trixie)
+item debian12 ${space} (testing) 12 (Bookworm)
+item debian11 ${space} 11 (Bullseye)
 item debian10 ${space} 10 (Buster)
 item debian9 ${space} 9 (Stretch)
 item debian8 ${space} 8 (Jessie)
 item debian7 ${space} 7 (Wheezy)
-item debian11 ${space} (testing) 11 (Bullseye)
 item debiansid ${space} (unstable) Sid
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
 goto ${custom_choice_debian} || goto debug_${vNAME}
+
+###:debian13
+###set vRELEASE trixie
+###goto debian
+
+:debian12
+set vRELEASE bookworm
+goto debian
+
+:debian11
+set vRELEASE bullseye
+goto debian
 
 :debian10
 set vRELEASE buster
@@ -36,11 +50,8 @@ set vRELEASE jessie
 goto debian
 
 :debian7
+set vMIRROR archive.debian.org
 set vRELEASE wheezy
-goto debian
-
-:debian11
-set vRELEASE bullseye
 goto debian
 
 :debiansid
@@ -50,6 +61,7 @@ goto debian
 :debian
 set vARCH amd64
 set vURL http://${vMIRROR}/${vNAME}/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/${vNAME}-installer/${vARCH}
+console --picture ${vURL}/boot-screens/splash.png
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
