@@ -40,6 +40,7 @@ goto ${vNAME}
 :archlinux
 set vARCH x86_64
 set vURL http://${vMIRROR}/archlinux/iso/${vRELEASE}
+console --picture https://gitlab.archlinux.org/archlinux/archiso/-/raw/master/configs/releng/syslinux/splash.png?inline=false
 set vKERNEL ${vURL}/arch/boot/${vARCH}/vmlinuz
 set vINITRD ${vURL}/arch/boot/${vARCH}/archiso.img
 set vOPTS vmlinuz initrd=archiso.img archiso_http_srv=${vURL}/ archisobasedir=arch verify=y ip=dhcp net.ifnames=0 ${console}
