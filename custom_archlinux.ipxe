@@ -4,8 +4,9 @@
 ###
 
 clear custom_choice_archlinux
+set vPICTURE https://images.pling.com/img/00/00/49/31/57/1222520/140534-1.png
 console --x 1280 --y 1024
-console --picture https://gitlab.archlinux.org/archlinux/archiso/-/raw/master/configs/releng/syslinux/splash.png
+console --picture ${vPICTURE}
 set vNAME archlinux
 set vARCHLINUX true
 
