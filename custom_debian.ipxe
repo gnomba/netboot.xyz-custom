@@ -4,6 +4,9 @@
 ###
 
 clear custom_choice_debian
+set vPICTURE https://get.wallhere.com/photo/Debian-Linux-monochrome-minimalism-computer-1810411.jpg
+console --x 1280 --y 1024
+console --picture ${vPICTURE}
 set vNAME debian
 set vDEBIAN true
 
