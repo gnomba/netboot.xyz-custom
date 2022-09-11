@@ -4,7 +4,7 @@
 ###
 
 clear custom_choice_archlinux
-set vPICTURE https://images.pling.com/img/00/00/49/31/57/1222520/140534-1.png
+set vPICTURE https://c4.wallpaperflare.com/wallpaper/672/729/98/linux-arch-linux-1280x1024-technology-linux-hd-art-wallpaper-preview.jpg
 console --x 1280 --y 1024
 console --picture ${vPICTURE}
 set vNAME archlinux
