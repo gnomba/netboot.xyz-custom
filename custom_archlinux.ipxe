@@ -4,9 +4,9 @@
 ###
 
 clear custom_choice_archlinux
-set vPICTURE https://upload.wikimedia.org/wikipedia/commons/d/db/Debian11_wallpaper.png
-console --x 1280 --y 1024
-console --picture ${vPICTURE}
+###set vPICTURE https://upload.wikimedia.org/wikipedia/commons/d/db/Debian11_wallpaper.png
+###console --x 1280 --y 1024
+###console --picture ${vPICTURE}
 set vNAME archlinux
 set vARCHLINUX true
 
