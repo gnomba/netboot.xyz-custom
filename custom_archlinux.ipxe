@@ -4,7 +4,7 @@
 ###
 
 clear custom_choice_archlinux
-set vPICTURE https://images.hdqwalls.com/download/arch-linux-1280x1024.jpg
+set vPICTURE https://roboticoverlords.org/wallpapers/astize_cc0_split1.png
 console --x 1280 --y 1024
 console --picture ${vPICTURE}
 set vNAME archlinux
