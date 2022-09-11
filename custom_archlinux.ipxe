@@ -4,7 +4,7 @@
 ###
 
 clear custom_choice_archlinux
-set vPICTURE https://roboticoverlords.org/wallpapers/astize_cc0_split1.png
+set vPICTURE https://pkgbuild.com/~foxboron/ArchlinuxGraphics/wall_style1_logo.png
 console --x 1280 --y 1024
 console --picture ${vPICTURE}
 set vNAME archlinux
