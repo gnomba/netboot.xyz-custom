@@ -12,6 +12,7 @@ goto ${menu} ||
 :custom_menu_${vNAME}
 menu Ubuntu netinstall
 item --gap Ubuntu
+item ubuntu2204 ${space} 22.04 LTS (Jammy Jellyfish)
 item ubuntu2004 ${space} 20.04 LTS (Focal Fossa)
 item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
 item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
@@ -20,6 +21,10 @@ item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
 goto ${custom_choice_ubuntu} || goto debug_${vNAME}
+
+:ubuntu2204
+set vRELEASE jammy
+goto ${vNAME}
 
 :ubuntu2004
 set vRELEASE focal
@@ -40,6 +45,8 @@ goto ${vNAME}
 :ubuntu
 set vARCH amd64
 iseq ${vRELEASE} focal && set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}/main/installer-${vARCH}/current/legacy-images/netboot/ubuntu-installer/${vARCH} || set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
+console --x 1280 --y 1024
+console --picture ${vURL}/boot-screens/splash.png
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
