@@ -5,7 +5,7 @@
 
 clear custom_choice_archlinux
 console --x 1280 --y 1024
-console --picture https://gitlab.archlinux.org/archlinux/archiso/-/raw/master/configs/releng/syslinux/splash.png?inline=false
+console --picture https://gitlab.archlinux.org/archlinux/archiso/-/raw/master/configs/releng/syslinux/splash.png
 set vNAME archlinux
 set vARCHLINUX true
 
