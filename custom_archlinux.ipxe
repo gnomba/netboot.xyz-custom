@@ -43,9 +43,9 @@ goto ${vNAME}
 :archlinux
 set vARCH x86_64
 set vURL http://${vMIRROR}/archlinux/iso/${vRELEASE}
-set vKERNEL ${vURL}/arch/boot/${vARCH}/vmlinuz
-set vINITRD ${vURL}/arch/boot/${vARCH}/archiso.img
-set vOPTS vmlinuz initrd=archiso.img archiso_http_srv=${vURL}/ archisobasedir=arch verify=y ip=dhcp net.ifnames=0 ${console}
+set vKERNEL ${vURL}/arch/boot/${vARCH}/vmlinuz-linux
+set vINITRD ${vURL}/arch/boot/${vARCH}/initramfs-linux.img
+set vOPTS vmlinuz-linux initrd=initramfs-linux.img archiso_http_srv=${vURL}/ archisobasedir=arch verify=y ip=dhcp net.ifnames=0 ${console}
 goto os_install || goto debug_${vNAME}
 
 :debug_archlinux
