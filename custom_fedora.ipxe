@@ -12,24 +12,24 @@ goto ${menu} ||
 :custom_menu_${vNAME}
 menu Fedora netinstall
 item --gap Fedora
-item fedora32 ${space} 32
-item fedora31 ${space} 31
-item fedora30 ${space} 30
+item fedora36 ${space} 36
+item fedora35 ${space} 35
+item fedora34 ${space} 34
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
 goto ${custom_choice_fedora} || goto debug_${vNAME}
 
-:fedora32
-set vRELEASE 32
+:fedora36
+set vRELEASE 36
 goto ${vNAME}
 
-:fedora31
-set vRELEASE 31
+:fedora35
+set vRELEASE 35
 goto ${vNAME}
 
-:fedora30
-set vRELEASE 30
+:fedora34
+set vRELEASE 34
 goto ${vNAME}
 
 :fedora
