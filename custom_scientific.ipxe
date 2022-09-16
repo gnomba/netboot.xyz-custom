@@ -30,7 +30,7 @@ goto ${vNAME}
 :scientific
 set vARCH x86_64
 set vURL http://${vMIRROR}/${vNAME}linux/${vRELEASE}/${vARCH}/os/images/pxeboot
-set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/${vNAME}linux/${vRELEASE}/${vARCH}/os/ ip=dhcp initrd=initrd.img
+set vOPTS ramdisk_size=3145728 repo=http://${vMIRROR}/${vNAME}linux/${vRELEASE}/${vARCH}/os/ ip=dhcp initrd=initrd.img
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
 goto os_install || goto debug_${vNAME}

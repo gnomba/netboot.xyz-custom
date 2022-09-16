@@ -37,7 +37,7 @@ set vARCH x86_64
 set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
-set vOPTS ramdisk_size=100000 repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
+set vOPTS ramdisk_size=3145728 repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
 goto os_install || goto debug_${vNAME}
 
 :debug_fedora
