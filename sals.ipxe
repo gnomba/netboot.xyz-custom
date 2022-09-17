@@ -1,0 +1,6 @@
+#!ipxe
+###
+### netboot.xyz-custom boot SAL's
+###
+
+chain http://boot.salstar.sk/menu.ipxe
