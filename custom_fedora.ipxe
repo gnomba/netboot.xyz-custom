@@ -41,7 +41,7 @@ item fedora_Kinoite ${space} Kinoite
 item fedora_Silverblue ${space} Silverblue
 item backtomenu <- Back to menu
 choose ${vNAME}_sku
-goto ${vNAME}
+goto ${vNAME} || goto debug_${vNAME}
 
 :fedora
 set vARCH x86_64
