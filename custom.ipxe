@@ -43,17 +43,10 @@ item sals ${space} SAL's NETWORK BOOT
 
 choose custom_choice || goto custom_exit
 echo ${cls}
-#iseq ${custom_choice} netbootxyz && goto netbootxyz
-#iseq ${custom_choice} sals && goto sals
 goto custom_menu || goto custom_exit
 
 :custom_menu
 chain ${custom_choice}.ipxe || goto debug
-
-:netbootxyz
-set conn_type https chain --autofree https://boot.netboot.xyz/menu.ipxe || echo HTTPS failed... attempting HTTP...
-set conn_type http chain --autofree http://boot.netboot.xyz/menu.ipxe || echo HTTP failed, localbooting... exit 
-chain custom.ipxe
 
 :debug
 echo +-------+
