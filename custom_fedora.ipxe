@@ -22,22 +22,33 @@ goto ${custom_choice_fedora} || goto debug_${vNAME}
 
 :fedora36
 set vRELEASE 36
-goto ${vNAME}
+goto ${fedora_type}
 
 :fedora35
 set vRELEASE 35
-goto ${vNAME}
+goto ${fedora_type}
 
 :fedora34
 set vRELEASE 34
+goto ${fedora_type}
+
+:fedora_type
+menu Fedora netinstall
+item --gap Fedora ${vRELEASE} 
+item fedora_Everything ${space} Everything
+item fedora_Server ${space} Server
+item fedora_Kinoite ${space} Kinoite
+item fedora_Silverblue ${space} Silverblue
+item backtomenu <- Back to menu
+choose ${vNAME}_sku
 goto ${vNAME}
 
 :fedora
 set vARCH x86_64
-set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/images/pxeboot
+set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/${fedora_sku}/${vARCH}/os/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
-set vOPTS ramdisk_size=3145728 inst.repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
+set vOPTS ramdisk_size=3145728 inst.repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/${fedora_sku}/${vARCH}/os/ ip=dhcp initrd=initrd.img
 goto os_install || goto debug_${vNAME}
 
 :debug_fedora
@@ -45,6 +56,7 @@ echo +-------+
 echo | DEBUG |
 echo +-------+
 echo custom_choice_${vNAME} = ${custom_choice_fedora}
+echo ${vNAME}_sku = ${fedora_sku}
 echo vMIRROR = ${vMIRROR}
 echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
 echo vNAME = ${vNAME}
