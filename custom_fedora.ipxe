@@ -33,13 +33,13 @@ set vRELEASE 34
 goto ${fedora_type}
 
 :fedora_type
-menu Fedora netinstall
 item --gap Fedora ${vRELEASE} 
 item Everything ${space} ${vSKU} Everything
 item Server ${space} ${vSKU} Server
 item Kinoite ${space} ${vSKU} Kinoite
 item Silverblue ${space} ${vSKU} Silverblue
 item backtomenu <- Back to menu
+set vSKU ${vSKU}
 goto ${vNAME} || goto debug_${vNAME}
 
 :fedora
