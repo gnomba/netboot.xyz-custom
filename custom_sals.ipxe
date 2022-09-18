@@ -33,7 +33,7 @@ goto os_install || goto debug_${vNAME}
 echo +-------+
 echo | DEBUG |
 echo +-------+
-echo custom_choice_${vNAME} = ${custom_choice_netbootxyz}
+echo custom_choice_${vNAME} = ${custom_choice_sals}
 echo vMIRROR = ${vMIRROR}
 echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
 echo vNAME = ${vNAME}
