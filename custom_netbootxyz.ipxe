@@ -26,6 +26,7 @@ goto ${vNAME}
 :netbootxyz
 set vARCH x86_64
 set vURL http://${vMIRROR}
+set vURL2 https://${vMIRROR}
 goto os_install || goto debug_${vNAME}
 
 :debug_netbootxyz
@@ -40,6 +41,7 @@ echo vNETBOOTXYZ = ${vNETBOOTXYZ}
 echo vRELEASE = ${vRELEASE} 
 echo vARCH = ${vARCH}
 echo vURL = ${vURL}
+echo vURL2 = ${vURL2}
 echo vKERNEL = ${vKERNEL}
 echo vINITRD = ${vINITRD}
 echo vOPTS = ${vOPTS}
@@ -62,6 +64,6 @@ echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
 imgtrust --allow
-#set conn_type https chain --autofree https://${vURL}/menu.ipxe || echo HTTPS failed... attempting HTTP...
-#set conn_type http chain --autofree http://${vURL}/menu.ipxe || echo HTTP failed... exit
-chain --autofree https://${vURL}/menu.ipxe || goto debug_${vNAME}
+set conn_type https chain --autofree ${vURL2}/menu.ipxe || echo HTTPS failed... attempting HTTP...
+set conn_type http chain --autofree ${vURL}/menu.ipxe || echo HTTP failed... exit
+goto debug_${vNAME}
