@@ -20,11 +20,13 @@ goto ${custom_choice_netbootxyz} || goto debug_${vNAME}
 
 :netbootxyz_2x
 set vRELEASE 2.x
+set vMIRROR boot.netboot.xyz
 goto ${vNAME}
 
 :netbootxyz
-set conn_type https chain --autofree https://boot.netboot.xyz/menu.ipxe || echo HTTPS failed... attempting HTTP...
-set conn_type http chain --autofree http://boot.netboot.xyz/menu.ipxe || echo HTTP failed, localbooting... exit
+set vARCH x86_64
+set vURL http://${vMIRROR}
+goto os_install || goto debug_${vNAME}
 
 :debug_netbootxyz
 echo +-------+
@@ -54,3 +56,12 @@ chain custom_${vNAME}.ipxe
 
 :backtomenu
 chain custom.ipxe || goto error_${vNAME}
+
+:os_install
+echo Booting ${vNAME} ${vRELEASE} ${vARCH}
+echo =================
+imgfree
+imgtrust --allow
+set conn_type https chain --autofree https://${vURL}/menu.ipxe || echo HTTPS failed... attempting HTTP...
+set conn_type http chain --autofree http://${vURL}/menu.ipxe || echo HTTP failed... exit
+goto debug_${vNAME}
