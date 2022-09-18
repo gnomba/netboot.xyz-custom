@@ -67,4 +67,4 @@ imgtrust --allow
 #set conn_type https chain --autofree ${vURL2}/menu.ipxe || echo HTTPS failed... attempting HTTP...
 #set conn_type http chain --autofree ${vURL}/menu.ipxe || echo HTTP failed... exit
 chain --autofree ${vURL}/menu.ipxe || chain --autofree ${vURL2}/menu.ipxe
-#goto debug_${vNAME}
+goto debug_${vNAME}
