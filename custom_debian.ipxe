@@ -68,7 +68,7 @@ console --picture ${vURL}/boot-screens/splash.png
 console --x 1280 --y 1024
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
-set vOPTS 
+set vOPTS biosdevname=0 net.ifnames=0
 goto os_install || goto debug_${vNAME}
 
 :debug_debian
