@@ -59,7 +59,7 @@ set vRELEASE 8.5.2111
 set vMIRROR archive.kernel.org
 set vURL http://${vMIRROR}/centos-vault/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
 set vPICTURE http://${vMIRROR}/centos-vault/${vRELEASE}/BaseOS/${vARCH}/os/isolinux/splash.png
-set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} repo=https://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
+set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} inst.repo=https://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
 goto centos
 
 :centos7
