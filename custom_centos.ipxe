@@ -67,7 +67,7 @@ goto centos
 set vRELEASE 7.9.2009
 set vMIRROR mirror.yandex.ru
 set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vPICTURE https://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/isolinux/splash.jpg
+set vPICTURE http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/isolinux/splash.jpg
 set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
 goto centos
 
