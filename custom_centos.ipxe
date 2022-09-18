@@ -74,7 +74,7 @@ goto centos
 set vRELEASE 6.10
 set vMIRROR archive.kernel.org
 set vURL http://${vMIRROR}/centos-vault/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vPICTURE http://${vMIRROR}/centos-vault/${vRELEASE}/os/${vARCH}/isolinux/splash.jpg
+#set vPICTURE http://${vMIRROR}/centos-vault/${vRELEASE}/os/${vARCH}/isolinux/splash.jpg
 set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} repo=https://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
 goto centos
 
