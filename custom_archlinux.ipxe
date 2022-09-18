@@ -28,15 +28,15 @@ goto ${custom_choice_archlinux} || goto debug_${vNAME}
 set vRELEASE latest
 goto ${vNAME}
 
-archlinux20220903
+:archlinux20220903
 set vRELEASE 2022.09.03
 goto ${vNAME}
 
-archlinux20220805
+:archlinux20220805
 set vRELEASE 2022.08.05
 goto ${vNAME}
 
-archlinux20220701
+:archlinux20220701
 set vRELEASE 2022.07.01
 goto ${vNAME}
 

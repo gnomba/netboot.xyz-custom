@@ -7,5 +7,50 @@ clear custom_choice_netbootxyz
 set vNAME netbootxyz
 set vNETBOOTXYZ true
 
+goto ${menu} ||
+
+:custom_menu_${vNAME}
+menu netbootxyz boot
+item --gap netbootxyz
+item netbootxyz_2x ${space} 2.x
+item backtomenu <- Back to menu
+choose custom_choice_${vNAME}
+echo ${cls}
+goto ${custom_choice_netbootxyz} || goto debug_${vNAME}
+
+:netbootxyz_2x
+set vRELEASE 2.x
+goto ${vNAME}
+
+:netbootxyz
 set conn_type https chain --autofree https://boot.netboot.xyz/menu.ipxe || echo HTTPS failed... attempting HTTP...
 set conn_type http chain --autofree http://boot.netboot.xyz/menu.ipxe || echo HTTP failed, localbooting... exit
+
+:debug_netbootxyz
+echo +-------+
+echo | DEBUG |
+echo +-------+
+echo custom_choice_${vNAME} = ${custom_choice_netbootxyz}
+echo vMIRROR = ${vMIRROR}
+echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vNAME = ${vNAME}
+echo vNETBOOTXYZ = ${vNETBOOTXYZ}
+echo vRELEASE = ${vRELEASE} 
+echo vARCH = ${vARCH}
+echo vURL = ${vURL}
+echo vKERNEL = ${vKERNEL}
+echo vINITRD = ${vINITRD}
+echo vOPTS = ${vOPTS}
+echo =========
+goto error_${vNAME}
+
+:error_netbootxyz
+echo +-------+
+echo | ERROR |
+echo +-------+
+echo Error occured, press any key to return to menu ...
+prompt
+chain custom_${vNAME}.ipxe
+
+:backtomenu
+chain custom.ipxe || goto error_${vNAME}
