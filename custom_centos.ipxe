@@ -27,7 +27,7 @@ goto ${custom_choice_centos} || goto debug_${vNAME}
 set vRELEASE 9-stream
 set vMIRROR mirror.stream.centos.org
 set vURL http://${vMIRROR}/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
-set vOPTS biosdevname=0 net.ifnames=0 ramdisk_size=3145728 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123 
+set vOPTS biosdevname=0 net.ifnames=0 ramdisk_size=3145728 inst.repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123 
 goto centos
 
 :centos8stream
