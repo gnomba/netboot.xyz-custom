@@ -64,7 +64,5 @@ echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
 imgtrust --allow
-#set conn_type https chain --autofree ${vURL2}/menu.ipxe || echo HTTPS failed... attempting HTTP...
-#set conn_type http chain --autofree ${vURL}/menu.ipxe || echo HTTP failed... exit
 chain --autofree ${vURL2}/menu.ipxe || chain --autofree ${vURL}/menu.ipxe
 goto debug_${vNAME}
