@@ -3,5 +3,5 @@
 ### netboot.xyz-custom boot SAL's
 ###
 
-set conn_type https chain --autofree https://boot.salstar.sk || echo HTTPS failed... attempting HTTP...
-set conn_type http chain --autofree http://boot.salstar.sk || echo HTTP failed, localbooting... exit
+set conn_type https chain --autofree https://boot.salstar.sk/menu.ipxe || echo HTTPS failed... attempting HTTP...
+set conn_type http chain --autofree http://boot.salstar.sk/menu.ipxe || echo HTTP failed, localbooting... exit
