@@ -7,6 +7,21 @@ clear custom_choice_centos
 set vNAME centos
 set vCENTOS true
 set vARCH x86_64
+set vRAMDISK ramdisk_size=3145728
+# 1Mb - 1024kB
+# 2Mb - 2048kB
+# 4Mb - 4096kB
+# 8Mb - 8192kB
+# 16Mb - 16384kB
+# 32Mb - 32768kB
+# 64Mb - 65536kb
+# 128Mb - 131072kB
+# 256Mb - 262144kB
+# 512Mb - 524288kB
+# 1GB - 1048576kB
+# 2GB - 2097152kB
+# 3GB - 3145728kB
+# 4GB - 4194304kB
 
 goto ${menu} ||
 
@@ -27,14 +42,14 @@ goto ${custom_choice_centos} || goto debug_${vNAME}
 set vRELEASE 9-stream
 set vMIRROR mirror.stream.centos.org
 set vURL http://${vMIRROR}/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
-set vOPTS biosdevname=0 net.ifnames=0 ramdisk_size=3145728 inst.repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123 
+set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} inst.repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123 
 goto centos
 
 :centos8stream
 set vRELEASE 8-stream
 set vMIRROR mirror.yandex.ru
 set vURL http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
-set vOPTS biosdevname=0 net.ifnames=0 ramdisk_size=3145728 inst.repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123 
+set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} inst.repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123 
 goto centos
 
 :centos8
@@ -42,14 +57,14 @@ set vRELEASE 8.5.2111
 set vMIRROR vault.centos.org
 set conn_type https
 set vURL https://${vMIRROR}/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
-set vOPTS biosdevname=0 net.ifnames=0 ramdisk_size=3145728 repo=https://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
+set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} repo=https://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
 goto centos
 
 :centos7
 set vRELEASE 7.9.2009
 set vMIRROR mirror.yandex.ru
 set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vOPTS biosdevname=0 net.ifnames=0 ramdisk_size=3145728 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
+set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
 goto centos
 
 :centos6
@@ -57,7 +72,7 @@ set vRELEASE 6.10
 set vMIRROR vault.centos.org
 set conn_type https
 set vURL https://${vMIRROR}/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vOPTS biosdevname=0 net.ifnames=0 ramdisk_size=3145728 repo=https://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
+set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} repo=https://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
 goto centos
 
 :centos
