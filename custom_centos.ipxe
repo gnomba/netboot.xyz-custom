@@ -54,8 +54,8 @@ goto centos
 :centos6
 set vRELEASE 6.10
 set vMIRROR vault.centos.org
-set vURL https://${vMIRROR}/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vOPTS biosdevname=0 net.ifnames=0 ramdisk_size=3145728 repo=https://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
+set vURL http://${vMIRROR}/${vRELEASE}/os/${vARCH}/images/pxeboot
+set vOPTS biosdevname=0 net.ifnames=0 ramdisk_size=3145728 repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
 goto centos
 
 :centos
