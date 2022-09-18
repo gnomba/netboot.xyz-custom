@@ -40,7 +40,7 @@ goto centos
 :centos8
 set vRELEASE 8.5.2111
 set vMIRROR vault.centos.org
-set vURL https://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
+set vURL http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
 set vOPTS biosdevname=0 net.ifnames=0 ramdisk_size=3145728 repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
 goto centos
 
