@@ -23,6 +23,22 @@ set vRAMDISK ramdisk_size=3145728
 # 3GB - 3145728kB
 # 4GB - 4194304kB
 
+# REPO ELREPO
+#inst.addrepo=ELREPO-9,https://elrepo.org/linux/elrepo/el9/x86_64
+#inst.addrepo=ELREPO-8,https://elrepo.org/linux/elrepo/el8/x86_64
+#inst.addrepo=ELREPO-7,https://elrepo.org/linux/elrepo/el7/x86_64
+#inst.addrepo=ELREPO-6,https://elrepo.org/linux/elrepo/el6/x86_64
+
+# REPO EPEL
+#inst.addrepo=EPEL-9,https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64
+#inst.addrepo=EPEL-8,https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64
+#inst.addrepo=EPEL-7,https://dl.fedoraproject.org/pub/epel/7/x86_64
+#inst.addrepo=EPEL-6,https://archives.fedoraproject.org/pub/archive/epel/6/x86_64
+
+# ADD DRIVERS
+#inst.dd=hd:/dev/sdb:/kmod-be2net-12.0.0.0-7.el8_4.elrepo.x86_64.rpm
+#inst.dd=cdrom:/dev/sr0:/kmod-be2net-12.0.0.0-7.el8_4.elrepo.x86_64.rpm
+
 goto ${menu} ||
 
 :custom_menu_${vNAME}
