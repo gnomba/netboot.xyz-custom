@@ -4,7 +4,7 @@
 ###
 
 # background
-set vPICTURE http://boot.ipxe.org/ipxe.png
+set vPICTURE background/ipxe.png
 console --x 1280 --y 1024
 console --picture ${vPICTURE}
 
