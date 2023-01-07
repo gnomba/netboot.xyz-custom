@@ -8,6 +8,8 @@ set vNAME centos
 set vCENTOS true
 set vARCH x86_64
 set vRAMDISK ramdisk_size=3145728
+set vPICTURE background/centos.png
+console --picture ${vPICTURE}
 # 1Mb - 1024kB
 # 2Mb - 2048kB
 # 4Mb - 4096kB
