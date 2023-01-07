@@ -21,8 +21,8 @@ item win10 ${space} 10 [22H2] Ru
 item win10ltsc ${space} 10 LTSC [21H2] Ru
 item --gap Windows Deprecated
 item win8.1 ${space} 8.1 (10 Jan 2023)
-item win8 ${space} (12 Jan 2016)
-item win7 ${space} (14 Jan 2020)
+item win8 ${space} 8 (12 Jan 2016)
+item win7 ${space} 7 (14 Jan 2020)
 item --gap
 item --gap Windows Server
 item win2k22 ${space} 2022 (14 Oct 2031)
