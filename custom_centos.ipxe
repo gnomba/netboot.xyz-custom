@@ -8,7 +8,7 @@ set vNAME centos
 set vCENTOS true
 set vARCH x86_64
 set vRAMDISK ramdisk_size=3145728
-set vPICTURE background/centos.png
+set vPICTURE background/${vNAME}.png
 console --picture ${vPICTURE}
 # 1Mb - 1024kB
 # 2Mb - 2048kB
@@ -51,7 +51,7 @@ item --gap
 item --gap
 item --gap
 item --gap
-item --gap CentOS
+item --gap
 item centos9stream ${space} 9 (Stream)
 item centos8stream ${space} 8 (Stream)
 item centos8 ${space} 8 (8.5.2111)
@@ -66,7 +66,7 @@ goto ${custom_choice_centos} || goto debug_${vNAME}
 set vRELEASE 9-stream
 set vMIRROR mirror.stream.centos.org
 set vURL http://${vMIRROR}/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
-set vPICTURE http://${vMIRROR}/${vRELEASE}/BaseOS/${vARCH}/os/isolinux/splash.png
+set vPICTURE background/${vNAME}-${vRELEASE}.png
 set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} inst.repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os inst.stage2=http://${vMIRROR}/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123 
 goto centos
 
@@ -74,7 +74,7 @@ goto centos
 set vRELEASE 8-stream
 set vMIRROR mirror.yandex.ru
 set vURL http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
-set vPICTURE http://${vMIRROR}/${vRELEASE}/BaseOS/${vARCH}/os/isolinux/splash.png
+set vPICTURE background/${vNAME}-${vRELEASE}.png
 set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} inst.repo=http://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123 
 goto centos
 
@@ -82,7 +82,7 @@ goto centos
 set vRELEASE 8.5.2111
 set vMIRROR archive.kernel.org
 set vURL http://${vMIRROR}/centos-vault/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
-set vPICTURE http://${vMIRROR}/centos-vault/${vRELEASE}/BaseOS/${vARCH}/os/isolinux/splash.png
+set vPICTURE background/${vNAME}-8.png
 set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} inst.repo=https://${vMIRROR}/centos/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
 goto centos
 
@@ -90,7 +90,7 @@ goto centos
 set vRELEASE 7.9.2009
 set vMIRROR mirror.yandex.ru
 set vURL http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/images/pxeboot
-set vPICTURE http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/isolinux/splash.png
+set vPICTURE background/${vNAME}-7.png
 set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} repo=http://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
 goto centos
 
@@ -98,7 +98,7 @@ goto centos
 set vRELEASE 6.10
 set vMIRROR archive.kernel.org
 set vURL http://${vMIRROR}/centos-vault/${vRELEASE}/os/${vARCH}/images/pxeboot
-#set vPICTURE http://${vMIRROR}/centos-vault/${vRELEASE}/os/${vARCH}/isolinux/splash.jpg
+set vPICTURE background/${vNAME}-6.png
 set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} repo=https://${vMIRROR}/centos/${vRELEASE}/os/${vARCH}/ initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123
 goto centos
 
