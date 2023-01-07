@@ -139,6 +139,7 @@ chain custom_${vNAME}.ipxe
 chain custom.ipxe || goto error_${vNAME}
 
 :os_install
+echo vPICTURE = ${vPICTURE}
 console --picture ${vPICTURE}
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
