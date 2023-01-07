@@ -45,11 +45,11 @@ goto ${menu} ||
 
 :custom_menu_${vNAME}
 menu CentOS netinstall
-echo -n  
-echo -n  
-echo -n  
-echo -n  
-echo -n  
+echo -n " "
+echo -n " "
+echo -n " "
+echo -n " "
+echo -n " "
 item --gap CentOS
 item centos9stream ${space} 9 (Stream)
 item centos8stream ${space} 8 (Stream)
