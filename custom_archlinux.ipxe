@@ -64,6 +64,7 @@ echo vURL = ${vURL}
 echo vKERNEL = ${vKERNEL}
 echo vINITRD = ${vINITRD}
 echo vOPTS = ${vOPTS}
+echo vPICTURE = ${vPICTURE}
 echo =========
 goto error_${vNAME}
 
@@ -79,6 +80,7 @@ chain custom_${vNAME}.ipxe
 chain custom.ipxe || goto error_${vNAME}
 
 :os_install
+console --picture ${vPICTURE}
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
