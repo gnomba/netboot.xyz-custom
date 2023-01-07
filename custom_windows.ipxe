@@ -15,17 +15,22 @@ goto ${menu} ||
 :custom_menu_${vNAME}
 menu Windows netinstall
 item --gap
-item --gap
 item --gap Windows
 item win11 ${space} 11 [22H2] Ru
 item win10 ${space} 10 [22H2] Ru
 item win10ltsc ${space} 10 LTSC [21H2] Ru
+item --gap Windows Deprecated
+item win8.1 ${space} 8.1 (10 Jan 2023)
+item win8 ${space} (12 Jan 2016)
+item win7 ${space} (14 Jan 2020)
+item --gap
 item --gap Windows Server
 item win2k22 ${space} 2022 (14 Oct 2031)
 item win2k19 ${space} 2019 (09 Jan 2029)
 item win2k16 ${space} 2016 (12 Jan 2027)
 item win2k12R2 ${space} 2012 R2 (10 Oct 2023)
 item win2k12 ${space} 2012 (10 Oct 2023)
+item --gap
 item --gap Windows Server Deprecated
 item win2k8R2 ${space} 2008 R2 (14 Jan 2020)
 item win2k8 ${space} 2008 (14 Jan 2020)
