@@ -12,8 +12,10 @@ console --picture ${vPICTURE}
 goto ${menu} ||
 
 :custom_menu_${vNAME}
-menu ArchLinux netinstall
-item --gap ArchLinux
+menu
+item --gap ArchLinux netinstall
+item --gap
+item --gap
 item archlinux_latest ${space} latest
 item archlinux20230101 ${space} 2023.01.01
 item archlinux20221201 ${space} 2022.12.01
