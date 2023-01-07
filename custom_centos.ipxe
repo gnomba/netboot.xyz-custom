@@ -45,13 +45,13 @@ goto ${menu} ||
 
 :custom_menu_${vNAME}
 menu CentOS netinstall
-item --gap CentOS
-item centos9stream ${space} 9 (Stream)
-item centos8stream ${space} 8 (Stream)
-item centos8 ${space} 8 (8.5.2111)
-item centos7 ${space} 7 (7.9.2009)
-item centos6 ${space} 6 (6.10)
-item backtomenu <- Back to menu
+item --gap ${space} CentOS
+item centos9stream ${space}${space} 9 (Stream)
+item centos8stream ${space}${space} 8 (Stream)
+item centos8 ${space}${space} 8 (8.5.2111)
+item centos7 ${space}${space} 7 (7.9.2009)
+item centos6 ${space}${space} 6 (6.10)
+item backtomenu ${space} <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
 goto ${custom_choice_centos} || goto debug_${vNAME}
