@@ -6,6 +6,9 @@
 clear custom_choice_opensuse
 set vNAME opensuse
 set vOPENSUSE true
+set vARCH x86_64
+set vPICTURE background/${vNAME}.png
+console --picture ${vPICTURE}
 
 goto ${menu} ||
 
@@ -13,9 +16,9 @@ goto ${menu} ||
 menu OpenSUSE netinstall
 item --gap OpenSUSE
 item opensusetumbleweed ${space} Tumbleweed
-item opensuse152 ${space} 15.2
-item opensuse151 ${space} 15.1
-item opensuse151 ${space} 15.0
+item opensuse155 ${space} 15.5
+item opensuse154 ${space} 15.4
+item opensuse153 ${space} 15.3
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
@@ -25,20 +28,19 @@ goto ${custom_choice_opensuse} || goto debug_${vNAME}
 set vRELEASE tumbleweed
 goto ${vNAME}
 
-:opensuse152
-set vRELEASE 15.2
+:opensuse155
+set vRELEASE 15.5
 goto ${vNAME}
 
-:opensuse151
-set vRELEASE 15.1
+:opensuse154
+set vRELEASE 15.4
 goto ${vNAME}
 
-:opensuse150
-set vRELEASE 15.0
+:opensuse153
+set vRELEASE 15.3
 goto ${vNAME}
 
 :opensuse
-set vARCH x86_64
 iseq ${vRELEASE} tumbleweed && set vURL http://${vMIRROR}/opensuse/${vRELEASE}/repo/oss/boot/${vARCH}/loader || set vURL http://${vMIRROR}/opensuse/distribution/leap/${vRELEASE}/repo/oss/boot/${vARCH}/loader
 iseq ${vRELEASE} tumbleweed && set vOPTS linux initrd=initrd splash=silent install=http://${vMIRROR}/opensuse/${vRELEASE}/repo/oss/ || set vOPTS linux initrd=initrd splash=silent install=http://${vMIRROR}/opensuse/distribution/leap/${vRELEASE}/repo/oss/
 set vKERNEL ${vURL}/linux
@@ -60,6 +62,7 @@ echo vURL = ${vURL}
 echo vKERNEL = ${vKERNEL}
 echo vINITRD = ${vINITRD}
 echo vOPTS = ${vOPTS}
+echo vPICTURE = ${vPICTURE}
 echo =========
 goto error_${vNAME}
 
@@ -75,6 +78,8 @@ chain custom_${vNAME}.ipxe
 chain custom.ipxe || goto error_${vNAME}
 
 :os_install
+echo vPICTURE = ${vPICTURE}
+console --picture ${vPICTURE}
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
