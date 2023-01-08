@@ -16,10 +16,10 @@ goto ${menu} ||
 menu Ubuntu netinstall
 item --gap Ubuntu
 item ubuntu2204 ${space} 22.04 LTS (Jammy Jellyfish)
-item ubuntu2004 ${space} 20.04 LTS (Focal Fossa)
-item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
-item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
-item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
+#item ubuntu2004 ${space} 20.04 LTS (Focal Fossa)
+#item ubuntu1804 ${space} 18.04 LTS (Bionic Beaver) 
+#item ubuntu1604 ${space} 16.04 LTS (Xenial Xerus)
+#item ubuntu1404 ${space} 14.04 LTS (Trusty Tahr)
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
@@ -29,27 +29,29 @@ goto ${custom_choice_ubuntu} || goto debug_${vNAME}
 set vRELEASE jammy
 goto ${vNAME}
 
-:ubuntu2004
-set vRELEASE focal
-goto ${vNAME}
+#:ubuntu2004
+#set vRELEASE focal
+#goto ${vNAME}
 
-:ubuntu1804
-set vRELEASE bionic
-goto ${vNAME}
+#:ubuntu1804
+#set vRELEASE bionic
+#goto ${vNAME}
 
-:ubuntu1604
-set vRELEASE xenial
-goto ${vNAME}
+#:ubuntu1604
+#set vRELEASE xenial
+#goto ${vNAME}
 
-:ubuntu1404
-set vRELEASE trusty
-goto ${vNAME}
+#:ubuntu1404
+#set vRELEASE trusty
+#goto ${vNAME}
 
 :ubuntu
-iseq ${vRELEASE} jammy && set vURL ${vGITHUB_MIRROR}/netinstall/ubuntu2204 ||
-iseq ${vRELEASE} focal && set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}/main/installer-${vARCH}/current/legacy-images/netboot/ubuntu-installer/${vARCH} || set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
-set vKERNEL ${vURL}/linux
-set vINITRD ${vURL}/initrd.gz
+iseq ${vRELEASE} jammy && set vURL http://${vMIRROR}/${vNAME}-releases/${vRELEASE} || goto error_${vNAME}
+iseq ${vRELEASE} jammy && set vKERNEL memdisk || goto error_${vNAME}
+iseq ${vRELEASE} jammy && set vINITRD ${vURL}/${vNAME}-22.04.1-live-server-${vARCH}.iso || goto error_${vNAME}
+#iseq ${vRELEASE} focal && set vURL http://${vMIRROR}/${vNAME}/dists/${vRELEASE}/main/installer-${vARCH}/current/legacy-images/netboot/${vNAME}-installer/${vARCH} || set vURL http://${vMIRROR}/${vNAME}/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/${vNAME}-installer/${vARCH}
+#iseq ${vRELEASE} focal && set vKERNEL ${vURL}/linux || set vKERNEL ${vURL}/linux
+#iseq ${vRELEASE} focal && set vINITRD ${vURL}/initrd.gz || set vINITRD ${vURL}/initrd.gz
 set vOPTS 
 goto os_install || goto debug_${vNAME}
 
@@ -90,6 +92,8 @@ echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
 imgtrust --allow
-kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
-initrd ${vINITRD} || goto debug_${vNAME}
+initrd ${vINITRD}
+chain ${vKERNEL} iso raw 
+#kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
+#initrd ${vINITRD} || goto debug_${vNAME}
 boot || goto debug_${vNAME}
