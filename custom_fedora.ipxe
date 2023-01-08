@@ -6,19 +6,26 @@
 clear custom_choice_fedora
 set vNAME fedora
 set vFEDORA true
+set vARCH x86_64
+set vPICTURE background/${vNAME}.png
+console --picture ${vPICTURE}
 
 goto ${menu} ||
 
 :custom_menu_${vNAME}
 menu Fedora netinstall
 item --gap Fedora
+item fedora37 ${space} 37
 item fedora36 ${space} 36
 item fedora35 ${space} 35
-item fedora34 ${space} 34
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
 goto ${custom_choice_fedora} || goto debug_${vNAME}
+
+:fedora37
+set vRELEASE 37
+goto ${fedora_type}
 
 :fedora36
 set vRELEASE 36
@@ -26,10 +33,6 @@ goto ${fedora_type}
 
 :fedora35
 set vRELEASE 35
-goto ${fedora_type}
-
-:fedora34
-set vRELEASE 34
 goto ${fedora_type}
 
 :fedora_type
@@ -43,7 +46,6 @@ set vSKU ${vSKU}
 goto ${vNAME} || goto debug_${vNAME}
 
 :fedora
-set vARCH x86_64
 set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/${vSKU}/${vARCH}/os/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
@@ -66,6 +68,7 @@ echo vURL = ${vURL}
 echo vKERNEL = ${vKERNEL}
 echo vINITRD = ${vINITRD}
 echo vOPTS = ${vOPTS}
+echo vPICTURE = ${vPICTURE}
 echo =========
 goto error_${vNAME}
 
@@ -81,6 +84,8 @@ chain custom_${vNAME}.ipxe
 chain custom.ipxe || goto error_${vNAME}
 
 :os_install
+echo vPICTURE = ${vPICTURE}
+console --picture ${vPICTURE}
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
