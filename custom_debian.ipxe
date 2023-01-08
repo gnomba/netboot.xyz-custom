@@ -74,8 +74,6 @@ goto debian
 
 :debian
 set vURL http://${vMIRROR}/${vNAME}/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/${vNAME}-installer/${vARCH}
-console --picture ${vURL}/boot-screens/splash.png
-console --x 1280 --y 1024
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS biosdevname=0 net.ifnames=0
