@@ -25,33 +25,33 @@ goto ${custom_choice_fedora} || goto debug_${vNAME}
 
 :fedora37
 set vRELEASE 37
-goto ${fedora_type}
+goto ${vNAME}
 
 :fedora36
 set vRELEASE 36
-goto ${fedora_type}
+goto ${vNAME}
 
 :fedora35
 set vRELEASE 35
-goto ${fedora_type}
+goto ${vNAME}
 
-:fedora_type
-menu Fedora netinstall
-item --gap Fedora ${vRELEASE} 
-item Everything ${space} ${vSKU} Everything
-item Server ${space} ${vSKU} Server
-item Kinoite ${space} ${vSKU} Kinoite
-item Silverblue ${space} ${vSKU} Silverblue
-item backtoversions <- Back to versions
-choose custom_choice_${vNAME}_SKU
-set vSKU ${vSKU}
-goto ${vNAME} || goto debug_${vNAME}
+#:fedora_type
+#menu Fedora netinstall
+#item --gap Fedora ${vRELEASE} 
+#item Everything ${space} ${vSKU} Everything
+#item Server ${space} ${vSKU} Server
+#item Kinoite ${space} ${vSKU} Kinoite
+#item Silverblue ${space} ${vSKU} Silverblue
+#item backtoversions <- Back to versions
+#choose custom_choice_${vNAME}_SKU
+#set vSKU ${vSKU}
+#goto ${vNAME} || goto debug_${vNAME}
 
 :fedora
-set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/${vSKU}/${vARCH}/os/images/pxeboot
+set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
-set vOPTS ramdisk_size=3145728 inst.repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/${vSKU}/${vARCH}/os/ ip=dhcp initrd=initrd.img
+set vOPTS ramdisk_size=3145728 inst.repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
 goto os_install || goto debug_${vNAME}
 
 :debug_fedora
