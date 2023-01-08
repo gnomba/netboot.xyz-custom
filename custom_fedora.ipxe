@@ -48,10 +48,10 @@ goto ${vNAME}
 #goto ${vNAME} || goto debug_${vNAME}
 
 :fedora
-set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/images/pxeboot
+set vURL http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Everything/${vARCH}/os/images/pxeboot
 set vKERNEL ${vURL}/vmlinuz
 set vINITRD ${vURL}/initrd.img
-set vOPTS ramdisk_size=3145728 inst.repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Server/${vARCH}/os/ ip=dhcp initrd=initrd.img
+set vOPTS biosdevname=0 net.ifnames=0 ramdisk_size=3145728 inst.repo=http://${vMIRROR}/fedora/linux/releases/${vRELEASE}/Everything/${vARCH}/os/ ip=dhcp initrd=initrd.img rd.shell rd.debug
 goto os_install || goto debug_${vNAME}
 
 :debug_fedora
