@@ -52,12 +52,12 @@ item --gap
 item --gap
 item --gap
 item --gap CentOS
-item centos9stream ${space} 9 [ Stream ] (31 May 2027)
-item centos8stream ${space} 8 [ Stream ] (31 May 2024)
+item centos9stream ${space} 9 [Stream] (31 May 2027)
+item centos8stream ${space} 8 [Stream] (31 May 2024)
 item centos7 ${space} 7 [7.9.2009] (30 Jun 2024)
 item --gap CentOS Deprecated
 item centos8 ${space} 8 [8.5.2111] (31 Dec 2021)
-item centos6 ${space} 6 [  6.10  ] (30 Nov 2020)
+item centos6 ${space} 6 [6.10] (30 Nov 2020)
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
