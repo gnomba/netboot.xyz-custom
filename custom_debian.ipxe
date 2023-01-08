@@ -4,25 +4,27 @@
 ###
 
 clear custom_choice_debian
-###set vPICTURE https://get.wallhere.com/photo/Debian-Linux-monochrome-minimalism-computer-1810411.jpg
-###console --x 1280 --y 1024
-###console --picture ${vPICTURE}
 set vNAME debian
 set vDEBIAN true
+set vARCH amd64
+set vPICTURE background/${vNAME}.png
+console --picture ${vPICTURE}
 
 goto ${menu} ||
 
 :custom_menu_${vNAME}
 menu Debian netinstall
 item --gap Debian
-###item debian13 ${space} (testing) 13 (Trixie)
-item debian12 ${space} (testing) 12 (Bookworm)
-item debian11 ${space} 11 (Bullseye)
-item debian10 ${space} 10 (Buster)
-item debian9 ${space} 9 (Stretch)
-item debian8 ${space} 8 (Jessie)
-item debian7 ${space} 7 (Wheezy)
-item debiansid ${space} (unstable) Sid
+item debian11 ${space} 11 [Bullseye] (15 Aug 2026)
+item debian10 ${space} 10 [Buster] (01 Jun 2024)
+item --gap Debian Deprecated
+item debian9 ${space} 9 [Stretch] (30 Jun 2022)
+item debian8 ${space} 8 [Jessie] (30 Jun 2020)
+item debian7 ${space} 7 [Wheezy] (31 May 2018)
+item --gap Debian Unstable/Testing
+###item debian13 ${space} 13 [Trixie] (testing)
+item debian12 ${space} 12 [Bookworm] (testing)
+item debiansid ${space} [Sid] (unstable)
 item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
@@ -30,31 +32,38 @@ goto ${custom_choice_debian} || goto debug_${vNAME}
 
 ###:debian13
 ###set vRELEASE trixie
+###set vPICTURE background/${vNAME}-13.png
 ###goto debian
 
 :debian12
 set vRELEASE bookworm
+set vPICTURE background/${vNAME}-12.png
 goto debian
 
 :debian11
 set vRELEASE bullseye
+set vPICTURE background/${vNAME}-11.png
 goto debian
 
 :debian10
 set vRELEASE buster
+set vPICTURE background/${vNAME}-10.png
 goto debian
 
 :debian9
 set vRELEASE stretch
+set vPICTURE background/${vNAME}-9.png
 goto debian
 
 :debian8
 set vRELEASE jessie
+set vPICTURE background/${vNAME}-8.png
 goto debian
 
 :debian7
 set vMIRROR archive.debian.org
 set vRELEASE wheezy
+set vPICTURE background/${vNAME}-7.png
 goto debian
 
 :debiansid
@@ -62,7 +71,6 @@ set vRELEASE sid
 goto debian
 
 :debian
-set vARCH amd64
 set vURL http://${vMIRROR}/${vNAME}/dists/${vRELEASE}/main/installer-${vARCH}/current/images/netboot/${vNAME}-installer/${vARCH}
 console --picture ${vURL}/boot-screens/splash.png
 console --x 1280 --y 1024
@@ -86,6 +94,7 @@ echo vURL = ${vURL}
 echo vKERNEL = ${vKERNEL}
 echo vINITRD = ${vINITRD}
 echo vOPTS = ${vOPTS}
+echo vPICTURE = ${vPICTURE}
 echo =========
 goto error_${vNAME}
 
@@ -101,6 +110,8 @@ chain custom_${vNAME}.ipxe
 chain custom.ipxe || goto error_${vNAME}
 
 :os_install
+echo vPICTURE = ${vPICTURE}
+console --picture ${vPICTURE}
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
