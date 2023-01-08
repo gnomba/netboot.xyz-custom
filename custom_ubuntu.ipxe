@@ -6,6 +6,9 @@
 clear custom_choice_ubuntu
 set vNAME ubuntu
 set vUBUNTU true
+set vARCH amd64
+set vPICTURE background/${vNAME}.png
+console --picture ${vPICTURE}
 
 goto ${menu} ||
 
@@ -43,10 +46,8 @@ set vRELEASE trusty
 goto ${vNAME}
 
 :ubuntu
-set vARCH amd64
+iseq ${vRELEASE} jammy && set vURL ${vGITHUB_MIRROR}/netinstall/ubuntu2204 ||
 iseq ${vRELEASE} focal && set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}/main/installer-${vARCH}/current/legacy-images/netboot/ubuntu-installer/${vARCH} || set vURL http://${vMIRROR}/ubuntu/dists/${vRELEASE}-updates/main/installer-${vARCH}/current/images/netboot/ubuntu-installer/${vARCH}
-console --picture ${vURL}/boot-screens/splash.png
-console --x 1280 --y 1024
 set vKERNEL ${vURL}/linux
 set vINITRD ${vURL}/initrd.gz
 set vOPTS 
@@ -67,6 +68,7 @@ echo vURL = ${vURL}
 echo vKERNEL = ${vKERNEL}
 echo vINITRD = ${vINITRD}
 echo vOPTS = ${vOPTS}
+echo vPICTURE = ${vPICTURE}
 echo =========
 goto error_${vNAME}
 
@@ -82,6 +84,8 @@ chain custom_${vNAME}.ipxe
 chain custom.ipxe || goto error_${vNAME}
 
 :os_install
+echo vPICTURE = ${vPICTURE}
+console --picture ${vPICTURE}
 echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
