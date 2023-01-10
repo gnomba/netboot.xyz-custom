@@ -93,7 +93,7 @@ echo =================
 imgfree
 imgtrust --allow
 initrd ${vINITRD}
-chain ${vKERNEL} iso raw 
+chain ${vKERNEL} iso raw ||
 #kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
 #initrd ${vINITRD} || goto debug_${vNAME}
-boot || goto debug_${vNAME}
+#boot || goto debug_${vNAME}
