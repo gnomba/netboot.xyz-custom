@@ -48,7 +48,7 @@ goto os_install || goto debug_${vNAME}
 set vRELEASE 9.06
 set vURL https://sourceforge.net/projects/${vNAME}/files/sysresccd-x86/${vRELEASE}
 set vKERNEL memdisk || goto error_${vNAME}
-set vINITRD ${vURL}/${vNAME_ISO}-${vRELEASE}-${vARCH}.iso/download || goto error_${vNAME}
+set vINITRD ${vURL}/${vNAME_ISO}-${vRELEASE}-${vARCH}.iso/download?use_mirror || goto error_${vNAME}
 set vOPTS
 goto iso_boot || goto debug_${vNAME}
 
@@ -104,6 +104,7 @@ boot || goto debug_${vNAME}goto debug_${vNAME}
 :iso_boot
 echo vPICTURE = ${vPICTURE}
 console --picture ${vPICTURE}
+imgfree ${vPICTURE}
 echo Booting ${vNAME_ISO} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
