@@ -76,6 +76,7 @@ goto debian
 
 :debiansid
 set vRELEASE sid
+set vPICTURE background/${vNAME}-${vRELEASE}.png
 goto debian
 
 :debian
