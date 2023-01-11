@@ -22,6 +22,7 @@ item debian9 ${space} 9 [Stretch] (30 Jun 2022)
 item debian8 ${space} 8 [Jessie] (30 Jun 2020)
 item debian7 ${space} 7 [Wheezy] (31 May 2018)
 item --gap Debian Unstable/Testing
+###item debian14 ${space} 14 [Forky] (testing)
 ###item debian13 ${space} 13 [Trixie] (testing)
 item debian12 ${space} 12 [Bookworm] (testing)
 item debiansid ${space} [Sid] (unstable)
@@ -29,6 +30,11 @@ item backtomenu <- Back to menu
 choose custom_choice_${vNAME}
 echo ${cls}
 goto ${custom_choice_debian} || goto debug_${vNAME}
+
+###:debian14
+###set vRELEASE forky
+###set vPICTURE background/${vNAME}-14.png
+###goto debian
 
 ###:debian13
 ###set vRELEASE trixie
