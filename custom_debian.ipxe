@@ -52,7 +52,7 @@ set vPICTURE background/${vNAME}-11.png
 goto debian
 
 :debian10
-set vMIRROR mirror.mephi.ru
+#set vMIRROR mirror.mephi.ru
 set vRELEASE buster
 set vPICTURE background/${vNAME}-10.png
 goto debian
@@ -63,13 +63,13 @@ set vPICTURE background/${vNAME}-9.png
 goto debian
 
 :debian8
-set vMIRROR archive.debian.org
+set vMIRROR archive.${vNAME}.org
 set vRELEASE jessie
 set vPICTURE background/${vNAME}-8.png
 goto debian
 
 :debian7
-set vMIRROR archive.debian.org
+set vMIRROR archive.${vNAME}.org
 set vRELEASE wheezy
 set vPICTURE background/${vNAME}-7.png
 goto debian
