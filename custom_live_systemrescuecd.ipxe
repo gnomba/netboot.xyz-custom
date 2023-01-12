@@ -5,7 +5,7 @@
 
 clear custom_choice_systemrescuecd
 set vNAME systemrescuecd
-set vNAME_ISO systemrescue
+#set vNAME_ISO systemrescue
 set vSYSTEMRESCUECD true
 set vARCH amd64
 set vPICTURE background/${vNAME}.png
@@ -16,7 +16,7 @@ goto ${menu} ||
 :custom_menu_${vNAME}
 menu SystemRescueCD live
 item --gap SystemRescueCD
-item systemrescuecd9_iso ${space} 9.06 (ISO)
+item systemrescuecd_latest_iso ${space} latest (ISO)
 #item systemrescuecd6 ${space} 6.0.7 (Arch-based)
 #item systemrescuecd6_iso ${space} 6.0.7 (ISO)
 #item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
