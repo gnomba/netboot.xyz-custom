@@ -68,7 +68,7 @@ set vRELEASE 9-stream
 set vMIRROR mirror.yandex.ru
 set vURL http://${vMIRROR}/centos-stream/${vRELEASE}/BaseOS/${vARCH}/os/images/pxeboot
 set vPICTURE background/${vNAME}-9-stream.png
-set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} inst.repo=http://${vMIRROR}/${vRELEASE}/BaseOS/${vARCH}/os inst.stage2=http://${vMIRROR}/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123 
+set vOPTS biosdevname=0 net.ifnames=0 ${vRAMDISK} inst.repo=http://${vMIRROR}/centos-stream/${vRELEASE}/BaseOS/${vARCH}/os inst.stage2=http://${vMIRROR}/centos-stream/${vRELEASE}/BaseOS/${vARCH}/os initrd=initrd.img ip=dhcp nameserver=8.8.4.4 inst.vnc inst.vncpassword=Pass123 
 goto centos
 
 :centos8stream
