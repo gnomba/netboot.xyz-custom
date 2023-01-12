@@ -46,7 +46,7 @@ goto os_install || goto debug_${vNAME}
 
 :systemrescuecd_latest_iso
 set vRELEASE latest
-#https://sourceforge.net/projects/phppgadmin/files/latest/download
+#https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/9.06/systemrescue-9.06-amd64.iso/download?use_mirror=${vSF_MIRROR}
 set vURL https://sourceforge.net/projects/${vNAME}/files/${vRELEASE}/download
 set vKERNEL memdisk
 set vINITRD ${vURL}
