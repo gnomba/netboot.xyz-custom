@@ -105,7 +105,7 @@ boot || goto debug_${vNAME}goto debug_${vNAME}
 :iso_boot
 echo vPICTURE = ${vPICTURE}
 console --picture ${vPICTURE}
-echo Booting ${vNAME_ISO} ${vRELEASE} ${vARCH}
+echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
 imgtrust --allow
