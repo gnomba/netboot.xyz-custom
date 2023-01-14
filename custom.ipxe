@@ -61,7 +61,11 @@ echo +-------+
 echo custom_choice = ${custom_choice}
 echo vMIRROR = ${vMIRROR}
 echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
-echo vSF_MIRROR = ${vSF_MIRROR}
+echo vSF_MIRROR_1 = ${vSF_MIRROR_1}
+echo vSF_MIRROR_2 = ${vSF_MIRROR_2}
+echo vSF_MIRROR_3 = ${vSF_MIRROR_3}
+echo vSF_MIRROR_4 = ${vSF_MIRROR_4}
+echo vSF_MIRROR_5 = ${vSF_MIRROR_5}
 echo =========
 goto error
 
