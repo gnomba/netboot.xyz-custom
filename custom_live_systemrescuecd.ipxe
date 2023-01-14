@@ -47,7 +47,7 @@ goto os_install || goto debug_${vNAME}
 :systemrescuecd9_iso
 set vRELEASE 9.06
 #https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/9.06/systemrescue-9.06-amd64.iso/download?use_mirror=${vSF_MIRROR}
-set vURL https://sourceforge.net/projects/${vNAME}/files/sysresccd-x86/${vRELEASE}/systemrescue-${vRELEASE}-${vARCH}.iso/download?use_mirror=${vSF_MIRROR_DIAC_RIGA}
+set vURL https://sourceforge.net/projects/${vNAME}/files/sysresccd-x86/${vRELEASE}/systemrescue-${vRELEASE}-${vARCH}.iso/download?use_mirror=${vSF_MIRROR}
 set vKERNEL memdisk
 set vINITRD ${vURL}
 set vOPTS
@@ -68,6 +68,7 @@ echo +-------+
 echo custom_choice_${vNAME} = ${custom_choice_systemrescuecd}
 echo vMIRROR = ${vMIRROR}
 echo vCUSTOM_MIRROR = ${vCUSTOM_MIRROR}
+echo vSF_MIRROR = ${vSF_MIRROR}
 echo vNAME = ${vNAME}
 echo vSYSTEMRESCUECD = ${vSYSTEMRESCUECD}
 echo vRELEASE = ${vRELEASE} 
