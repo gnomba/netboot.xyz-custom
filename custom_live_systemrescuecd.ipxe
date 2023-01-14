@@ -47,7 +47,7 @@ goto os_install || goto debug_${vNAME}
 :systemrescuecd9_iso
 set vRELEASE 9.06
 #https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/9.06/systemrescue-9.06-amd64.iso/download?use_mirror=${vSF_MIRROR}
-set vURL https://sourceforge.net/projects/${vNAME}/files/sysresccd-x86/${vRELEASE}/systemrescue-${vRELEASE}-${vARCH}.iso/download?use_mirror=${vSF_MIRROR}
+set vURL https://${vSF_MIRROR}.dl.sourceforge.net/project/${vNAME}/sysresccd-x86/${vRELEASE}/systemrescue-${vRELEASE}-${vARCH}.iso
 set vKERNEL memdisk
 set vINITRD ${vURL}
 set vOPTS
