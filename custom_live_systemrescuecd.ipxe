@@ -16,7 +16,7 @@ goto ${menu} ||
 :custom_menu_${vNAME}
 menu SystemRescueCD live
 item --gap SystemRescueCD
-item systemrescuecd_latest_iso ${space} latest (ISO)
+item systemrescuecd9_iso ${space} 9.06 (ISO)
 #item systemrescuecd6 ${space} 6.0.7 (Arch-based)
 #item systemrescuecd6_iso ${space} 6.0.7 (ISO)
 #item systemrescuecd5 ${space} 5.3.2 (Gentoo-based)
@@ -44,10 +44,10 @@ set vINITRD ${vURL}/initram.igz
 set vOPTS rescue64 setkmap=us dodhcp netboot=${vURL}/sysrcd.dat initrd=initram.igz
 goto os_install || goto debug_${vNAME}
 
-:systemrescuecd_latest_iso
-set vRELEASE latest
+:systemrescuecd9_iso
+set vRELEASE 9.06
 #https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/9.06/systemrescue-9.06-amd64.iso/download?use_mirror=${vSF_MIRROR}
-set vURL https://sourceforge.net/projects/${vNAME}/files/${vRELEASE}/download
+set vURL https://sourceforge.net/projects/${vNAME}/files/sysresccd-x86/${vRELEASE}/systemrescue-{vRELEASE}-${vARCH}.iso/download?use_mirror=${vSF_MIRROR_DIAC_RIGA}
 set vKERNEL memdisk
 set vINITRD ${vURL}
 set vOPTS
