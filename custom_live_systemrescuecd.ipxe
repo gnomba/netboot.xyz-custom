@@ -101,7 +101,7 @@ imgfree
 imgtrust --allow
 kernel ${vKERNEL} ${vOPTS} || goto debug_${vNAME}
 initrd ${vINITRD}  || goto debug_${vNAME}
-boot || goto debug_${vNAME}goto debug_${vNAME}
+boot || goto debug_${vNAME}
 
 :iso_boot
 echo vPICTURE = ${vPICTURE}
@@ -110,6 +110,6 @@ echo Booting ${vNAME} ${vRELEASE} ${vARCH}
 echo =================
 imgfree
 imgtrust --allow
-initrd ${vINITRD}
-chain ${vKERNEL} iso raw ||
+initrd ${vINITRD} || debug_${vNAME}
+chain ${vKERNEL} iso raw || debug_${vNAME}
 #boot || goto debug_${vNAME}
