@@ -11,8 +11,11 @@ console --picture ${vPICTURE}
 # mirror variables
 set vMIRROR mirror.yandex.ru
 set vGH_MIRROR https://github.com/gnomba/netboot.xyz-custom/raw/master
-set vSF_MIRROR altushost-swe
-
+set vSF_MIRROR_1 altushost-swe
+set vSF_MIRROR_2
+set vSF_MIRROR_3
+set vSF_MIRROR_4
+set vSF_MIRROR_5
 ###set vCUSTOM_MIRROR 185.228.233.185
 
 :custom
